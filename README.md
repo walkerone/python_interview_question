@@ -51,7 +51,7 @@
         - [42.Python中类方法、类实例方法、静态方法有何区别？](#42python中类方法类实例方法静态方法有何区别)
         - [43.遍历一个object的所有属性，并print每一个属性名？](#43遍历一个object的所有属性并print每一个属性名)
         - [44.写一个类，并让它尽可能多的支持操作符?](#44写一个类并让它尽可能多的支持操作符)
-        - [45.介绍Cpython，Pypy Cpython Numba各有什么缺点](#45介绍cpythonpypy-cpython-numba各有什么缺点)
+        - [45.介绍Cython，Pypy Cpython Numba各有什么缺点](#45介绍cythonpypy-cpython-numba各有什么缺点)
         - [46.请描述抽象类和接口类的区别和联系](#46请描述抽象类和接口类的区别和联系)
         - [47.Python中如何动态获取和设置对象的属性？](#47python中如何动态获取和设置对象的属性)
     - [内存管理与垃圾回收机制](#内存管理与垃圾回收机制)
@@ -860,7 +860,7 @@ def loop_merge_sort(l1,l2):
         
 ```
 ### 37.给定一个任意长度数组，实现一个函数
-让所有奇数都在偶数前面，而且奇数升序排列，偶数降序排序，如字符串'1982376455',变成'135798642'
+让所有奇数都在偶数前面，而且奇数升序排列，偶数降序排序，如字符串'1982376455',变成'1355798642'
 ```python
 def func1(l):
     if isinstance(l,str):
@@ -870,7 +870,7 @@ def func1(l):
     for i in range(len(l)):
         if l[i] % 2>0:
             l.insert(0,l.pop(i))
-    print(l)
+    print(''.join(str(e) for e in l))
 
 ```
 ### 38.写一个函数找出一个整数数组中，第二大的数
@@ -926,9 +926,68 @@ https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p07_calling_method_on_p
 # Python高级
 ## 元类
 ### 42.Python中类方法、类实例方法、静态方法有何区别？
+类方法: 是类对象的方法，在定义时需要在上方使用 @classmethod 进行装饰,形参为cls，表示类对象，类对象和实例对象都可调用
+
+类实例方法: 是类实例化对象的方法,只有实例对象可以调用，形参为self,指代对象本身;
+
+静态方法: 是一个任意函数，在其上方使用 @staticmethod 进行装饰，可以用对象直接调用，静态方法实际上跟该类没有太大关系
 ### 43.遍历一个object的所有属性，并print每一个属性名？
+```python
+class Car:
+    def __init__(self,name,loss): # loss [价格，油耗，公里数]
+        self.name = name
+        self.loss = loss
+    
+    def getName(self):
+        return self.name
+    
+    def getPrice(self):
+        # 获取汽车价格
+        return self.loss[0]
+    
+    def getLoss(self):
+        # 获取汽车损耗值
+        return self.loss[1] * self.loss[2]
+
+Bmw = Car("宝马",[60,9,500]) # 实例化一个宝马车对象
+print(getattr(Bmw,"name")) # 使用getattr()传入对象名字,属性值。
+print(dir(Bmw)) # 获Bmw所有的属性和方法
+```
 ### 44.写一个类，并让它尽可能多的支持操作符?
-### 45.介绍Cpython，Pypy Cpython Numba各有什么缺点
+```python
+class Array:
+    __list = []
+    
+    def __init__(self):
+        print "constructor"
+    
+    def __del__(self):
+        print "destruct"
+    
+    def __str__(self):
+        return "this self-defined array class"
+
+    def __getitem__(self,key):
+        return self.__list[key]
+    
+    def __len__(self):
+        return len(self.__list)
+
+    def Add(self,value):
+        self.__list.append(value)
+    
+    def Remove(self,index):
+        del self.__list[index]
+    
+    def DisplayItems(self):
+        print "show all items---"
+        for item in self.__list:
+            print item
+    
+        
+```
+### 45.介绍Cython，Pypy Cpython Numba各有什么缺点
+Cython
 ### 46.请描述抽象类和接口类的区别和联系
 ### 47.Python中如何动态获取和设置对象的属性？
 
