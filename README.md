@@ -443,11 +443,11 @@ d. 经典类目前在Python里基本没有应用
 ### 16.python中内置的数据结构有几种？
 a. 整型 int、 长整型 long、浮点型 float、 复数 complex
 
-b. 字符串 str、 列表list、 元祖tuple
+b. 字符串 str、 列表 list、 元祖 tuple
 
 c. 字典 dict 、 集合 set
 
-d Python3 中没有long，只有无限精度的int
+d. Python3 中没有 long，只有无限精度的 int
 
 ### 17.python如何实现单例模式?请写出两种实现方式?
 第一种方法:使用装饰器
@@ -618,36 +618,34 @@ print('-----------')
 print(a)
 ```
 ### 22.字符串的操作题目
-全字母短句是包含所有英文字母的句子，比如：A QUICK BROWN FOX JUMPS OVER THE LAZY DOG.定义并实现一个方法GETMISSINGLETTERS,传入一个字符串采纳数，返回参数字符串变成一个PANGRAM中所缺失的字符。应该忽略传入字符串参数中的大小写，返回应该都是小写字符并按字母顺序排序（请忽略所有非ACSII字符）
+全字母短句 PANGRAM 是包含所有英文字母的句子，比如：A QUICK BROWN FOX JUMPS OVER THE LAZY DOG. 定义并实现一个方法 get_missing_letter, 传入一个字符串采纳数，返回参数字符串变成一个 PANGRAM 中所缺失的字符。应该忽略传入字符串参数中的大小写，返回应该都是小写字符并按字母顺序排序（请忽略所有非 ACSII 字符）
 
 **下面示例是用来解释，双引号不需要考虑:**
 
-(0)输入： A quick brown for jumps over the lazy dog
+(0)输入: "A quick brown for jumps over the lazy dog"
 
 返回： ""
 
-(1)输入:"A slow yellow fox crawls under the proactive dog" 
+(1)输入: "A slow yellow fox crawls under the proactive dog" 
 
 返回: "bjkmqz"
 
-(2)输入:"Lions,and tigers,and bears,oh my!"
+(2)输入: "Lions, and tigers, and bears, oh my!"
 
-返回:"cfjkpquvwxz" 
+返回: "cfjkpquvwxz" 
 
 (3)输入: ""
 
 返回："abcdefghijklmnopqrstuvwxyz"
 
 ```python
-def getMissingLetter(a):
+def get_missing_letter(a):
     s1 = set("abcdefghijklmnopqrstuvwxyz")
-    ret = ""
     s2 = set(a)
-    for i in sorted(s1-s2):
-        ret +=i
+    ret = "".join(sorted(s1-s2))
     return ret
     
-print(getMissingLetter("python"))
+print(get_missing_letter("python"))
 ```
 
 ### 23.可变类型和不可变类型
@@ -691,38 +689,40 @@ G: global 全局作用域
 B： build-in 内置作用
 
 python在函数里面的查找分为4种，称之为LEGB，也正是按照这是顺序来查找的
-### 28.字符串”123″转换成123，不使用内置api，例如int（）
-方法一： 利用str 函数
+### 28.字符串 `"123"` 转换成 `123`，不使用内置api，例如 `int()`
+方法一： 利用 `str` 函数
 ```python
 def atoi(s):
-    s = s[::-1]
     num = 0
-    for i,v in enumerate(s):
-        for j in range(0,10):
+    for v in s:
+        for j in range(10):
             if v == str(j):
-                num += j *(10**i)
-        return num
-```
-方法二： 利用ord函数
-```python
-def atoi(s):
-    s = s[::-1]
-    num = 0
-    for i, v in enumerate(s):
-        offset = ord(v) - ord('0')
-        num += offset *(10 **i)
+                num = num * 10 + j
     return num
 ```
-方法三: 利用eval函数
+方法二： 利用 `ord` 函数
 ```python
 def atoi(s):
-    s = s[::-1]
     num = 0
-    for i, v in enumerate(s):
-        t = '%s *1 ' %v
+    for v in s:
+        num = num * 10 + ord(v) - ord('0')
+    return num
+```
+方法三: 利用 `eval` 函数
+```python
+def atoi(s):
+    num = 0
+    for v in s:
+        t = "%s * 1" % v
         n = eval(t)
-        num += n *(10 ** i)
+        num = num * 10 + n
     return num
+```
+方法四: 结合方法二，使用 `reduce`，一行解决
+```python
+from functools import reduce
+def atoi(s):
+    return reduce(lambda num, v: num * 10 + ord(v) - ord('0'), s, 0)
 ```
 ### 29.Given an array of integers
 给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。示例:给定nums = [2,7,11,15],target=9 因为 nums[0]+nums[1] = 2+7 =9,所以返回[0,1]
