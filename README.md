@@ -874,7 +874,7 @@ def func1(l):
 
 # 方法二
 def func2(l):
-    print("".join(sorted(l, key=lambda x: int(x) % 2 == 0 and 20-int(x) or int(x))))
+    print("".join(sorted(l, key=lambda x: int(x) % 2 == 0 and 20 - int(x) or int(x))))
 ```
 ### 38.写一个函数找出一个整数数组中，第二大的数
 ```python
