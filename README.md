@@ -908,17 +908,23 @@ print([m(3) for m in multi()])
 正确答案是[9,9,9,9]，而不是[0,3,6,9]产生的原因是Python的闭包的后期绑定导致的，这意味着在闭包中的变量是在内部函数被调用的时候被查找的，因为，最后函数被调用的时候，for循环已经完成, i 的值最后是3,因此每一个返回值的i都是3,所以最后的结果是[9,9,9,9]
 ### 40.统计一段字符串中字符出现的次数
 ```python
+# 方法一
 def count_str(str_data):
     """定义一个字符出现次数的函数"""
     dict_str = {} 
     for i in str_data:
-        dict_str[i] = dict_str.get(i,0)+1
+        dict_str[i] = dict_str.get(i, 0) + 1
     return dict_str
 dict_str = count_str("AAABBCCAC")
 str_count_data = ""
-for k,v in dict_str.items():
-    str_count_data += k +str(v)
+for k, v in dict_str.items():
+    str_count_data += k + str(v)
 print(str_count_data)
+
+# 方法二
+from collections import Counter
+
+print("".join(map(lambda x: x[0] + str(x[1]), Counter("AAABBCCAC").most_common())))
 ```
 ### 41.super函数的具体用法和场景
 https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p07_calling_method_on_parent_class.html
