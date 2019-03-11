@@ -789,24 +789,34 @@ if __name__ == "__main__":
 ```python
 import re
 
+# 方法一
 def test(filepath):
     
     distone = {}
-    numTen = []
 
-    with open(filepath,"r",encoding="utf-8") as f:
+    with open(filepath) as f:
         for line in f:
-            line = re.sub("\W","",line)
+            line = re.sub("\W+", " ", line)
             lineone = line.split()
             for keyone in lineone:
                 if not distone.get(keyone):
-                    distone[keyone]=1
+                    distone[keyone] = 1
                 else:
-                    distone[keyone]+=1
-    numTen = sorted(distone.items(),key=lambda x:x[1],reverse=True)[:10]
-    numTen =[x[0]for x in numTen]
-    return numTen
+                    distone[keyone] += 1
+    num_ten = sorted(distone.items(), key=lambda x:x[1], reverse=True)[:10]
+    num_ten =[x[0] for x in num_ten]
+    return num_ten
     
+ 
+# 方法二 
+# 使用 built-in 的 Counter 里面的 most_common
+import re
+from collections import Counter
+
+
+def test2(filepath):
+    with open(filepath) as f:
+        return list(map(lambda c: c[0], Counter(re.sub("\W+", " ", f.read()).split()).most_common(10)))
 ```
 ### 32.请写出一个函数满足以下条件
 该函数的输入是一个仅包含数字的list,输出一个新的list，其中每一个元素要满足以下条件：
