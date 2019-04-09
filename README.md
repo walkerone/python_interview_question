@@ -875,7 +875,13 @@ def loop_merge_sort(l1,l2):
         else:
             tmp.append(l2[0])
             del l2[0]
-        
+    while len(l1)>0:
+        tmp.append(l1[0])
+        del l1[0]
+    while len(l2)>0:
+        tmp.append(l2[0])
+        del l2[0]
+    return tmp
 ```
 ### 37.给定一个任意长度数组，实现一个函数
 让所有奇数都在偶数前面，而且奇数升序排列，偶数降序排序，如字符串'1982376455',变成'1355798642'
