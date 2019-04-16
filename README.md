@@ -2219,6 +2219,52 @@ drop直接删掉表，truncate删除表中数据，再插入时自增长id又从
 ## 数据结构
 ### 222.数组中出现次数超过一半的数字-Python版
 ### 223.求100以内的质数
+
+方法一: 直接写
+
+```python
+primes = 3, 5, 7, 9, 11, 13, 15, 17, 19, 23, 25, 29, 31, 35, 37, 41, 43, 47, 49, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97
+```
+
+方法二: 简单算
+
+```python
+def is_prime(n):
+    """Check if number n is a prime."""
+    if n == 1 or not (n & 1):
+        return False
+    if n == 2:
+        return True
+    for i in range(3, int(pow(n, 0.5)), 2):
+        if n % i == 0:
+            return False
+    return True
+
+primes = tuple(filter(is_prime, range(2,100)))
+```
+
+方法三: Eratosthenes 筛 (速度想更快的话，不用 dict 而用 bytearray)
+
+```python
+from itertools import takewhile
+
+sets = {n: True for n in range(2, 100)}
+for n in takewhile(lambda x: x * x < 100, sets):
+    if sets[n]:
+        for n_ in range(n * n, 100, n):
+            sets[n_] = False
+
+primes = tuple(map(lambda n: n[0], filter(lambda x: x[1], sets.items())))
+```
+
+方法四: 现有的库，比如: sympy
+
+```python
+import sympy
+primes = tuple(sympy.primerange(0, 100))
+```
+
+
 ### 224.无重复字符的最长子串-Python实现
 ### 225.通过2个5/6升得水壶从池塘得到3升水
 ### 226.什么是MD5加密，有什么特点？
