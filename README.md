@@ -2219,52 +2219,6 @@ drop直接删掉表，truncate删除表中数据，再插入时自增长id又从
 ## 数据结构
 ### 222.数组中出现次数超过一半的数字-Python版
 ### 223.求100以内的质数
-
-方法一: 直接写
-
-```python
-primes = 3, 5, 7, 9, 11, 13, 15, 17, 19, 23, 25, 29, 31, 35, 37, 41, 43, 47, 49, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97
-```
-
-方法二: 简单算
-
-```python
-def is_prime(n):
-    """Check if number n is a prime."""
-    if n == 1 or not (n & 1):
-        return False
-    if n == 2:
-        return True
-    for i in range(3, int(pow(n, 0.5)), 2):
-        if n % i == 0:
-            return False
-    return True
-
-primes = tuple(filter(is_prime, range(2,100)))
-```
-
-方法三: Eratosthenes 筛 (速度想更快的话，不用 dict 而用 bytearray)
-
-```python
-from itertools import takewhile
-
-sets = {n: True for n in range(2, 100)}
-for n in takewhile(lambda x: x * x < 100, sets):
-    if sets[n]:
-        for n_ in range(n * n, 100, n):
-            sets[n_] = False
-
-primes = tuple(map(lambda n: n[0], filter(lambda x: x[1], sets.items())))
-```
-
-方法四: 现有的库，比如: sympy
-
-```python
-import sympy
-primes = tuple(sympy.primerange(0, 100))
-```
-
-
 ### 224.无重复字符的最长子串-Python实现
 ### 225.通过2个5/6升得水壶从池塘得到3升水
 ### 226.什么是MD5加密，有什么特点？
@@ -2274,6 +2228,93 @@ primes = tuple(sympy.primerange(0, 100))
 ### 230.如何判断单向链表中是否有环？
 ### 231.你知道哪些排序算法（一般是通过问题考算法）
 ### 232.斐波那契数列
+
+**数列定义: **
+
+f 0 = f 1 = 1
+f n = f (n-1) + f (n-2)
+
+#### 根据定义
+
+速度很慢，另外(暴栈注意！⚠️️） `O(fibonacci n)`
+
+```python
+def fibonacci(n):
+    if n == 0 or n == 1:
+        return 1
+    return fibonacci(n - 1) + fibonacci(n - 2)
+```
+
+#### 线性时间的
+
+**状态/循环**
+
+```python
+def fibonacci(n):
+   a, b = 1, 1
+   for _ in range(n):
+       a, b = b, a + b
+   return a
+```
+
+**递归**
+
+```python
+def fibonacci(n):
+    def fib(n_, s):
+        if n_ == 0:
+            return s[0]
+        a, b = s
+        return fib(n_ - 1, (b, a + b))
+    return fib(n, (1, 1))
+```
+
+**map(zipwith)**
+
+```python
+def fibs():
+    yield 1
+    fibs_ = fibs()
+    yield next(fibs_)
+    fibs__ = fibs()
+    for fib in map(lambad a, b: a + b, fibs_, fibs__):
+        yield fib
+        
+        
+def fibonacci(n):
+    fibs = fibs()
+    for _ in range(n):
+        next(fibs)
+    return next(fibs)
+```
+
+#### Logarithmic
+
+**矩阵**
+
+```
+import numpy as np
+def fibonacci(n):
+    return (np.matrix([[0, 1], [1, 1]]) ** n)[1, 1]
+```
+
+**不是矩阵**
+
+```python
+def fibonacci(n):
+    def fib(n):
+        if n == 0:
+            return (1, 1)
+        elif n == 1:
+            return (1, 2)
+        a, b = fib(n // 2 - 1)
+        c = a + b
+        if n % 2 == 0:
+            return (a * a + b * b, c * c - a * a)
+        return (c * c - a * a, b * b + c * c)
+    return fib(n)[0]
+```
+
 ### 233.如何翻转一个单链表？
 ### 234.青蛙跳台阶问题
 ### 235.两数之和 Two Sum
