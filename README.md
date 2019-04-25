@@ -752,6 +752,11 @@ yield就是保存当前程序执行状态。你用for循环的时候，每次取
 
 ## 正则表达式
 ### 94.请写出一段代码用正则匹配出ip？
+```python
+def ip_match(ip_str):
+    partterns = re.compile(r"(2(5[0-5]{1}|[0-4]\d{1})|[0-1]?\d{1,2})(\.(2(5[0-5]{1}|[0-4]\d{1})|[0-1]?\d{1,2})){3}")
+    print(partterns.search(ip_str).group(0))
+```
 ### 95.a = “abbbccc”，用正则匹配为abccc,不管有多少b，就出现一次？
 ### 96.Python字符串查找和替换？
 ### 97.用Python匹配HTML g tag的时候，<.> 和 <.*?> 有什么区别
