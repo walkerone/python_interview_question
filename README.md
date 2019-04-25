@@ -758,6 +758,12 @@ def ip_match(ip_str):
     print(partterns.search(ip_str).group(0))
 ```
 ### 95.a = “abbbccc”，用正则匹配为abccc,不管有多少b，就出现一次？
+```python
+def remove_b(test_str):
+    res = re.compile('(?<=a).*?(?=c)')
+    ret = res.sub("b",test_str)
+    print(ret)
+```
 ### 96.Python字符串查找和替换？
 ### 97.用Python匹配HTML g tag的时候，<.> 和 <.*?> 有什么区别
 ### 98.正则表达式贪婪与非贪婪模式的区别？
