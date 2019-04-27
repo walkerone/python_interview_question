@@ -649,11 +649,19 @@ print(a)
 ```python
 def get_missing_letter(a):
     s1 = set("abcdefghijklmnopqrstuvwxyz")
-    s2 = set(a)
+    s2 = set(a.lower())
     ret = "".join(sorted(s1-s2))
     return ret
     
 print(get_missing_letter("python"))
+
+# other ways to generate letters
+# range("a", "z")
+# 方法一:
+import string
+letters = string.ascii_lowercase
+# 方法二:
+letters = "".join(map(chr, range(ord('a'), ord('z') + 1)))
 ```
 
 ### 23.可变类型和不可变类型
