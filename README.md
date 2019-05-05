@@ -440,6 +440,8 @@ c. Python2里面继承object的是新式类，没有写父类的是经典类
 
 d. 经典类目前在Python里基本没有应用
 
+e.经典类的MRO是深度优先搜索，新式类的MRO是广度优先搜索
+
 ### 16.python中内置的数据结构有几种？
 a. 整型 int、 长整型 long、浮点型 float、 复数 complex
 
@@ -2445,6 +2447,11 @@ redis检查内存使用情况，如果大于maxmemory的限制，则根据设定
 
 ## 数据结构
 ### 222.数组中出现次数超过一半的数字-Python版
+```pythondef 
+def majorityElement(nums):
+    nums.sort()
+    return nums[len(nums)/2]
+```
 ### 223.求100以内的质数
 ### 224.无重复字符的最长子串-Python实现
 ### 225.通过2个5/6升得水壶从池塘得到3升水
