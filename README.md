@@ -120,7 +120,7 @@
     - [系统编程](#系统编程)
         - [106.进程总结](#106进程总结)
         - [107.谈谈你对多进程，多线程，以及协程的理解，项目是否用？](#107谈谈你对多进程多线程以及协程的理解项目是否用)
-        - [108.Python异常使用场景有那些？](#108python异常使用场景有那些)
+        - [108.Python异步使用场景有那些？](#108python异步使用场景有那些)
         - [109.多线程共同操作同一个数据互斥锁同步？](#109多线程共同操作同一个数据互斥锁同步)
         - [110.什么是多线程竞争？](#110什么是多线程竞争)
         - [111.请介绍一下Python的线程同步？](#111请介绍一下python的线程同步)
@@ -1546,7 +1546,18 @@ class MyCls(object):
 
 ## 正则表达式
 ### 94.请写出一段代码用正则匹配出ip？
+```python
+def ip_match(ip_str):
+    partterns = re.compile(r"(2(5[0-5]{1}|[0-4]\d{1})|[0-1]?\d{1,2})(\.(2(5[0-5]{1}|[0-4]\d{1})|[0-1]?\d{1,2})){3}")
+    print(partterns.search(ip_str).group(0))
+```
 ### 95.a = “abbbccc”，用正则匹配为abccc,不管有多少b，就出现一次？
+```python
+def remove_b(test_str):
+    res = re.compile('(?<=a).*?(?=c)')
+    ret = res.sub("b",test_str)
+    print(ret)
+```
 ### 96.Python字符串查找和替换？
 ### 97.用Python匹配HTML g tag的时候，<.> 和 <.*?> 有什么区别
 ### 98.正则表达式贪婪与非贪婪模式的区别？
@@ -1557,6 +1568,56 @@ class MyCls(object):
 ### 103.简述Python里面search和match的区别
 ### 104.请写出匹配ip的Python正则表达式
 ### 105.Python里match与search的区别？
+
+match 方法用于查找字符串的头部（也可以指定起始位置），它是一次匹配，只要找到了一个匹配的结果就返回，而不是查找所有匹配的结果。它的一般使用形式如下：
+
+```python
+match(string[, pos[, endpos]])
+其中，string 是待匹配的字符串，pos 和 endpos 是可选参数，指定字符串的起始和终点位置，默认值分别是 0 和 len (字符串长度)。因此，**当你不指定 pos 和 endpos 时，match 方法默认匹配字符串的头部**。
+当匹配成功时，返回一个 Match 对象，如果没有匹配上，则返回 None。
+>>> import re
+>>> pattern = re.compile(r'\d+')                    # 用于匹配至少一个数字
+>>> m = pattern.match('one12twothree34four')        # 查找头部，没有匹配
+>>> print m
+None
+>>> m = pattern.match('one12twothree34four', 2, 10) # 从'e'的位置开始匹配，没有匹配
+>>> print m
+None
+>>> m = pattern.match('one12twothree34four', 3, 10) # 从'1'的位置开始匹配，正好匹配
+>>> print m                                         # 返回一个 Match 对象
+<_sre.SRE_Match object at 0x10a42aac0>
+>>> m.group(0)   # 可省略 0
+'12'
+>>> m.start(0)   # 可省略 0
+3
+>>> m.end(0)     # 可省略 0
+5
+>>> m.span(0)    # 可省略 0
+(3, 5)
+```
+## search 方法
+
+search 方法用于查找字符串的任何位置，它也是一次匹配，只要找到了一个匹配的结果就返回，而不是查找所有匹配的结果，它的一般使用形式如下：
+search(string[, pos[, endpos]])
+其中，string 是待匹配的字符串，pos 和 endpos 是可选参数，指定字符串的起始和终点位置，默认值分别是 0 和 len (字符串长度)。
+
+当匹配成功时，返回一个 Match 对象，如果没有匹配上，则返回 None。
+```python
+>>> import re
+>>> pattern = re.compile('\d+')
+>>> m = pattern.search('one12twothree34four')  # 这里如果使用 match 方法则不匹配
+>>> m
+<_sre.SRE_Match object at 0x10cc03ac0>
+>>> m.group()
+'12'
+>>> m = pattern.search('one12twothree34four', 10, 30)  # 指定字符串区间
+>>> m
+<_sre.SRE_Match object at 0x10cc03b28>
+>>> m.group()
+'34'
+>>> m.span()
+(13, 15)
+```
 
 ## 系统编程
 ### 106.进程总结
