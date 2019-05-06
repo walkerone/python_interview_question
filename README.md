@@ -2447,11 +2447,49 @@ redis检查内存使用情况，如果大于maxmemory的限制，则根据设定
 
 ## 数据结构
 ### 222.数组中出现次数超过一半的数字-Python版
-```pythondef 
-def majorityElement(nums):
+
+#### 方法一
+
+```python
+def majority_element(nums):
     nums.sort()
-    return nums[len(nums)/2]
+    return nums[len(nums) // 2]
 ```
+
+#### 方法二
+
+```python
+from functools import reduce
+
+
+def majority_element(nums):
+    return reduce(lambda n, x: (n[0], n[1] + 1) if n[0] == x else ((x, 1) if n[1] - 1 < 0 else (n[0], n[1] - 1)), nums, (None, -1))[0]
+```
+
+#### 方法三
+
+```python
+from collections import Counter
+
+
+def majority_element(nums):
+    return Counter(nums).most_common(1)[0][0]
+```
+
+#### 方法四
+
+```python
+from random import choice
+
+
+def majority_element(nums):
+    length = len(nums) // 2
+    while True:
+        n = choice(nums)
+        if nums.count(n) > length:
+            return n
+```
+
 ### 223.求100以内的质数
 ### 224.无重复字符的最长子串-Python实现
 ### 225.通过2个5/6升得水壶从池塘得到3升水
