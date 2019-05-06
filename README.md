@@ -2463,7 +2463,7 @@ from functools import reduce
 
 
 def majority_element(nums):
-    return reduce(lambda n, x: (n[0], n[1] + 1) if n == x else ((x, 1) if n[1] - 1 < 0 else (n[0], n[1] - 1)), nums, (None, -1))[0]
+    return reduce(lambda n, x: (n[0], n[1] + 1) if n[0] == x else ((x, 1) if n[1] - 1 < 0 else (n[0], n[1] - 1)), nums, (None, -1))[0]
 ```
 
 #### 方法三
