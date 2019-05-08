@@ -2489,8 +2489,72 @@ def fibonacci(n):
 ```
 
 ### 233.如何翻转一个单链表？
+
+```python
+class Node:
+    def __init__(self,data=None,next=None):
+        self.data = data
+        self.next = next
+        
+def rev(link):
+    pre = link
+    cur = link.next
+    pre.next = None
+    while cur:
+        temp  = cur.next
+        cur.next = pre
+        pre = cur
+        cur = tmp
+    return pre
+
+if __name__ == '__main__':
+    link = Node(1,Node(2,Node(3,Node(4,Node(5,Node(6,Node7,Node(8.Node(9))))))))
+    root = rev(link)
+    while root:
+        print(roo.data)
+        root = root.next
+```
+
+
+
 ### 234.青蛙跳台阶问题
+
+一只青蛙要跳上n层高的台阶，一次能跳一级，也可以跳两级，请问这只青蛙有多少种跳上这个n层台阶的方法？
+
+方法1：递归
+
+设青蛙跳上n级台阶有f(n)种方法，把这n种方法分为两大类，第一种最后一次跳了一级台阶，这类共有f(n-1)种，第二种最后一次跳了两级台阶，这种方法共有f(n-2)种，则得出递推公式f(n)=f(n-1) + f(n-2),显然f(1)=1,f(2)=2，这种方法虽然代码简单，但效率低，会超出时间上限
+
+```python
+class Solution:
+    def climbStairs(self,n):
+        if n ==1:
+            return 1
+        elif n==2:
+            return 2
+        else:
+            return self.climbStairs(n-1) + self.climbStairs(n-2)
+```
+
+方法2：用循环来代替递归
+
+```python
+class Solution:
+    def climbStairs(self,n):
+        if n==1 or n==2:
+            return n
+        a,b,c = 1,2,3
+        for i in range(3,n+1):
+            c = a+b
+            a = b
+            b = c
+        return c
+```
+
 ### 235.两数之和 Two Sum
+
+
+
 ### 236.搜索旋转排序数组 Search in Rotated Sorted Array
 ### 237.Python实现一个Stack的数据结构
 ### 238.写一个二分查找
@@ -2502,3 +2566,9 @@ def fibonacci(n):
 ### 243.一个大约有一万行的文本文件统计高频词
 ### 244.怎么在海量数据中找出重复次数最多的一个？
 ### 245.判断数据是否在大量数据中
+
+## 架构
+
+### [Python后端架构演进](<https://zhu327.github.io/2018/07/19/python%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/>)
+
+这篇文章几乎涵盖了python会用的架构，在面试可以手画架构图，根据自己的项目谈下技术选型和优劣，遇到的坑等。绝对加分
