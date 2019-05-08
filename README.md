@@ -120,7 +120,7 @@
     - [系统编程](#系统编程)
         - [106.进程总结](#106进程总结)
         - [107.谈谈你对多进程，多线程，以及协程的理解，项目是否用？](#107谈谈你对多进程多线程以及协程的理解项目是否用)
-        - [108.Python异常使用场景有那些？](#108python异常使用场景有那些)
+        - [108.Python异步使用场景有那些？](#108python异步使用场景有那些)
         - [109.多线程共同操作同一个数据互斥锁同步？](#109多线程共同操作同一个数据互斥锁同步)
         - [110.什么是多线程竞争？](#110什么是多线程竞争)
         - [111.请介绍一下Python的线程同步？](#111请介绍一下python的线程同步)
@@ -440,6 +440,8 @@ c. Python2里面继承object的是新式类，没有写父类的是经典类
 
 d. 经典类目前在Python里基本没有应用
 
+e.经典类的MRO是深度优先搜索，新式类的MRO是广度优先搜索
+
 ### 16.python中内置的数据结构有几种？
 a. 整型 int、 长整型 long、浮点型 float、 复数 complex
 
@@ -741,33 +743,26 @@ def atoi(s):
     return reduce(lambda num, v: num * 10 + ord(v) - ord('0'), s, 0)
 ```
 ### 29.Given an array of integers
-给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。示例:给定nums = [2,7,11,15],target=9 因为 nums[0]+nums[1] = 2+7 =9,所以返回[0,1]
+给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。示例:给定`nums = [2, 7, 11, 15]`, `target=9` 因为 `nums[0] + nums[1] = 2 + 7 = 9`,所以返回 `[0, 1]`
 ```python
-class Solution:
-    def twoSum(self,nums,target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        d = {}
-        size = 0
-        while size < len(nums):
-            if target-nums[size] in d:
-                if d[target-nums[size]] <size:
-                    return [d[target-nums[size]],size]
-                else:
-                    d[nums[size]] = size
-                size = size +1
-solution = Solution()
-list = [2,7,11,15]
+from typing import List
+
+def two_sum(nums: List[int], target: int) -> List[int]:
+    s = {}
+    for i, n in enumerate(nums):
+        if (target-n) in s:
+            return [s[target-n], i]
+        else:
+            s[n] = i
+
+nums = [2, 7, 11, 15]
 target = 9
-nums = solution.twoSum(list,target)
-print(nums)
+result = two_sum(list_, target)
+print(result)  # [0, 1]
 ```
-给列表中的字典排序：假设有如下list对象，alist=[{"name":"a","age":20},{"name":"b","age":30},{"name":"c","age":25}],将alist中的元素按照age从大到小排序 alist=[{"name":"a","age":20},{"name":"b","age":30},{"name":"c","age":25}]
+给列表中的字典排序：假设有如下 list 对象，`alist = [{"name": "a", "age": 20}, {"name": "b", "age": 30}, {"name": "c", "age": 25}]`, 将alist中的元素按照 age 从大到小排序 `alist_sort = [{"name": "b", "age": 30}, {"name": "c", "age": 25}, {"name": "a", "age": 20}]`
 ```python
-alist_sort = sorted(alist,key=lambda e: e.__getitem__('age'),reverse=True)
+alist_sort = sorted(alist, key=lambda e: e.get("age"), reverse=True)
 ```
 
 ### 30.python代码实现删除一个list里面的重复元素
@@ -1553,7 +1548,18 @@ class MyCls(object):
 
 ## 正则表达式
 ### 94.请写出一段代码用正则匹配出ip？
+```python
+def ip_match(ip_str):
+    partterns = re.compile(r"(2(5[0-5]{1}|[0-4]\d{1})|[0-1]?\d{1,2})(\.(2(5[0-5]{1}|[0-4]\d{1})|[0-1]?\d{1,2})){3}")
+    print(partterns.search(ip_str).group(0))
+```
 ### 95.a = “abbbccc”，用正则匹配为abccc,不管有多少b，就出现一次？
+```python
+def remove_b(test_str):
+    res = re.compile('(?<=a).*?(?=c)')
+    ret = res.sub("b",test_str)
+    print(ret)
+```
 ### 96.Python字符串查找和替换？
 ### 97.用Python匹配HTML g tag的时候，<.> 和 <.*?> 有什么区别
 ### 98.正则表达式贪婪与非贪婪模式的区别？
@@ -1564,6 +1570,56 @@ class MyCls(object):
 ### 103.简述Python里面search和match的区别
 ### 104.请写出匹配ip的Python正则表达式
 ### 105.Python里match与search的区别？
+
+match 方法用于查找字符串的头部（也可以指定起始位置），它是一次匹配，只要找到了一个匹配的结果就返回，而不是查找所有匹配的结果。它的一般使用形式如下：
+
+```python
+match(string[, pos[, endpos]])
+其中，string 是待匹配的字符串，pos 和 endpos 是可选参数，指定字符串的起始和终点位置，默认值分别是 0 和 len (字符串长度)。因此，**当你不指定 pos 和 endpos 时，match 方法默认匹配字符串的头部**。
+当匹配成功时，返回一个 Match 对象，如果没有匹配上，则返回 None。
+>>> import re
+>>> pattern = re.compile(r'\d+')                    # 用于匹配至少一个数字
+>>> m = pattern.match('one12twothree34four')        # 查找头部，没有匹配
+>>> print m
+None
+>>> m = pattern.match('one12twothree34four', 2, 10) # 从'e'的位置开始匹配，没有匹配
+>>> print m
+None
+>>> m = pattern.match('one12twothree34four', 3, 10) # 从'1'的位置开始匹配，正好匹配
+>>> print m                                         # 返回一个 Match 对象
+<_sre.SRE_Match object at 0x10a42aac0>
+>>> m.group(0)   # 可省略 0
+'12'
+>>> m.start(0)   # 可省略 0
+3
+>>> m.end(0)     # 可省略 0
+5
+>>> m.span(0)    # 可省略 0
+(3, 5)
+```
+## search 方法
+
+search 方法用于查找字符串的任何位置，它也是一次匹配，只要找到了一个匹配的结果就返回，而不是查找所有匹配的结果，它的一般使用形式如下：
+search(string[, pos[, endpos]])
+其中，string 是待匹配的字符串，pos 和 endpos 是可选参数，指定字符串的起始和终点位置，默认值分别是 0 和 len (字符串长度)。
+
+当匹配成功时，返回一个 Match 对象，如果没有匹配上，则返回 None。
+```python
+>>> import re
+>>> pattern = re.compile('\d+')
+>>> m = pattern.search('one12twothree34four')  # 这里如果使用 match 方法则不匹配
+>>> m
+<_sre.SRE_Match object at 0x10cc03ac0>
+>>> m.group()
+'12'
+>>> m = pattern.search('one12twothree34four', 10, 30)  # 指定字符串区间
+>>> m
+<_sre.SRE_Match object at 0x10cc03b28>
+>>> m.group()
+'34'
+>>> m.span()
+(13, 15)
+```
 
 ## 系统编程
 ### 106.进程总结
@@ -2391,6 +2447,49 @@ redis检查内存使用情况，如果大于maxmemory的限制，则根据设定
 
 ## 数据结构
 ### 222.数组中出现次数超过一半的数字-Python版
+
+#### 方法一
+
+```python
+def majority_element(nums):
+    nums.sort()
+    return nums[len(nums) // 2]
+```
+
+#### 方法二
+
+```python
+from functools import reduce
+
+
+def majority_element(nums):
+    return reduce(lambda n, x: (n[0], n[1] + 1) if n[0] == x else ((x, 1) if n[1] - 1 < 0 else (n[0], n[1] - 1)), nums, (None, -1))[0]
+```
+
+#### 方法三
+
+```python
+from collections import Counter
+
+
+def majority_element(nums):
+    return Counter(nums).most_common(1)[0][0]
+```
+
+#### 方法四
+
+```python
+from random import choice
+
+
+def majority_element(nums):
+    length = len(nums) // 2
+    while True:
+        n = choice(nums)
+        if nums.count(n) > length:
+            return n
+```
+
 ### 223.求100以内的质数
 ### 224.无重复字符的最长子串-Python实现
 ### 225.通过2个5/6升得水壶从池塘得到3升水
