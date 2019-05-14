@@ -2482,9 +2482,9 @@ def fibs():
         
         
 def fibonacci(n):
-    fibs = fibs()
+    fibs_ = fibs()
     for _ in range(n):
-        next(fibs)
+        next(fibs_)
     return next(fibs)
 ```
 
@@ -2492,7 +2492,7 @@ def fibonacci(n):
 
 **矩阵**
 
-```
+```python
 import numpy as np
 def fibonacci(n):
     return (np.matrix([[0, 1], [1, 1]]) ** n)[1, 1]
