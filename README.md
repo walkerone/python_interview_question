@@ -2248,8 +2248,31 @@ Session采用的是在服务器端保持状态的方案，而Cookie采用的是�
 ## 爬虫
 ### 159.试列出至少三种目前流行的大型数据库
 ### 160.列举您使用过的Python网络爬虫所用到的网络数据包?
+
+requests, urllib,urllib2, httplib2
+
 ### 161.爬取数据后使用哪个数据库存储数据的，为什么？
+
 ### 162.你用过的爬虫框架或者模块有哪些？优缺点？
+
+Python自带：urllib,urllib2
+
+第三方：requests
+
+框架： Scrapy
+
+urllib 和urllib2模块都做与请求URL相关的操作，但他们提供不同的功能。
+
+urllib2: urllib2.urlopen可以接受一个Request对象或者url,(在接受Request对象时，并以此可以来设置一个URL的headers),urllib.urlopen只接收一个url。
+
+urllib 有urlencode,urllib2没有，因此总是urllib, urllib2常会一起使用的原因
+
+scrapy是封装起来的框架，他包含了下载器，解析器，日志及异常处理，基于多线程，twisted的方式处理，对于固定单个网站的爬取开发，有优势，但是对于多网站爬取100个网站，并发及分布式处理不够灵活，不便调整与扩展
+
+requests是一个HTTP库，它只是用来请求，它是一个强大的库，下载，解析全部自己处理，灵活性高
+
+Scrapy优点：异步，xpath，强大的统计和log系统，支持不同url。shell方便独立调试。写middleware方便过滤。通过管道存入数据库
+
 ### 163.写爬虫是用多进程好？还是多线程好？
 ### 164.常见的反爬虫和应对方法？
 ### 165.解析网页的解析器使用最多的是哪几个?
