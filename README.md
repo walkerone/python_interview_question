@@ -1580,8 +1580,91 @@ class MyCls(object):
 
 ## 正则表达式
 ### 94.请写出一段代码用正则匹配出ip？
+
 ### 95.a = “abbbccc”，用正则匹配为abccc,不管有多少b，就出现一次？
+    思路：不管有多少个b替换成一个
+
+    re.sub(r'b+', 'b', a)
 ### 96.Python字符串查找和替换？
+    a、str.find()：正序字符串查找函数
+    函数原型：
+    str.find(substr [,pos_start [,pos_end ] ] )
+    返回str中第一次出现的substr的第一个字母的标号，如果str中没有substr则返回-1，也就是说从左边算起的第一次出现的substr的首字母标号。
+
+    参数说明：
+    str：代表原字符串
+    substr：代表要查找的字符串
+    pos_start：代表查找的开始位置，默认是从下标0开始查找
+    pos_end：代表查找的结束位置
+
+    例子：
+    'aabbcc.find('bb')' # 2
+
+    b、str.index()：正序字符串查找函数
+    index()函数类似于find()函数，在Python中也是在字符串中查找子串第一次出现的位置，跟find()不同的是，未找到则抛出异常。
+
+    函数原型：
+    str.index(substr [, pos_start, [ pos_end ] ] )
+
+    参数说明：
+    str：代表原字符串
+    substr：代表要查找的字符串
+    pos_start：代表查找的开始位置，默认是从下标0开始查找
+    pos_end：代表查找的结束位置
+
+    例子：
+    'acdd l1 23'.index(' ') # 4
+
+    c、str.rfind()：倒序字符串查找函数
+
+    函数原型：
+    str.rfind( substr [, pos_start [,pos_ end ] ])
+    返回str中最后出现的substr的第一个字母的标号，如果str中没有substr则返回-1，也就是说从右边算起的第一次出现的substr的首字母标号。
+
+    参数说明：
+    str：代表原字符串
+    substr：代表要查找的字符串
+    pos_start：代表查找的开始位置，默认是从下标0开始查找
+    pos_end：代表查找的结束位置
+
+    例子：
+    'adsfddf'.rfind('d') # 5
+
+    d、str.rindex()：倒序字符串查找函数
+    rindex()函数类似于rfind()函数，在Python中也是在字符串中倒序查找子串最后一次出现的位置，跟rfind()不同的是，未找到则抛出异常。
+
+    函数原型：
+    str.rindex(substr [, pos_start, [ pos_end ] ] )
+
+    参数说明：
+    str：代表原字符串
+    substr：代表要查找的字符串
+    pos_start：代表查找的开始位置，默认是从下标0开始查找
+    pos_end：代表查找的结束位置
+
+    例子：
+     'adsfddf'.rindex('d') # 5
+
+    e、使用re模块进行查找和替换：
+函数 | 说明
+---|---
+re.match(pat, s) | 只从字符串s的头开始匹配，比如(‘123’, ‘12345’)匹配上了，而(‘123’,’01234’)就是没有匹配上，没有匹配上返回None，匹配上返回matchobject
+
+re.search(pat, s) | 从字符串s的任意位置都进行匹配，比如(‘123’,’01234’)就是匹配上了，只要s只能存在符合pat的连续字符串就算匹配上了，没有匹配上返回None，匹配上返回matchobject
+
+re.sub(pat,newpat,s) | re.sub(pat,newpat,s)	对字符串中s的包含的所有符合pat的连续字符串进行替换，如果newpat为str,那么就是替换为newpat,如果newpat是函数，那么就按照函数返回值替换。sub函数两个有默认值的参数分别是count表示最多只处理前几个匹配的字符串，默认为0表示全部处理；最后一个是flags，默认为0
+    f、使用replace()进行替换：
+    基本用法：对象.replace(rgExp,replaceText,max)
+
+    其中，rgExp和replaceText是必须要有的，max是可选的参数，可以不加。
+    rgExp是指正则表达式模式或可用标志的正则表达式对象，也可以是 String 对象或文字；
+    replaceText是一个String 对象或字符串文字；
+    max是一个数字。
+    对于一个对象，在对象的每个rgExp都替换成replaceText，从左到右最多max次。
+
+    s1='hello world'
+    s1.replace('world','liming')
+
 ### 97.用Python匹配HTML g tag的时候，<.> 和 <.*?> 有什么区别
 ### 98.正则表达式贪婪与非贪婪模式的区别？
 ### 99.写出开头匹配字母和下划线，末尾是数字的正则表达式？
