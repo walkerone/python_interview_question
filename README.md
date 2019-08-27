@@ -294,6 +294,15 @@ def get_lines():
         for i in f:
             yield i
 ```
+个人认为：还是设置下每次返回的行数较好，否则读取次数太多。
+```
+def get_lines():
+    l = []
+    with open('file.txt','rb') as f:
+      data = f.readlines(60000)
+    l.append(data)
+    yield l
+```
 Pandaaaa906提供的方法
 ```python
 from mmap import mmap
@@ -355,6 +364,7 @@ print(alist)
 ```python
 sorted(d.items(),key=lambda x:x[1])
 ```
+    x[0]代表用key进行排序；x[1]代表用value进行排序。
 ### 6.字典推导式
 ```python
 d = {key:value for (key,value) in iterable}
@@ -442,6 +452,10 @@ b. Python3里只有新式类
 c. Python2里面继承object的是新式类，没有写父类的是经典类
 
 d. 经典类目前在Python里基本没有应用
+
+e. 保持class与type的统一对新式类的实例执行a.__class__与type(a)的结果是一致的，对于旧式类来说就不一样了。
+
+f.对于多重继承的属性搜索顺序不一样新式类是采用广度优先搜索，旧式类采用深度优先搜索。
 
 ### 16.python中内置的数据结构有几种？
 a. 整型 int、 长整型 long、浮点型 float、 复数 complex
