@@ -567,14 +567,14 @@ get_files("./",'.pyc')
 import os
 
 def pick(obj):
-    if ob.endswith(".pyc"):
+    if obj.endswith(".pyc"):
         print(obj)
     
 def scan_path(ph):
     file_list = os.listdir(ph)
     for obj in file_list:
         if os.path.isfile(obj):
-    pick(obj)
+            pick(obj)
         elif os.path.isdir(obj):
             scan_path(obj)
     
@@ -781,6 +781,17 @@ list = [2,7,11,15]
 target = 9
 nums = solution.twoSum(list,target)
 print(nums)
+```
+
+```
+
+class Solution(object):
+    def twoSum(self, nums, target):
+        for i in range(len(nums)):
+            num = target - nums[i]
+            if num in nums[i+1:]:
+                return [i, nums.index(num,i+1)]
+
 ```
 给列表中的字典排序：假设有如下list对象，alist=[{"name":"a","age":20},{"name":"b","age":30},{"name":"c","age":25}],将alist中的元素按照age从大到小排序 alist=[{"name":"a","age":20},{"name":"b","age":30},{"name":"c","age":25}]
 ```python
