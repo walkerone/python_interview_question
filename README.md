@@ -2651,6 +2651,37 @@ def fibonacci(n):
     return next(fibs)
 ```
 
+**做缓存**
+
+```python
+def cache(fn):
+    cached = {}
+    def wrapper(*args):
+        if args not in cached:
+            cached[args] = fn(*args)
+        return cached[args]
+    wrapper.__name__ = fn.__name__
+    return wrapper
+
+@cache
+def fib(n):
+    if n < 2:
+        return 1
+    return fib(n-1) + fib(n-2)
+```
+
+**利用 funtools.lru_cache 做缓存**
+
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=32)
+def fib(n):
+    if n < 2:
+        return 1
+    return fib(n-1) + fib(n-2)
+```
+
 #### Logarithmic
 
 **矩阵**
