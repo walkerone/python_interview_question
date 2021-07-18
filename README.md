@@ -1,300 +1,25 @@
-<!-- TOC -->
-
-- [Python基础](#python基础)
-    - [文件操作](#文件操作)
-        - [1.有一个jsonline格式的文件file.txt大小约为10K](#1有一个jsonline格式的文件filetxt大小约为10k)
-        - [2.补充缺失的代码](#2补充缺失的代码)
-    - [模块与包](#模块与包)
-        - [3.输入日期， 判断这一天是这一年的第几天？](#3输入日期-判断这一天是这一年的第几天)
-        - [4.打乱一个排好序的list对象alist？](#4打乱一个排好序的list对象alist)
-    - [数据类型](#数据类型)
-        - [5.现有字典 d= {'a':24,'g':52,'i':12,'k':33}请按value值进行排序?](#5现有字典-d-a24g52i12k33请按value值进行排序)
-        - [6.字典推导式](#6字典推导式)
-        - [7.请反转字符串 "aStr"?](#7请反转字符串-astr)
-        - [8.将字符串 "k:1 |k1:2|k2:3|k3:4"，处理成字典 {k:1,k1:2,...}](#8将字符串-k1-k12k23k34处理成字典-k1k12)
-        - [9.请按alist中元素的age由大到小排序](#9请按alist中元素的age由大到小排序)
-        - [10.下面代码的输出结果将是什么？](#10下面代码的输出结果将是什么)
-        - [11.写一个列表生成式，产生一个公差为11的等差数列](#11写一个列表生成式产生一个公差为11的等差数列)
-        - [12.给定两个列表，怎么找出他们相同的元素和不同的元素？](#12给定两个列表怎么找出他们相同的元素和不同的元素)
-        - [13.请写出一段python代码实现删除list里面的重复元素？](#13请写出一段python代码实现删除list里面的重复元素)
-        - [14.给定两个list A，B ,请用找出A，B中相同与不同的元素](#14给定两个list-ab-请用找出ab中相同与不同的元素)
-    - [企业面试题](#企业面试题)
-        - [15.python新式类和经典类的区别？](#15python新式类和经典类的区别)
-        - [16.python中内置的数据结构有几种？](#16python中内置的数据结构有几种)
-        - [17.python如何实现单例模式?请写出两种实现方式?](#17python如何实现单例模式请写出两种实现方式)
-        - [18.反转一个整数，例如-123 --> -321](#18反转一个整数例如-123-----321)
-        - [19.设计实现遍历目录与子目录，抓取.pyc文件](#19设计实现遍历目录与子目录抓取pyc文件)
-        - [20.一行代码实现1-100之和](#20一行代码实现1-100之和)
-        - [21.Python-遍历列表时删除元素的正确做法](#21python-遍历列表时删除元素的正确做法)
-        - [22.字符串的操作题目](#22字符串的操作题目)
-        - [23.可变类型和不可变类型](#23可变类型和不可变类型)
-        - [24.is和==有什么区别？](#24is和有什么区别)
-        - [25.求出列表所有奇数并构造新列表](#25求出列表所有奇数并构造新列表)
-        - [26.用一行python代码写出1+2+3+10248](#26用一行python代码写出12310248)
-        - [27.Python中变量的作用域？（变量查找顺序)](#27python中变量的作用域变量查找顺序)
-        - [28.字符串 `"123"` 转换成 `123`，不使用内置api，例如 `int()`](#28字符串-123-转换成-123不使用内置api例如-int)
-        - [29.Given an array of integers](#29given-an-array-of-integers)
-        - [30.python代码实现删除一个list里面的重复元素](#30python代码实现删除一个list里面的重复元素)
-        - [31.统计一个文本中单词频次最高的10个单词？](#31统计一个文本中单词频次最高的10个单词)
-        - [32.请写出一个函数满足以下条件](#32请写出一个函数满足以下条件)
-        - [33.使用单一的列表生成式来产生一个新的列表](#33使用单一的列表生成式来产生一个新的列表)
-        - [34.用一行代码生成[1,4,9,16,25,36,49,64,81,100]](#34用一行代码生成149162536496481100)
-        - [35.输入某年某月某日，判断这一天是这一年的第几天？](#35输入某年某月某日判断这一天是这一年的第几天)
-        - [36.两个有序列表，l1,l2，对这两个列表进行合并不可使用extend](#36两个有序列表l1l2对这两个列表进行合并不可使用extend)
-        - [37.给定一个任意长度数组，实现一个函数](#37给定一个任意长度数组实现一个函数)
-        - [38.写一个函数找出一个整数数组中，第二大的数](#38写一个函数找出一个整数数组中第二大的数)
-        - [39.阅读一下代码他们的输出结果是什么？](#39阅读一下代码他们的输出结果是什么)
-        - [40.统计一段字符串中字符出现的次数](#40统计一段字符串中字符出现的次数)
-        - [41.super函数的具体用法和场景](#41super函数的具体用法和场景)
-- [Python高级](#python高级)
-    - [元类](#元类)
-        - [42.Python中类方法、类实例方法、静态方法有何区别？](#42python中类方法类实例方法静态方法有何区别)
-        - [43.遍历一个object的所有属性，并print每一个属性名？](#43遍历一个object的所有属性并print每一个属性名)
-        - [44.写一个类，并让它尽可能多的支持操作符?](#44写一个类并让它尽可能多的支持操作符)
-        - [45.介绍Cython，Pypy Cpython Numba各有什么缺点](#45介绍cythonpypy-cpython-numba各有什么缺点)
-        - [46.请描述抽象类和接口类的区别和联系](#46请描述抽象类和接口类的区别和联系)
-        - [47.Python中如何动态获取和设置对象的属性？](#47python中如何动态获取和设置对象的属性)
-    - [内存管理与垃圾回收机制](#内存管理与垃圾回收机制)
-        - [48.哪些操作会导致Python内存溢出，怎么处理？](#48哪些操作会导致python内存溢出怎么处理)
-        - [49.关于Python内存管理,下列说法错误的是  B](#49关于python内存管理下列说法错误的是--b)
-        - [50.Python的内存管理机制及调优手段？](#50python的内存管理机制及调优手段)
-        - [51.内存泄露是什么？如何避免？](#51内存泄露是什么如何避免)
-    - [函数](#函数)
-        - [52.python常见的列表推导式？](#52python常见的列表推导式)
-        - [53.简述read、readline、readlines的区别？](#53简述readreadlinereadlines的区别)
-        - [54.什么是Hash（散列函数）？](#54什么是hash散列函数)
-        - [55.python函数重载机制？](#55python函数重载机制)
-        - [56.写一个函数找出一个整数数组中，第二大的数](#56写一个函数找出一个整数数组中第二大的数)
-        - [57.手写一个判断时间的装饰器](#57手写一个判断时间的装饰器)
-        - [58.使用Python内置的filter()方法来过滤？](#58使用python内置的filter方法来过滤)
-        - [59.编写函数的4个原则](#59编写函数的4个原则)
-        - [60.函数调用参数的传递方式是值传递还是引用传递？](#60函数调用参数的传递方式是值传递还是引用传递)
-        - [61.如何在function里面设置一个全局变量](#61如何在function里面设置一个全局变量)
-        - [62.对缺省参数的理解 ？](#62对缺省参数的理解-)
-        - [63.Mysql怎么限制IP访问？](#63mysql怎么限制ip访问)
-        - [64.带参数的装饰器?](#64带参数的装饰器)
-        - [65.为什么函数名字可以当做参数用?](#65为什么函数名字可以当做参数用)
-        - [66.Python中pass语句的作用是什么？](#66python中pass语句的作用是什么)
-        - [67.有这样一段代码，print c会输出什么，为什么？](#67有这样一段代码print-c会输出什么为什么)
-        - [68.交换两个变量的值？](#68交换两个变量的值)
-        - [69.map函数和reduce函数？](#69map函数和reduce函数)
-        - [70.回调函数，如何通信的?](#70回调函数如何通信的)
-        - [71.Python主要的内置数据类型都有哪些？ print dir( ‘a ’) 的输出？](#71python主要的内置数据类型都有哪些-print-dir-a--的输出)
-        - [72.map(lambda x:xx，[y for y in range(3)])的输出？](#72maplambda-xxxy-for-y-in-range3的输出)
-        - [73.hasattr() getattr() setattr() 函数使用详解？](#73hasattr-getattr-setattr-函数使用详解)
-        - [74.一句话解决阶乘函数？](#74一句话解决阶乘函数)
-        - [75.什么是lambda函数？ 有什么好处？](#75什么是lambda函数-有什么好处)
-        - [76.递归函数停止的条件？](#76递归函数停止的条件)
-        - [77.下面这段代码的输出结果将是什么？请解释。](#77下面这段代码的输出结果将是什么请解释)
-        - [78.什么是lambda函数？它有什么好处？写一个匿名函数求两个数的和](#78什么是lambda函数它有什么好处写一个匿名函数求两个数的和)
-    - [设计模式](#设计模式)
-        - [79.对设计模式的理解，简述你了解的设计模式？](#79对设计模式的理解简述你了解的设计模式)
-        - [80.请手写一个单例](#80请手写一个单例)
-        - [81.单例模式的应用场景有那些？](#81单例模式的应用场景有那些)
-        - [82.用一行代码生成[1,4,9,16,25,36,49,64,81,100]](#82用一行代码生成149162536496481100)
-        - [83.对装饰器的理解，并写出一个计时器记录方法执行性能的装饰器？](#83对装饰器的理解并写出一个计时器记录方法执行性能的装饰器)
-        - [84.解释以下什么是闭包？](#84解释以下什么是闭包)
-        - [85.函数装饰器有什么作用？](#85函数装饰器有什么作用)
-        - [86.生成器，迭代器的区别？](#86生成器迭代器的区别)
-        - [87.X是什么类型?](#87x是什么类型)
-        - [88.请用一行代码 实现将1-N 的整数列表以3为单位分组](#88请用一行代码-实现将1-n-的整数列表以3为单位分组)
-        - [89.Python中yield的用法?](#89python中yield的用法)
-    - [面向对象](#面向对象)
-        - [90.Python中的可变对象和不可变对象？](#90python中的可变对象和不可变对象)
-        - [91.Python的魔法方法](#91python的魔法方法)
-        - [92.面向对象中怎么实现只读属性?](#92面向对象中怎么实现只读属性)
-        - [93.谈谈你对面向对象的理解？](#93谈谈你对面向对象的理解)
-    - [正则表达式](#正则表达式)
-        - [94.请写出一段代码用正则匹配出ip？](#94请写出一段代码用正则匹配出ip)
-        - [95.a = “abbbccc”，用正则匹配为abccc,不管有多少b，就出现一次？](#95a--abbbccc用正则匹配为abccc不管有多少b就出现一次)
-        - [96.Python字符串查找和替换？](#96python字符串查找和替换)
-        - [97.用Python匹配HTML g tag的时候，<.> 和 <.*?> 有什么区别](#97用python匹配html-g-tag的时候-和--有什么区别)
-        - [98.正则表达式贪婪与非贪婪模式的区别？](#98正则表达式贪婪与非贪婪模式的区别)
-        - [99.写出开头匹配字母和下划线，末尾是数字的正则表达式？](#99写出开头匹配字母和下划线末尾是数字的正则表达式)
-        - [100.正则表达式操作](#100正则表达式操作)
-        - [101.请匹配出变量A 中的json字符串。](#101请匹配出变量a-中的json字符串)
-        - [102.怎么过滤评论中的表情？](#102怎么过滤评论中的表情)
-        - [103.简述Python里面search和match的区别](#103简述python里面search和match的区别)
-        - [104.请写出匹配ip的Python正则表达式](#104请写出匹配ip的python正则表达式)
-        - [105.Python里match与search的区别？](#105python里match与search的区别)
-    - [系统编程](#系统编程)
-        - [106.进程总结](#106进程总结)
-        - [107.谈谈你对多进程，多线程，以及协程的理解，项目是否用？](#107谈谈你对多进程多线程以及协程的理解项目是否用)
-        - [108.Python异常使用场景有那些？](#108python异常使用场景有那些)
-        - [109.多线程共同操作同一个数据互斥锁同步？](#109多线程共同操作同一个数据互斥锁同步)
-        - [110.什么是多线程竞争？](#110什么是多线程竞争)
-        - [111.请介绍一下Python的线程同步？](#111请介绍一下python的线程同步)
-        - [112.解释以下什么是锁，有哪几种锁？](#112解释以下什么是锁有哪几种锁)
-        - [113.什么是死锁？](#113什么是死锁)
-        - [114.多线程交互访问数据，如果访问到了就不访问了？](#114多线程交互访问数据如果访问到了就不访问了)
-        - [115.什么是线程安全，什么是互斥锁？](#115什么是线程安全什么是互斥锁)
-        - [116.说说下面几个概念：同步，异步，阻塞，非阻塞？](#116说说下面几个概念同步异步阻塞非阻塞)
-        - [117.什么是僵尸进程和孤儿进程？怎么避免僵尸进程？](#117什么是僵尸进程和孤儿进程怎么避免僵尸进程)
-        - [118.python中进程与线程的使用场景？](#118python中进程与线程的使用场景)
-        - [119.线程是并发还是并行，进程是并发还是并行？](#119线程是并发还是并行进程是并发还是并行)
-        - [120.并行(parallel)和并发（concurrency)?](#120并行parallel和并发concurrency)
-        - [121.IO密集型和CPU密集型区别？](#121io密集型和cpu密集型区别)
-        - [122.python asyncio的原理？](#122python-asyncio的原理)
-    - [网络编程](#网络编程)
-        - [123.怎么实现强行关闭客户端和服务器之间的连接?](#123怎么实现强行关闭客户端和服务器之间的连接)
-        - [124.简述TCP和UDP的区别以及优缺点?](#124简述tcp和udp的区别以及优缺点)
-        - [125.简述浏览器通过WSGI请求动态资源的过程?](#125简述浏览器通过wsgi请求动态资源的过程)
-        - [126.描述用浏览器访问www.baidu.com的过程](#126描述用浏览器访问wwwbaiducom的过程)
-        - [127.Post和Get请求的区别?](#127post和get请求的区别)
-        - [128.cookie 和session 的区别？](#128cookie-和session-的区别)
-        - [129.列出你知道的HTTP协议的状态码，说出表示什么意思？](#129列出你知道的http协议的状态码说出表示什么意思)
-        - [130.请简单说一下三次握手和四次挥手？](#130请简单说一下三次握手和四次挥手)
-        - [131.说一下什么是tcp的2MSL？](#131说一下什么是tcp的2msl)
-        - [132.为什么客户端在TIME-WAIT状态必须等待2MSL的时间？](#132为什么客户端在time-wait状态必须等待2msl的时间)
-        - [133.说说HTTP和HTTPS区别？](#133说说http和https区别)
-        - [134.谈一下HTTP协议以及协议头部中表示数据类型的字段？](#134谈一下http协议以及协议头部中表示数据类型的字段)
-        - [135.HTTP请求方法都有什么？](#135http请求方法都有什么)
-        - [136.使用Socket套接字需要传入哪些参数 ？](#136使用socket套接字需要传入哪些参数-)
-        - [137.HTTP常见请求头？](#137http常见请求头)
-        - [138.七层模型？](#138七层模型)
-        - [139.url的形式？](#139url的形式)
-- [Web](#web)
-    - [Flask](#flask)
-        - [140.对Flask蓝图(Blueprint)的理解？](#140对flask蓝图blueprint的理解)
-        - [141.Flask 和 Django 路由映射的区别？](#141flask-和-django-路由映射的区别)
-    - [Django](#django)
-        - [142.什么是wsgi,uwsgi,uWSGI?](#142什么是wsgiuwsgiuwsgi)
-        - [143.Django、Flask、Tornado的对比？](#143djangoflasktornado的对比)
-        - [144.CORS 和 CSRF的区别？](#144cors-和-csrf的区别)
-        - [145.Session,Cookie,JWT的理解](#145sessioncookiejwt的理解)
-        - [146.简述Django请求生命周期](#146简述django请求生命周期)
-        - [147.用的restframework完成api发送时间时区](#147用的restframework完成api发送时间时区)
-        - [148.nginx,tomcat,apach到都是什么？](#148nginxtomcatapach到都是什么)
-        - [149.请给出你熟悉关系数据库范式有哪些，有什么作用？](#149请给出你熟悉关系数据库范式有哪些有什么作用)
-        - [150.简述QQ登陆过程](#150简述qq登陆过程)
-        - [151.post 和 get的区别?](#151post-和-get的区别)
-        - [152.项目中日志的作用](#152项目中日志的作用)
-        - [153.django中间件的使用？](#153django中间件的使用)
-        - [154.谈一下你对uWSGI和nginx的理解？](#154谈一下你对uwsgi和nginx的理解)
-        - [155.Python中三大框架各自的应用场景？](#155python中三大框架各自的应用场景)
-        - [156.Django中哪里用到了线程？哪里用到了协程？哪里用到了进程？](#156django中哪里用到了线程哪里用到了协程哪里用到了进程)
-        - [157.有用过Django REST framework吗？](#157有用过django-rest-framework吗)
-        - [158.对cookies与session的了解？他们能单独用吗？](#158对cookies与session的了解他们能单独用吗)
-    - [爬虫](#爬虫)
-        - [159.试列出至少三种目前流行的大型数据库](#159试列出至少三种目前流行的大型数据库)
-        - [160.列举您使用过的Python网络爬虫所用到的网络数据包?](#160列举您使用过的python网络爬虫所用到的网络数据包)
-        - [161.爬取数据后使用哪个数据库存储数据的，为什么？](#161爬取数据后使用哪个数据库存储数据的为什么)
-        - [162.你用过的爬虫框架或者模块有哪些？优缺点？](#162你用过的爬虫框架或者模块有哪些优缺点)
-        - [163.写爬虫是用多进程好？还是多线程好？](#163写爬虫是用多进程好还是多线程好)
-        - [164.常见的反爬虫和应对方法？](#164常见的反爬虫和应对方法)
-        - [165.解析网页的解析器使用最多的是哪几个?](#165解析网页的解析器使用最多的是哪几个)
-        - [166.需要登录的网页，如何解决同时限制ip，cookie,session](#166需要登录的网页如何解决同时限制ipcookiesession)
-        - [167.验证码的解决?](#167验证码的解决)
-        - [168.使用最多的数据库，对他们的理解？](#168使用最多的数据库对他们的理解)
-        - [169.编写过哪些爬虫中间件？](#169编写过哪些爬虫中间件)
-        - [170.“极验”滑动验证码如何破解？](#170极验滑动验证码如何破解)
-        - [171.爬虫多久爬一次，爬下来的数据是怎么存储？](#171爬虫多久爬一次爬下来的数据是怎么存储)
-        - [172.cookie过期的处理问题？](#172cookie过期的处理问题)
-        - [173.动态加载又对及时性要求很高怎么处理？](#173动态加载又对及时性要求很高怎么处理)
-        - [174.HTTPS有什么优点和缺点？](#174https有什么优点和缺点)
-        - [175.HTTPS是如何实现安全传输数据的？](#175https是如何实现安全传输数据的)
-        - [176.TTL，MSL，RTT各是什么？](#176ttlmslrtt各是什么)
-        - [177.谈一谈你对Selenium和PhantomJS了解](#177谈一谈你对selenium和phantomjs了解)
-        - [178.平常怎么使用代理的 ？](#178平常怎么使用代理的-)
-        - [179.存放在数据库(redis、mysql等)。](#179存放在数据库redismysql等)
-        - [180.怎么监控爬虫的状态?](#180怎么监控爬虫的状态)
-        - [181.描述下scrapy框架运行的机制？](#181描述下scrapy框架运行的机制)
-        - [182.谈谈你对Scrapy的理解？](#182谈谈你对scrapy的理解)
-        - [183.怎么样让 scrapy 框架发送一个 post 请求（具体写出来）](#183怎么样让-scrapy-框架发送一个-post-请求具体写出来)
-        - [184.怎么监控爬虫的状态 ？](#184怎么监控爬虫的状态-)
-        - [185.怎么判断网站是否更新？](#185怎么判断网站是否更新)
-        - [186.图片、视频爬取怎么绕过防盗连接](#186图片视频爬取怎么绕过防盗连接)
-        - [187.你爬出来的数据量大概有多大？大概多长时间爬一次？](#187你爬出来的数据量大概有多大大概多长时间爬一次)
-        - [188.用什么数据库存爬下来的数据？部署是你做的吗？怎么部署？](#188用什么数据库存爬下来的数据部署是你做的吗怎么部署)
-        - [189.增量爬取](#189增量爬取)
-        - [190.爬取下来的数据如何去重，说一下scrapy的具体的算法依据。](#190爬取下来的数据如何去重说一下scrapy的具体的算法依据)
-        - [191.Scrapy的优缺点?](#191scrapy的优缺点)
-        - [192.怎么设置爬取深度？](#192怎么设置爬取深度)
-        - [193.scrapy和scrapy-redis有什么区别？为什么选择redis数据库？](#193scrapy和scrapy-redis有什么区别为什么选择redis数据库)
-        - [194.分布式爬虫主要解决什么问题？](#194分布式爬虫主要解决什么问题)
-        - [195.什么是分布式存储？](#195什么是分布式存储)
-        - [196.你所知道的分布式爬虫方案有哪些？](#196你所知道的分布式爬虫方案有哪些)
-        - [197.scrapy-redis，有做过其他的分布式爬虫吗？](#197scrapy-redis有做过其他的分布式爬虫吗)
-- [数据库](#数据库)
-    - [MySQL](#mysql)
-        - [198.主键 超键 候选键 外键](#198主键-超键-候选键-外键)
-        - [199.视图的作用，视图可以更改么？](#199视图的作用视图可以更改么)
-        - [200.drop,delete与truncate的区别](#200dropdelete与truncate的区别)
-        - [201.索引的工作原理及其种类](#201索引的工作原理及其种类)
-        - [202.连接的种类](#202连接的种类)
-        - [203.数据库优化的思路](#203数据库优化的思路)
-        - [204.存储过程与触发器的区别](#204存储过程与触发器的区别)
-        - [205.悲观锁和乐观锁是什么？](#205悲观锁和乐观锁是什么)
-        - [206.你常用的mysql引擎有哪些?各引擎间有什么区别?](#206你常用的mysql引擎有哪些各引擎间有什么区别)
-    - [Redis](#redis)
-        - [207.Redis宕机怎么解决?](#207redis宕机怎么解决)
-        - [208.redis和mecached的区别，以及使用场景](#208redis和mecached的区别以及使用场景)
-        - [209.Redis集群方案该怎么做?都有哪些方案?](#209redis集群方案该怎么做都有哪些方案)
-        - [210.Redis回收进程是如何工作的](#210redis回收进程是如何工作的)
-    - [MongoDB](#mongodb)
-        - [211.MongoDB中对多条记录做更新操作命令是什么？](#211mongodb中对多条记录做更新操作命令是什么)
-        - [212.MongoDB如何才会拓展到多个shard里？](#212mongodb如何才会拓展到多个shard里)
-    - [测试](#测试)
-        - [213.编写测试计划的目的是](#213编写测试计划的目的是)
-        - [214.对关键词触发模块进行测试](#214对关键词触发模块进行测试)
-        - [215.其他常用笔试题目网址汇总](#215其他常用笔试题目网址汇总)
-        - [216.测试人员在软件开发过程中的任务是什么](#216测试人员在软件开发过程中的任务是什么)
-        - [217.一条软件Bug记录都包含了哪些内容？](#217一条软件bug记录都包含了哪些内容)
-        - [218.简述黑盒测试和白盒测试的优缺点](#218简述黑盒测试和白盒测试的优缺点)
-        - [219.请列出你所知道的软件测试种类，至少5项](#219请列出你所知道的软件测试种类至少5项)
-        - [220.Alpha测试与Beta测试的区别是什么？](#220alpha测试与beta测试的区别是什么)
-        - [221.举例说明什么是Bug？一个bug report应包含什么关键字？](#221举例说明什么是bug一个bug-report应包含什么关键字)
-    - [数据结构](#数据结构)
-        - [222.数组中出现次数超过一半的数字-Python版](#222数组中出现次数超过一半的数字-python版)
-        - [223.求100以内的质数](#223求100以内的质数)
-        - [224.无重复字符的最长子串-Python实现](#224无重复字符的最长子串-python实现)
-        - [225.通过2个5/6升得水壶从池塘得到3升水](#225通过2个56升得水壶从池塘得到3升水)
-        - [226.什么是MD5加密，有什么特点？](#226什么是md5加密有什么特点)
-        - [227.什么是对称加密和非对称加密](#227什么是对称加密和非对称加密)
-        - [228.冒泡排序的思想？](#228冒泡排序的思想)
-        - [229.快速排序的思想？](#229快速排序的思想)
-        - [230.如何判断单向链表中是否有环？](#230如何判断单向链表中是否有环)
-        - [231.你知道哪些排序算法（一般是通过问题考算法）](#231你知道哪些排序算法一般是通过问题考算法)
-        - [232.斐波那契数列](#232斐波那契数列)
-        - [233.如何翻转一个单链表？](#233如何翻转一个单链表)
-        - [234.青蛙跳台阶问题](#234青蛙跳台阶问题)
-        - [235.两数之和 Two Sum](#235两数之和-two-sum)
-        - [236.搜索旋转排序数组 Search in Rotated Sorted Array](#236搜索旋转排序数组-search-in-rotated-sorted-array)
-        - [237.Python实现一个Stack的数据结构](#237python实现一个stack的数据结构)
-        - [238.写一个二分查找](#238写一个二分查找)
-        - [239.set 用 in 时间复杂度是多少，为什么？](#239set-用-in-时间复杂度是多少为什么)
-        - [240.列表中有n个正整数范围在[0，1000]，进行排序；](#240列表中有n个正整数范围在01000进行排序)
-        - [241.面向对象编程中有组合和继承的方法实现新的类](#241面向对象编程中有组合和继承的方法实现新的类)
-    - [大数据](#大数据)
-        - [242.找出1G的文件中高频词](#242找出1g的文件中高频词)
-        - [243.一个大约有一万行的文本文件统计高频词](#243一个大约有一万行的文本文件统计高频词)
-        - [244.怎么在海量数据中找出重复次数最多的一个？](#244怎么在海量数据中找出重复次数最多的一个)
-        - [245.判断数据是否在大量数据中](#245判断数据是否在大量数据中)
-
-
-
 <!-- /TOC -->
 
-# Python基础
-## 文件操作
-### 1.有一个jsonline格式的文件file.txt大小约为10K
+# Python Basics
+## File operations
+### 1. There is a jsonline format file file.txt with a size of about 10K
 ```python
 def get_lines():
     with open('file.txt','rb') as f:
         return f.readlines()
 
-if __name__ == '__main__':
+if __name__ =='__main__':
     for e in get_lines():
-        process(e) # 处理每一行数据
+        process(e) # Process each row of data
 ```
-现在要处理一个大小为10G的文件，但是内存只有4G，如果在只修改get_lines 函数而其他代码保持不变的情况下，应该如何实现？需要考虑的问题都有那些？
+Now we have to process a file with a size of 10G, but the memory is only 4G. If only the get_lines function is modified and other codes remain unchanged, how should this be achieved? What are the issues that need to be considered?
 ```python
 def get_lines():
     with open('file.txt','rb') as f:
         for i in f:
             yield i
 ```
-个人认为：还是设置下每次返回的行数较好，否则读取次数太多。
+Personally think: It is better to set the number of rows returned each time, otherwise there are too many reads.
 ```
 def get_lines():
     l = []
@@ -303,7 +28,7 @@ def get_lines():
     l.append(data)
     yield l
 ```
-Pandaaaa906提供的方法
+Method provided by Pandaaaa906
 ```python
 from mmap import mmap
 
@@ -321,16 +46,16 @@ if __name__=="__main__":
     for i in get_lines("fp_some_huge_file"):
         print(i)
 ```
-要考虑的问题有：内存只有4G无法一次性读入10G文件，需要分批读入分批读入数据要记录每次读入数据的位置。分批每次读取数据的大小，太小会在读取操作花费过多时间。
+The problems to be considered are: the memory is only 4G and cannot read 10G files at one time, and the data needs to be read in batches to record the location of each data read. If the size of the data read in batches is too small, it will take too much time in the read operation.
 https://stackoverflow.com/questions/30294146/python-fastest-way-to-process-large-file
 
-###  2.补充缺失的代码
+### 2. Add missing code
 ```python
 def print_directory_contents(sPath):
 """
-这个函数接收文件夹的名称作为输入参数
-返回该文件夹中文件的路径
-以及其包含文件夹中文件的路径
+This function receives the name of the folder as an input parameter
+Returns the path of the file in the folder
+And the path to the file in its containing folder
 """
 import os
 for s_child in os.listdir(s_path):
@@ -340,40 +65,40 @@ for s_child in os.listdir(s_path):
     else:
         print(s_child_path)
 ```
-## 模块与包
-### 3.输入日期， 判断这一天是这一年的第几天？
+## Modules and packages
+### 3. Enter the date, and determine which day is the day of the year?
 ```python
 import datetime
 def dayofyear():
-    year = input("请输入年份: ")
-    month = input("请输入月份: ")
-    day = input("请输入天: ")
+    year = input("Please enter the year: ")
+    month = input("Please enter the month: ")
+    day = input("Please enter the day: ")
     date1 = datetime.date(year=int(year),month=int(month),day=int(day))
     date2 = datetime.date(year=int(year),month=1,day=1)
     return (date1-date2).days+1
 ```
-### 4.打乱一个排好序的list对象alist？
+### 4. Disrupt a sorted list object alist?
 ```python
 import random
 alist = [1,2,3,4,5]
 random.shuffle(alist)
 print(alist)
 ```
-## 数据类型
-### 5.现有字典 d= {'a':24,'g':52,'i':12,'k':33}请按value值进行排序?
+## type of data
+### 5. Existing dictionary d = {'a':24,'g':52,'i':12,'k':33} Please sort by value?
 ```python
 sorted(d.items(),key=lambda x:x[1])
 ```
-    x[0]代表用key进行排序；x[1]代表用value进行排序。
-### 6.字典推导式
+    x[0] represents sorting by key; x[1] represents sorting by value.
+### 6. Dictionary comprehension
 ```python
 d = {key:value for (key,value) in iterable}
 ```
-### 7.请反转字符串 "aStr"?
+### 7. Please reverse the string "aStr"?
 ```python
 print("aStr"[::-1])
 ```
-### 8.将字符串 "k:1 |k1:2|k2:3|k3:4"，处理成字典 {k:1,k1:2,...}
+### 8. Process the string "k:1 |k1:2|k2:3|k3:4" into a dictionary {k:1,k1:2,...}
 ```python
 str1 = "k:1|k1:2|k2:3|k3:4"
 def str2dict(str1):
@@ -382,26 +107,26 @@ def str2dict(str1):
         key,value = iterms.split(':')
         dict1[key] = value
     return dict1
-#字典推导式
+#Dictionary derivation
 d = {k:int(v) for t in str1.split("|") for k, v in (t.split(":"), )}
 ```
-### 9.请按alist中元素的age由大到小排序
+### 9. Please sort by the age of the elements in alist from largest to smallest
 ```python
-alist = [{'name':'a','age':20},{'name':'b','age':30},{'name':'c','age':25}]
+alist = [{'name':'a','age':20},{'name':'b','age':30},{'name':'c','age':25} ]
 def sort_by_age(list1):
     return sorted(alist,key=lambda x:x['age'],reverse=True)
 ```
-### 10.下面代码的输出结果将是什么？
+### 10. What will be the output of the following code?
 ```python
 list = ['a','b','c','d','e']
 print(list[10:])
 ```
-代码将输出[],不会产生IndexError错误，就像所期望的那样，尝试用超出成员的个数的index来获取某个列表的成员。例如，尝试获取list[10]和之后的成员，会导致IndexError。然而，尝试获取列表的切片，开始的index超过了成员个数不会产生IndexError，而是仅仅返回一个空列表。这成为特别让人恶心的疑难杂症，因为运行的时候没有错误产生，导致Bug很难被追踪到。
-### 11.写一个列表生成式，产生一个公差为11的等差数列
+The code will output [], no IndexError error will be generated, as expected, try to get a member of a list with an index that exceeds the number of members. For example, trying to get the members of list[10] and later will result in IndexError. However, trying to get a slice of the list, the initial index exceeds the number of members will not generate IndexError, but only return an empty list. This has become a particularly nauseating incurable disease, because there are no errors during operation, making it difficult to track down bugs.
+### 11. Write a list production to generate an arithmetic sequence with a tolerance of 11
 ```python
 print([x*11 for x in range(10)])
 ```
-### 12.给定两个列表，怎么找出他们相同的元素和不同的元素？
+### 12. Given two lists, how to find the same elements and different elements?
 ```python
 list1 = [1,2,3]
 list2 = [3,4,5]
@@ -410,26 +135,26 @@ set2 = set(list2)
 print(set1 & set2)
 print(set1 ^ set2)
 ```
-### 13.请写出一段python代码实现删除list里面的重复元素？
+### 13. Please write a piece of python code to delete duplicate elements in the list?
 ```python
 l1 = ['b','c','d','c','a','a']
 l2 = list(set(l1))
 print(l2)
 ```
-用list类的sort方法:
+Use the sort method of the list class:
 ```python
 l1 = ['b','c','d','c','a','a']
 l2 = list(set(l1))
 l2.sort(key=l1.index)
 print(l2)
 ```
-也可以这样写:
+It can also be written like this:
 ```python
 l1 = ['b','c','d','c','a','a']
 l2 = sorted(set(l1),key=l1.index)
 print(l2)
 ```
-也可以用遍历：
+You can also use traversal:
 ```python
 l1 = ['b','c','d','c','a','a']
 l2 = []
@@ -438,36 +163,36 @@ for i in l1:
         l2.append(i)
 print(l2)
 ```
-### 14.给定两个list A，B ,请用找出A，B中相同与不同的元素
+### 14. Given two lists A, B, please use to find the same and different elements in A and B
 ```python
-A,B 中相同元素： print(set(A)&set(B))
-A,B 中不同元素:  print(set(A)^set(B))
+Same elements in A and B: print(set(A)&set(B))
+Different elements in A, B: print(set(A)^set(B))
 ```
-## 企业面试题
-### 15.python新式类和经典类的区别？
-a. 在python里凡是继承了object的类，都是新式类
+## Corporate Interview Questions
+### 15. What is the difference between the new python class and the classic class?
+a. In python, all classes that inherit object are new-style classes
 
-b. Python3里只有新式类
+b. There are only new-style classes in Python3
 
-c. Python2里面继承object的是新式类，没有写父类的是经典类
+c. In Python2, objects that inherit object are new-style classes, and those that do not have parent classes are classic classes
 
-d. 经典类目前在Python里基本没有应用
+d. Classic classes are currently not used in Python
 
-e. 保持class与type的统一对新式类的实例执行a.__class__与type(a)的结果是一致的，对于旧式类来说就不一样了。
+e. Maintain the unity of class and type. The results of executing a.__class__ and type(a) on instances of new-style classes are the same, but they are different for old-style classes.
 
-f.对于多重继承的属性搜索顺序不一样新式类是采用广度优先搜索，旧式类采用深度优先搜索。
+f. The search order for multiple inherited attributes is different. The new-style class uses breadth-first search, and the old-style class uses depth-first search.
 
-### 16.python中内置的数据结构有几种？
-a. 整型 int、 长整型 long、浮点型 float、 复数 complex
+### 16. How many built-in data structures in python?
+a. Integer type int, long integer type long, floating point type float, complex number complex
 
-b. 字符串 str、 列表 list、 元祖 tuple
+b. String str, list list, tuple
 
-c. 字典 dict 、 集合 set
+c. Dictionary dict, set
 
-d. Python3 中没有 long，只有无限精度的 int
+d. There is no long in Python3, only int with infinite precision
 
-### 17.python如何实现单例模式?请写出两种实现方式?
-第一种方法:使用装饰器
+### 17. How does python implement the singleton mode? Please write two implementation methods?
+The first method: use a decorator
 ```python
 def singleton(cls):
     instances = {}
@@ -483,14 +208,14 @@ class Foo(object):
     pass
 foo1 = Foo()
 foo2 = Foo()
-print(foo1 is foo2)  # True
+print(foo1 is foo2) # True
 ```
-第二种方法：使用基类
-New 是真正创建实例对象的方法，所以重写基类的new 方法，以此保证创建对象的时候只生成一个实例
+The second method: use the base class
+New is the method to actually create an instance object, so rewrite the new method of the base class to ensure that only one instance is generated when the object is created
 ```python
 class Singleton(object):
     def __new__(cls, *args, **kwargs):
-        if not hasattr(cls, '_instance'):
+        if not hasattr(cls,'_instance'):
             cls._instance = super(Singleton, cls).__new__(cls, *args, **kwargs)
         return cls._instance
     
@@ -501,13 +226,13 @@ class Foo(Singleton):
 foo1 = Foo()
 foo2 = Foo()
 
-print(foo1 is foo2)  # True
+print(foo1 is foo2) # True
 ```
-第三种方法：元类，元类是用于创建类对象的类，类对象创建实例对象时一定要调用call方法，因此在调用call时候保证始终只创建一个实例即可，type是python的元类
+The third method: metaclass. Metaclass is a class used to create class objects. When a class object creates an instance object, the call method must be called. Therefore, when calling call, ensure that only one instance is always created. Type is the python meta class
 ```python
 class Singleton(type):
     def __call__(cls, *args, **kwargs):
-        if not hasattr(cls, '_instance'):
+        if not hasattr(cls,'_instance'):
             cls._instance = super(Singleton, cls).__call__(*args, **kwargs)
         return cls._instance
 
@@ -522,10 +247,11 @@ class Foo(metaclass=Singleton):
 
 foo1 = Foo()
 foo2 = Foo()
-print(foo1 is foo2)  # True
+print(foo1 is foo2) # True
 
 ```
-### 18.反转一个整数，例如-123 --> -321 
+
+### 18. Reverse an integer, for example -123 --> -321
 ```python
 class Solution(object):
     def reverse(self,x):
@@ -540,19 +266,19 @@ class Solution(object):
             x = int(str_x)
             x = -x
         return x if -2147483648<x<2147483647 else 0
-if __name__ == '__main__':
+if __name__ =='__main__':
     s = Solution()
     reverse_int = s.reverse(-120)
     print(reverse_int)
 ```
-### 19.设计实现遍历目录与子目录，抓取.pyc文件
-第一种方法：
+### 19. Design and implement to traverse directories and subdirectories, and grab .pyc files
+the first method:
 ```python
 import os
 
 def get_files(dir,suffix):
     res = []
-    for root,dirs,files in os.walk(dir):
+    for root, dirs, files in os.walk(dir):
         for filename in files:
             name,suf = os.path.splitext(filename)
             if suf == suffix:
@@ -562,7 +288,7 @@ def get_files(dir,suffix):
 
 get_files("./",'.pyc')
 ```
-第二种方法：
+The second method:
 ```python
 import os
 
@@ -579,10 +305,10 @@ def scan_path(ph):
             scan_path(obj)
     
 if __name__=='__main__':
-    path = input('输入目录')
+    path = input('input directory')
     scan_path(path)
 ```
-第三种方法
+The third method
 ```python
 from glob import iglob
 
@@ -595,13 +321,13 @@ if __name__ == "__main__":
     postfix = ".pyc"
     func("K:\Python_script", postfix)
 ```
-### 20.一行代码实现1-100之和
+### 20. One line of code to achieve the sum of 1-100
 ```python
 count = sum(range(0,101))
 print(count)
 ```
-### 21.Python-遍历列表时删除元素的正确做法
-遍历在新在列表操作，删除时在原来的列表操作
+### 21.Python-The correct way to delete elements when traversing the list
+Traverse in the new list operation, delete in the original list operation
 ```python
 a = [1,2,3,4,5,6,7,8]
 print(id(a))
@@ -622,14 +348,14 @@ a=[1,2,3,4,5,6,7,8]
 b = filter(lambda x: x>5,a)
 print(list(b))
 ```
-列表解析
+List comprehension
 ```python
 a=[1,2,3,4,5,6,7,8]
 b = [i for i in a if i>5]
 print(b)
 ```
-倒序删除
-因为列表总是‘向前移’，所以可以倒序遍历，即使后面的元素被修改了，还没有被遍历的元素和其坐标还是保持不变的
+Delete in reverse order
+Because the list is always ‘forward’, it can be traversed in reverse order. Even if the following elements are modified, the elements that have not been traversed and their coordinates remain unchanged
 ```python
 a=[1,2,3,4,5,6,7,8]
 print(id(a))
@@ -642,26 +368,26 @@ print(id(a))
 print('-----------')
 print(a)
 ```
-### 22.字符串的操作题目
-全字母短句 PANGRAM 是包含所有英文字母的句子，比如：A QUICK BROWN FOX JUMPS OVER THE LAZY DOG. 定义并实现一个方法 get_missing_letter, 传入一个字符串采纳数，返回参数字符串变成一个 PANGRAM 中所缺失的字符。应该忽略传入字符串参数中的大小写，返回应该都是小写字符并按字母顺序排序（请忽略所有非 ACSII 字符）
+### 22. String operation topic
+Full-letter short sentence PANGRAM is a sentence containing all English letters, such as: A QUICK BROWN FOX JUMPS OVER THE LAZY DOG. Define and implement a method get_missing_letter, pass in a string acceptance number, and the returned parameter string becomes a PANGRAM. Missing characters. The case in the incoming string parameters should be ignored, and the return should be all lowercase characters and sorted alphabetically (please ignore all non-ACSII characters)
 
-**下面示例是用来解释，双引号不需要考虑:**
+**The following example is for explanation, double quotes do not need to be considered:**
 
-(0)输入: "A quick brown for jumps over the lazy dog"
+(0)Input: "A quick brown for jumps over the lazy dog"
 
-返回： ""
+Returns: ""
 
-(1)输入: "A slow yellow fox crawls under the proactive dog" 
+(1) Input: "A slow yellow fox crawls under the proactive dog"
 
-返回: "bjkmqz"
+Returns: "bjkmqz"
 
-(2)输入: "Lions, and tigers, and bears, oh my!"
+(2) Input: "Lions, and tigers, and bears, oh my!"
 
-返回: "cfjkpquvwxz" 
+Returns: "cfjkpquvwxz"
 
-(3)输入: ""
+(3) Input: ""
 
-返回："abcdefghijklmnopqrstuvwxyz"
+Returns: "abcdefghijklmnopqrstuvwxyz"
 
 ```python
 def get_missing_letter(a):
@@ -674,56 +400,56 @@ print(get_missing_letter("python"))
 
 # other ways to generate letters
 # range("a", "z")
-# 方法一:
+# method one:
 import string
 letters = string.ascii_lowercase
-# 方法二:
+# Method Two:
 letters = "".join(map(chr, range(ord('a'), ord('z') + 1)))
 ```
 
-### 23.可变类型和不可变类型
-1,可变类型有list,dict.不可变类型有string，number,tuple.
+### 23. Mutable and Immutable Types
+1. Variable types include list and dict. Immutable types include string, number, tuple.
 
-2,当进行修改操作时，可变类型传递的是内存中的地址，也就是说，直接修改内存中的值，并没有开辟新的内存。
+2. When the modification operation is performed, the variable type transfers the address in the memory, that is, directly modifies the value in the memory, and does not open up new memory.
 
-3,不可变类型被改变时，并没有改变原内存地址中的值，而是开辟一块新的内存，将原地址中的值复制过去，对这块新开辟的内存中的值进行操作。
+3. When the immutable type is changed, the value in the original memory address is not changed, but a new memory is opened, the value in the original address is copied over, and the value in this newly opened memory is operated.
 
-### 24.is和==有什么区别？
-is：比较的是两个对象的id值是否相等，也就是比较俩对象是否为同一个实例对象。是否指向同一个内存地址
+### 24. What is the difference between is and ==?
+is: The comparison is whether the id values ​​of the two objects are equal, that is, whether the two objects are the same instance object. Point to the same memory address
 
-== ： 比较的两个对象的内容/值是否相等，默认会调用对象的eq()方法
-### 25.求出列表所有奇数并构造新列表
+==: Whether the contents/values ​​of the two objects to be compared are equal, the eq() method of the object will be called by default
+### 25. Find all odd numbers in the list and construct a new list
 ```python
 a = [1,2,3,4,5,6,7,8,9,10]
-res = [ i for i in a if i%2==1]
+res = [i for i in a if i%2==1]
 print(res)
 ```
-### 26.用一行python代码写出1+2+3+10248
+### 26. Write 1+2+3+10248 with one line of python code
 ```python
 from functools import reduce
-#1.使用sum内置求和函数
+#1. Use sum built-in sum function
 num = sum([1,2,3,10248])
 print(num)
-#2.reduce 函数
+#2.reduce function
 num1 = reduce(lambda x,y :x+y,[1,2,3,10248])
 print(num1)
 ```
-### 27.Python中变量的作用域？（变量查找顺序)
-函数作用域的LEGB顺序
+### 27. What is the scope of variables in Python? (Variable search order)
+LEGB order of function scope
 
-1.什么是LEGB?
+1. What is LEGB?
 
-L： local 函数内部作用域
+L: the internal scope of the local function
 
-E: enclosing 函数内部与内嵌函数之间
+E: Inside the enclosing function and between the embedded function
 
-G: global 全局作用域
+G: global scope
 
-B： build-in 内置作用
+B: build-in built-in function
 
-python在函数里面的查找分为4种，称之为LEGB，也正是按照这是顺序来查找的
-### 28.字符串 `"123"` 转换成 `123`，不使用内置api，例如 `int()`
-方法一： 利用 `str` 函数
+Python's search in the function is divided into 4 types, called LEGB, which is exactly the order to search
+### 28. The string `"123"` is converted to `123` without using built-in api, such as `int()`
+Method 1: Use the `str` function
 ```python
 def atoi(s):
     num = 0
@@ -733,32 +459,32 @@ def atoi(s):
                 num = num * 10 + j
     return num
 ```
-方法二： 利用 `ord` 函数
+Method 2: Use the `ord` function
 ```python
 def atoi(s):
     num = 0
     for v in s:
-        num = num * 10 + ord(v) - ord('0')
+        num = num * 10 + ord(v)-ord('0')
     return num
 ```
-方法三: 利用 `eval` 函数
+Method 3: Use the `eval` function
 ```python
 def atoi(s):
     num = 0
     for v in s:
-        t = "%s * 1" % v
+        t = "%s * 1"% v
         n = eval(t)
         num = num * 10 + n
     return num
 ```
-方法四: 结合方法二，使用 `reduce`，一行解决
+Method four: Combine method two, use `reduce`, one-line solution
 ```python
 from functools import reduce
 def atoi(s):
-    return reduce(lambda num, v: num * 10 + ord(v) - ord('0'), s, 0)
+    return reduce(lambda num, v: num * 10 + ord(v)-ord('0'), s, 0)
 ```
 ### 29.Given an array of integers
-给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。示例:给定nums = [2,7,11,15],target=9 因为 nums[0]+nums[1] = 2+7 =9,所以返回[0,1]
+Given an integer array and a target value, find the two numbers in the array whose sum is the target value. You can assume that each input corresponds to only one answer, and the same elements cannot be reused. Example: Given nums = [2,7,11,15], target=9 because nums[0]+nums[1] = 2+7 =9, so return [0,1]
 ```python
 class Solution:
     def twoSum(self,nums,target):
@@ -769,7 +495,7 @@ class Solution:
         """
         d = {}
         size = 0
-        while size < len(nums):
+        while size <len(nums):
             if target-nums[size] in d:
                 if d[target-nums[size]] <size:
                     return [d[target-nums[size]],size]
@@ -788,35 +514,35 @@ print(nums)
 class Solution(object):
     def twoSum(self, nums, target):
         for i in range(len(nums)):
-            num = target - nums[i]
+            num = target-nums[i]
             if num in nums[i+1:]:
                 return [i, nums.index(num,i+1)]
 
 ```
-给列表中的字典排序：假设有如下list对象，alist=[{"name":"a","age":20},{"name":"b","age":30},{"name":"c","age":25}],将alist中的元素按照age从大到小排序 alist=[{"name":"a","age":20},{"name":"b","age":30},{"name":"c","age":25}]
+Sort the dictionary in the list: Suppose there are the following list objects, alist=[{"name":"a","age":20},{"name":"b","age":30},{" name":"c","age":25}], sort the elements in alist according to age from largest to smallest alist=[{"name":"a","age":20},{"name" :"b","age":30},{"name":"c","age":25}]
 ```python
 alist_sort = sorted(alist,key=lambda e: e.__getitem__('age'),reverse=True)
 ```
 
-### 30.python代码实现删除一个list里面的重复元素
+### 30.python code to delete duplicate elements in a list
 ```python
 def distFunc1(a):
-    """使用集合去重"""
+    """Use a collection to remove duplicates"""
     a = list(set(a))
     print(a)
 
 def distFunc2(a):
-    """将一个列表的数据取出放到另一个列表中，中间作判断"""
+    """Retrieve the data from one list and put it in another list, making judgments in the middle"""
     list = []
     for i in a:
         if i not in list:
             list.append(i)
-    #如果需要排序的话用sort
+    #If you need to sort, use sort
     list.sort()
     print(list)
 
 def distFunc3(a):
-    """使用字典"""
+    """Use Dictionary"""
     b = {}
     b = b.fromkeys(a)
     c = list(b.keys())
@@ -829,18 +555,18 @@ if __name__ == "__main__":
     distFunc3(a)
   
 ```
-### 31.统计一个文本中单词频次最高的10个单词？
+### 31. Count the 10 most frequent words in a text?
 ```python
 import re
 
-# 方法一
+# method one
 def test(filepath):
     
     distone = {}
 
     with open(filepath) as f:
         for line in f:
-            line = re.sub("\W+", " ", line)
+            line = re.sub("\W+", "", line)
             lineone = line.split()
             for keyone in lineone:
                 if not distone.get(keyone):
@@ -852,22 +578,22 @@ def test(filepath):
     return num_ten
     
  
-# 方法二 
-# 使用 built-in 的 Counter 里面的 most_common
+# Method Two 
+# Use most_common in the built-in Counter
 import re
 from collections import Counter
 
 
 def test2(filepath):
     with open(filepath) as f:
-        return list(map(lambda c: c[0], Counter(re.sub("\W+", " ", f.read()).split()).most_common(10)))
+        return list(map(lambda c: c[0], Counter(re.sub("\W+", "", f.read()).split()).most_common(10)))
 ```
-### 32.请写出一个函数满足以下条件
-该函数的输入是一个仅包含数字的list,输出一个新的list，其中每一个元素要满足以下条件：
+### 32. Please write a function that satisfies the following conditions
+The input of this function is a list containing only numbers, and a new list is output, each element of which must meet the following conditions:
 
-1、该元素是偶数
+1. The element is even
 
-2、该元素在原list中是在偶数的位置(index是偶数)
+2. The element is in an even position in the original list (index is an even number)
 
 ```python
 def num_list(num):
@@ -877,30 +603,30 @@ num = [0,1,2,3,4,5,6,7,8,9,10]
 result = num_list(num)
 print(result)
 ```
-### 33.使用单一的列表生成式来产生一个新的列表
-该列表只包含满足以下条件的值，元素为原始列表中偶数切片
+### 33. Use a single list comprehension to generate a new list
+The list only contains values ​​that meet the following conditions, and the elements are even-numbered slices in the original list
 ```python
 list_data = [1,2,5,8,10,3,18,6,20]
 res = [x for x in list_data[::2] if x %2 ==0]
 print(res)
 ```
-### 34.用一行代码生成[1,4,9,16,25,36,49,64,81,100]
+### 34. Generate [1,4,9,16,25,36,49,64,81,100] with one line of code
 ```python
 [x * x for x in range(1,11)]
 ```
-### 35.输入某年某月某日，判断这一天是这一年的第几天？
+### 35. Enter a certain year, certain month, and certain day, to determine which day is the day of the year?
 ```python
 import datetime
 
-y = int(input("请输入4位数字的年份:"))
-m = int(input("请输入月份:"))
-d = int(input("请输入是哪一天"))
+y = int(input("Please enter the year of 4 digits:"))
+m = int(input("Please enter the month:"))
+d = int(input("Please enter which day is it"))
 
 targetDay = datetime.date(y,m,d)
-dayCount = targetDay - datetime.date(targetDay.year -1,12,31)
-print("%s是 %s年的第%s天。"%(targetDay,y,dayCount.days))
+dayCount = targetDay-datetime.date(targetDay.year -1,12,31)
+print("%s is the %s day of %s year."%(targetDay,y,dayCount.days))
 ```
-### 36.两个有序列表，l1,l2，对这两个列表进行合并不可使用extend
+### 36. Two ordered lists, l1, l2, can not use extend to merge these two lists
 ```python
 def loop_merge_sort(l1,l2):
     tmp = []
@@ -919,72 +645,72 @@ def loop_merge_sort(l1,l2):
         del l2[0]
     return tmp
 ```
-### 37.给定一个任意长度数组，实现一个函数
-让所有奇数都在偶数前面，而且奇数升序排列，偶数降序排序，如字符串'1982376455',变成'1355798642'
+### 37. Given an arbitrary length array, implement a function
+Let all odd numbers come before even numbers, and sort the odd numbers in ascending order and even numbers in descending order. For example, the string '1982376455' becomes '1355798642'
 ```python
-# 方法一
+# method one
 def func1(l):
     if isinstance(l, str):
         l = [int(i) for i in l]
     l.sort(reverse=True)
     for i in range(len(l)):
-        if l[i] % 2 > 0:
+        if l[i]% 2> 0:
             l.insert(0, l.pop(i))
-    print(''.join(str(e) for e in l))
+    print(``.join(str(e) for e in l))
 
-# 方法二
+# Method Two
 def func2(l):
-    print("".join(sorted(l, key=lambda x: int(x) % 2 == 0 and 20 - int(x) or int(x))))
+    print("".join(sorted(l, key=lambda x: int(x)% 2 == 0 and 20-int(x) or int(x))))
 ```
-### 38.写一个函数找出一个整数数组中，第二大的数
+### 38. Write a function to find the second largest number in an integer array
 ```python
 def find_second_large_num(num_list):
     """
-    找出数组第2大的数字
+    Find the second largest number in the array
     """
-    # 方法一
-    # 直接排序，输出倒数第二个数即可
+    # method one
+    # Sort directly, output the second to last number
     tmp_list = sorted(num_list)
-    print("方法一\nSecond_large_num is :", tmp_list[-2])
+    print("Method One\nSecond_large_num is :", tmp_list[-2])
     
-    # 方法二
-    # 设置两个标志位一个存储最大数一个存储次大数
-    # two 存储次大值，one 存储最大值，遍历一次数组即可，先判断是否大于 one，若大于将 one 的值给 two，将 num_list[i] 的值给 one，否则比较是否大于two，若大于直接将 num_list[i] 的值给two，否则pass
+    # Method Two
+    # Set two flags, one to store the largest number and the other to store the second largest number
+    # two stores the next largest value, one stores the maximum value, and traverses the array once. First, judge whether it is greater than one. If it is greater, give the value of one to two, and give the value of num_list[i] to one. Otherwise, compare whether it is greater than two. Greater than directly give the value of num_list[i] to two, otherwise pass
     one = num_list[0]
     two = num_list[0]
     for i in range(1, len(num_list)):
-        if num_list[i] > one:
+        if num_list[i]> one:
             two = one
             one = num_list[i]
-        elif num_list[i] > two:
+        elif num_list[i]> two:
             two = num_list[i]
-    print("方法二\nSecond_large_num is :", two)
+    print("Method Two\nSecond_large_num is :", two)
     
-    # 方法三
-    # 用 reduce 与逻辑符号 (and, or)
-    # 基本思路与方法二一样，但是不需要用 if 进行判断。
+    # Method Three
+    # Use reduce and logical symbols (and, or)
+    # The basic idea is the same as Method 2, but there is no need to use if for judgment.
     from functools import reduce
-    num = reduce(lambda ot, x: ot[1] < x and (ot[1], x) or ot[0] < x and (x, ot[1]) or ot, num_list, (0, 0))[0]
-    print("方法三\nSecond_large_num is :", num)
+    num = reduce(lambda ot, x: ot[1] <x and (ot[1], x) or ot[0] <x and (x, ot[1]) or ot, num_list, (0, 0) )[0]
+    print("Method Three\nSecond_large_num is :", num)
     
     
-if __name__ == '__main___':
+if __name__ =='__main___':
     num_list = [34, 11, 23, 56, 78, 0, 9, 12, 3, 7, 5]
     find_second_large_num(num_list)
 ```
-### 39.阅读一下代码他们的输出结果是什么？
+### 39. Read the code and what is their output?
 ```python
 def multi():
-    return [lambda x : i*x for i in range(4)]
+    return [lambda x: i*x for i in range(4)]
 print([m(3) for m in multi()])
 ```
-正确答案是[9,9,9,9]，而不是[0,3,6,9]产生的原因是Python的闭包的后期绑定导致的，这意味着在闭包中的变量是在内部函数被调用的时候被查找的，因为，最后函数被调用的时候，for循环已经完成, i 的值最后是3,因此每一个返回值的i都是3,所以最后的结果是[9,9,9,9]
-### 40.统计一段字符串中字符出现的次数
+The correct answer is [9,9,9,9] instead of [0,3,6,9]. The reason is the late binding of Python’s closure, which means that the variables in the closure are in When the internal function is called, it is looked up, because when the last function is called, the for loop has been completed, and the value of i is 3 at the end, so the i of each return value is 3, so the final result is [9, 9,9,9]
+### 40. Count the number of occurrences of characters in a string
 ```python
-# 方法一
+# method one
 def count_str(str_data):
-    """定义一个字符出现次数的函数"""
-    dict_str = {} 
+    """ defines a function of the number of occurrences of a character """
+    dict_str = {}
     for i in str_data:
         dict_str[i] = dict_str.get(i, 0) + 1
     return dict_str
@@ -994,26 +720,26 @@ for k, v in dict_str.items():
     str_count_data += k + str(v)
 print(str_count_data)
 
-# 方法二
+# Method Two
 from collections import Counter
 
 print("".join(map(lambda x: x[0] + str(x[1]), Counter("AAABBCCAC").most_common())))
 ```
-### 41.super函数的具体用法和场景
+### 41. Specific usage and scenarios of super function
 https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p07_calling_method_on_parent_class.html
 
-# Python高级
-## 元类
-### 42.Python中类方法、类实例方法、静态方法有何区别？
-类方法: 是类对象的方法，在定义时需要在上方使用 @classmethod 进行装饰,形参为cls，表示类对象，类对象和实例对象都可调用
+# Python Advanced
+## Metaclass
+### 42. What is the difference between class methods, class instance methods, and static methods in Python?
+Class method: It is a method of a class object. It needs to be decorated with @classmethod at the top when it is defined. The formal parameter is cls, which means the class object. Both the class object and the instance object can be called.
 
-类实例方法: 是类实例化对象的方法,只有实例对象可以调用，形参为self,指代对象本身;
+Class instance method: is the method of class instantiation object, only instance object can be called, the formal parameter is self, which refers to the object itself;
 
-静态方法: 是一个任意函数，在其上方使用 @staticmethod 进行装饰，可以用对象直接调用，静态方法实际上跟该类没有太大关系
-### 43.遍历一个object的所有属性，并print每一个属性名？
+Static method: It is an arbitrary function, decorated with @staticmethod above it, which can be directly called by the object, the static method actually has nothing to do with the class
+### 43. Traverse all the attributes of an object and print each attribute name?
 ```python
 class Car:
-    def __init__(self,name,loss): # loss [价格，油耗，公里数]
+    def __init__(self,name,loss): # loss [price, fuel consumption, kilometers]
         self.name = name
         self.loss = loss
     
@@ -1021,18 +747,18 @@ class Car:
         return self.name
     
     def getPrice(self):
-        # 获取汽车价格
+        # Get car price
         return self.loss[0]
     
     def getLoss(self):
-        # 获取汽车损耗值
+        # Get car loss value
         return self.loss[1] * self.loss[2]
 
-Bmw = Car("宝马",[60,9,500]) # 实例化一个宝马车对象
-print(getattr(Bmw,"name")) # 使用getattr()传入对象名字,属性值。
-print(dir(Bmw)) # 获Bmw所有的属性和方法
+Bmw = Car("BMW",[60,9,500]) # Instantiate a BMW car object
+print(getattr(Bmw,"name")) # Use getattr() to pass in the object name and attribute value.
+print(dir(Bmw)) # Get all the attributes and methods of Bmw
 ```
-### 44.写一个类，并让它尽可能多的支持操作符?
+### 44. Write a class and make it support as many operators as possible?
 ```python
 class Array:
     __list = []
@@ -1065,112 +791,112 @@ class Array:
     
         
 ```
-### 45.介绍Cython，Pypy Cpython Numba各有什么缺点
+### 45. Introduce what are the disadvantages of Cython, Pypy Cpython Numba
 Cython
-### 46.请描述抽象类和接口类的区别和联系
+### 46. Please describe the difference and connection between abstract class and interface class
 
-1.抽象类： 规定了一系列的方法，并规定了必须由继承类实现的方法。由于有抽象方法的存在，所以抽象类不能实例化。可以将抽象类理解为毛坯房，门窗，墙面的样式由你自己来定，所以抽象类与作为基类的普通类的区别在于约束性更强
+1. Abstract class: A series of methods are specified, and methods that must be implemented by inherited classes are specified. Because of the existence of abstract methods, abstract classes cannot be instantiated. You can understand the abstract class as the rough house, doors and windows, and the style of the wall is up to you, so the difference between the abstract class and the ordinary class as the base class is that it is more restrictive
 
-2.接口类：与抽象类很相似，表现在接口中定义的方法，必须由引用类实现，但他与抽象类的根本区别在于用途：与不同个体间沟通的规则，你要进宿舍需要有钥匙，这个钥匙就是你与宿舍的接口，你的舍友也有这个接口，所以他也能进入宿舍，你用手机通话，那么手机就是你与他人交流的接口
+2. Interface class: similar to abstract class, the method defined in the interface must be implemented by the reference class, but the fundamental difference between it and the abstract class lies in its purpose: the rules for communicating with different individuals, you need to enter the dormitory The key, this key is the interface between you and the dormitory, and your roommate also has this interface, so he can also enter the dormitory. If you use a mobile phone to talk, then the mobile phone is the interface for you to communicate with others
 
-3.区别和关联：
+3. Differences and associations:
 
-1.接口是抽象类的变体，接口中所有的方法都是抽象的，而抽象类中可以有非抽象方法，抽象类是声明方法的存在而不去实现它的类
+1. An interface is a variant of an abstract class. All methods in the interface are abstract, and there can be non-abstract methods in an abstract class. An abstract class is a class that declares the existence of a method without realizing it.
 
-2.接口可以继承，抽象类不行
+2. Interfaces can be inherited, but abstract classes cannot
 
-3.接口定义方法，没有实现的代码，而抽象类可以实现部分方法
+3. Interface definition method, there is no implementation code, and abstract class can implement some methods
 
-4.接口中基本数据类型为static而抽象类不是
+4. The basic data type in the interface is static but the abstract class is not
 
-### 47.Python中如何动态获取和设置对象的属性？
+### 47. How to dynamically get and set the attributes of an object in Python?
 
 ```python
-if hasattr(Parent, 'x'):
-    print(getattr(Parent, 'x'))
-    setattr(Parent, 'x',3)
+if hasattr(Parent,'x'):
+    print(getattr(Parent,'x'))
+    setattr(Parent,'x',3)
 print(getattr(Parent,'x'))
 ```
 
 
 
-## 内存管理与垃圾回收机制
-### 48.哪些操作会导致Python内存溢出，怎么处理？
-### 49.关于Python内存管理,下列说法错误的是  B
+## Memory management and garbage collection mechanism
+### 48. What operations will cause Python memory overflow, and how to deal with it?
+### 49. Regarding Python memory management, the following statement is wrong B
 
-A,变量不必事先声明                                   B,变量无须先创建和赋值而直接使用
+A, the variable does not need to be declared in advance B, the variable does not need to be created and assigned first and used directly
 
-C,变量无须指定类型                                   D,可以使用del释放资源
+C, the variable does not need to specify the type D, you can use del to release resources
 
-### 50.Python的内存管理机制及调优手段？
+### 50. Python memory management mechanism and tuning methods?
 
-内存管理机制: 引用计数、垃圾回收、内存池
+Memory management mechanism: reference counting, garbage collection, memory pool
 
-引用计数：引用计数是一种非常高效的内存管理手段，当一个Python对象被引用时其引用计数增加1,
+Reference counting: Reference counting is a very efficient means of memory management. When a Python object is referenced, its reference count increases by 1,
 
-当其不再被一个变量引用时则计数减1,当引用计数等于0时对象被删除。弱引用不会增加引用计数
+When it is no longer referenced by a variable, the count is reduced by 1, and when the reference count is equal to 0, the object is deleted. Weak references do not increase the reference count
 
-垃圾回收：
+Garbage collection:
 
-1.引用计数
+1. Reference counting
 
-引用计数也是一种垃圾收集机制，而且也是一种最直观、最简单的垃圾收集技术。当Python的某个对象的引用计数降为0时，说明没有任何引用指向该对象，该对象就成为要被回收的垃圾了。比如某个新建对象，它被分配给某个引用，对象的引用计数变为1，如果引用被删除，对象的引用计数为0,那么该对象就可以被垃圾回收。不过如果出现循环引用的话，引用计数机制就不再起有效的作用了。
+Reference counting is also a garbage collection mechanism, and it is also the most intuitive and simple garbage collection technique. When the reference count of an object in Python drops to 0, it means that there is no reference to the object, and the object becomes garbage to be recycled. For example, a newly created object is assigned to a reference, and the reference count of the object becomes 1. If the reference is deleted and the reference count of the object is 0, then the object can be garbage collected. However, if there is a circular reference, the reference counting mechanism no longer plays an effective role.
 
-2.标记清除
+2. Mark removal
 
 https://foofish.net/python-gc.html
 
-调优手段
+Tuning methods
 
-1.手动垃圾回收
+1. Manual garbage collection
 
-2.调高垃圾回收阈值
+2. Raise the garbage collection threshold
 
-3.避免循环引用
+3. Avoid circular references
 
-### 51.内存泄露是什么？如何避免？
+### 51. What is a memory leak? How to avoid it?
 
-**内存泄漏**指由于疏忽或错误造成程序未能释放已经不再使用的内存。内存泄漏并非指内存在物理上的消失，而是应用程序分配某段内存后，由于设计错误，导致在释放该段内存之前就失去了对该段内存的控制，从而造成了内存的浪费。
+**Memory leak** refers to the program's failure to release memory that is no longer in use due to negligence or error. Memory leak does not mean the physical disappearance of the memory, but after the application allocates a certain segment of memory, due to a design error, the control of the segment of memory is lost before the memory is released, resulting in a waste of memory.
 
-有`__del__()`函数的对象间的循环引用是导致内存泄露的主凶。不使用一个对象时使用: del object 来删除一个对象的引用计数就可以有效防止内存泄露问题。
+Circular references between objects with `__del__()` function are the main cause of memory leaks. When not using an object, use: del object to delete the reference count of an object can effectively prevent memory leaks.
 
-通过Python扩展模块gc 来查看不能回收的对象的详细信息。
+Use the Python extension module gc to view detailed information about objects that cannot be recycled.
 
-可以通过 sys.getrefcount(obj) 来获取对象的引用计数，并根据返回值是否为0来判断是否内存泄露
+You can get the reference count of the object through sys.getrefcount(obj), and judge whether the memory leaks according to whether the return value is 0
 
-## 函数
-### 52.python常见的列表推导式？
+## Function
+### 52. What are the common list comprehensions in python?
 
-[表达式 for 变量 in 列表] 或者 [表达式 for 变量 in 列表 if  条件]
+[Expression for variable in list] or [Expression for variable in list if condition]
 
-### 53.简述read、readline、readlines的区别？
+### 53. Briefly describe the difference between read, readline and readlines?
 
-read                           读取整个文件
+read read the entire file
 
-readline                     读取下一行
+readline read the next line
 
-readlines                   读取整个文件到一个迭代器以供我们遍历
+readlines reads the entire file into an iterator for us to traverse
 
-### 54.什么是Hash（散列函数）？
+### 54. What is Hash (hash function)?
 
-**散列函数**（英语：Hash function）又称**散列算法**、**哈希函数**，是一种从任何一种数据中创建小的数字“指纹”的方法。散列函数把消息或数据压缩成摘要，使得数据量变小，将数据的格式固定下来。该函数将数据打乱混合，重新创建一个叫做**散列值**（hash values，hash codes，hash sums，或hashes）的指纹。散列值通常用一个短的随机字母和数字组成的字符串来代表
+**Hash function** (English: Hash function), also known as **hash algorithm**, **hash function**, is a method of creating a small digital "fingerprint" from any kind of data. The hash function compresses the message or data into a digest, so that the amount of data becomes smaller, and the format of the data is fixed. This function scrambles and mixes the data and recreates a fingerprint called **hash values** (hash values, hash codes, hash sums, or hashes). The hash value is usually represented by a short string of random letters and numbers
 
-### 55.python函数重载机制？
+### 55. Python function overload mechanism?
 
-函数重载主要是为了解决两个问题。
-1。可变参数类型。
-2。可变参数个数。
+Function overloading is mainly to solve two problems.
+1. Variable parameter type.
+2. The number of variable parameters.
 
-另外，一个基本的设计原则是，仅仅当两个函数除了参数类型和参数个数不同以外，其功能是完全相同的，此时才使用函数重载，如果两个函数的功能其实不同，那么不应当使用重载，而应当使用一个名字不同的函数。
+In addition, a basic design principle is that only when the functions of the two functions are exactly the same except for the different parameter types and number of parameters, then function overloading is used. If the functions of the two functions are actually different, then the functions of the two functions are not the same. Overloading should be used, but a function with a different name should be used.
 
-好吧，那么对于情况 1 ，函数功能相同，但是参数类型不同，python 如何处理？答案是根本不需要处理，因为 python 可以接受任何类型的参数，如果函数的功能相同，那么不同的参数类型在 python 中很可能是相同的代码，没有必要做成两个不同函数。
+Okay, so for case 1, the function has the same function, but the parameter type is different, how does python handle it? The answer is that there is no need to deal with it at all, because Python can accept any type of parameter. If the function of the function is the same, then the different parameter types are likely to be the same code in Python, and there is no need to make two different functions.
 
-那么对于情况 2 ，函数功能相同，但参数个数不同，python 如何处理？大家知道，答案就是缺省参数。对那些缺少的参数设定为缺省参数即可解决问题。因为你假设函数功能相同，那么那些缺少的参数终归是需要用的。
+So for case 2, the function has the same function, but the number of parameters is different, how does python handle it? As you all know, the answer is the default parameters. The problem can be solved by setting the missing parameters as default parameters. Because you assume that the functions are the same, the missing parameters will eventually be needed.
 
-好了，鉴于情况 1 跟 情况 2 都有了解决方案，python 自然就不需要函数重载了。
+Well, given that both cases 1 and 2 have solutions, python naturally does not need function overloading.
 
-### 56.写一个函数找出一个整数数组中，第二大的数
-### 57.手写一个判断时间的装饰器
+### 56. Write a function to find the second largest number in an integer array
+### 57. Handwriting a decorator to judge the time
 ```python
 import datetime
 
@@ -1189,7 +915,7 @@ def timecheck(func):
         if datetime.datetime.now().year == 2019:
             func(*args, **kwargs)
         else:
-            raise TimeException("函数已过时")
+            raise TimeException("Function is outdated")
 
     return wrapper
 
@@ -1202,101 +928,101 @@ def test(name):
 if __name__ == "__main__":
     test("backbp")
 ```
-### 58.使用Python内置的filter()方法来过滤？
+### 58. Use Python's built-in filter() method to filter?
 ```python
-list(filter(lambda x: x % 2 == 0, range(10)))
+list(filter(lambda x: x% 2 == 0, range(10)))
 ```
-### 59.编写函数的4个原则
+### 59. 4 principles for writing functions
 
-1.函数设计要尽量短小
+1. The function design should be as short as possible
 
-2.函数声明要做到合理、简单、易于使用
+2. The function declaration should be reasonable, simple and easy to use
 
-3.函数参数设计应该考虑向下兼容
+3. The function parameter design should consider backward compatibility
 
-4.一个函数只做一件事情，尽量保证函数语句粒度的一致性
+4. A function does only one thing, try to ensure the consistency of the function statement granularity
 
-### 60.函数调用参数的传递方式是值传递还是引用传递？
+### 60. Is the method of passing function call parameters by value or by reference?
 
-Python的参数传递有：位置参数、默认参数、可变参数、关键字参数。
+Python's parameter transfer includes: positional parameters, default parameters, variable parameters, and keyword parameters.
 
-函数的传值到底是值传递还是引用传递、要分情况：
+Whether the value of a function is passed by value or by reference depends on the situation:
 
-不可变参数用值传递：像整数和字符串这样的不可变对象，是通过拷贝进行传递的，因为你无论如何都不可能在原处改变不可变对象。
+Immutable parameters are passed by value: Immutable objects like integers and strings are passed by copy, because you can't change the immutable object in place anyway.
 
-可变参数是引用传递：比如像列表，字典这样的对象是通过引用传递、和C语言里面的用指针传递数组很相似，可变对象能在函数内部改变。
+Variable parameters are passed by reference: For example, objects such as lists and dictionaries are passed by reference, which is very similar to passing arrays by pointers in the C language. Variable objects can be changed inside functions.
 
-### 61.如何在function里面设置一个全局变量
+### 61. How to set a global variable in function
 
 ```python
-globals() # 返回包含当前作用余全局变量的字典。
-global 变量 设置使用全局变量
+globals() # Return a dictionary containing the current remaining global variables.
+global variables set to use global variables
 ```
 
-### 62.对缺省参数的理解 ？
+### 62. Understanding of the default parameters?
 
-缺省参数指在调用函数的时候没有传入参数的情况下，调用默认的参数，在调用函数的同时赋值时，所传入的参数会替代默认参数。
+Default parameters refer to the default parameters that are called when no parameters are passed in when the function is called. When assigning values ​​while calling the function, the passed parameters will replace the default parameters.
 
-*args是不定长参数，它可以表示输入参数是不确定的，可以是任意多个。
+*args is an indefinite length parameter, it can indicate that the input parameter is uncertain and can be any number.
 
-**kwargs是关键字参数，赋值的时候是以键值对的方式，参数可以是任意多对在定义函数的时候
+**kwargs are keyword parameters, when assigning values ​​are in the form of key-value pairs, the parameters can be any number of pairs when defining the function
 
-不确定会有多少参数会传入时，就可以使用两个参数
+When you are not sure how many parameters will be passed in, you can use two parameters
 
-### 63.Mysql怎么限制IP访问？
+### 63. How does Mysql restrict IP access?
 
 
 
-### 64.带参数的装饰器?
+### 64. Decorator with parameters?
 
-带定长参数的装饰器
+Decorator with fixed length parameters
 
 ```python
 def new_func(func):
     def wrappedfun(username, passwd):
-        if username == 'root' and passwd == '123456789':
-            print('通过认证')
-            print('开始执行附加功能')
+        if username =='root' and passwd == '123456789':
+            print('Certified')
+            print('Start to perform additional functions')
             return func()
-       	else:
-            print('用户名或密码错误')
+       else:
+            print('User name or password is wrong')
             return
     return wrappedfun
 
 @new_func
 def origin():
-    print('开始执行函数')
+    print('Start executing function')
 origin('root','123456789')
 ```
 
-带不定长参数的装饰器
+Decorator with variable length parameters
 
 ```python
 def new_func(func):
     def wrappedfun(*parts):
         if parts:
             counts = len(parts)
-            print('本系统包含 ', end='')
+            print('This system contains', end='')
             for part in parts:
-                print(part, ' ',end='')
-            print('等', counts, '部分')
+                print(part, '',end='')
+            print('wait', counts,'partial')
             return func()
         else:
-            print('用户名或密码错误')
+            print('User name or password is wrong')
             return func()
    return wrappedfun
 
 ```
 
-### 65.为什么函数名字可以当做参数用?
+### 65. Why can function names be used as parameters?
 
-Python中一切皆对象，函数名是函数在内存中的空间，也是一个对象
+Everything in Python is an object, and the function name is the space of the function in memory, and it is also an object
 
-### 66.Python中pass语句的作用是什么？
+### 66. What is the function of the pass statement in Python?
 
-在编写代码时只写框架思路，具体实现还未编写就可以用pass进行占位，是程序不报错，不会进行任何操作。
+When writing the code, only the framework ideas are written, and the pass can be used to occupy the position before the specific implementation is written. The program will not report errors and will not perform any operations.
 
-### 67.有这样一段代码，print c会输出什么，为什么？
+### 67. With such a piece of code, what will print c output and why?
 
 ```python
 a = 10
@@ -1305,11 +1031,11 @@ c = [a]
 a = 15
 ```
 
-答：10对于字符串，数字，传递是相应的值
+Answer: 10 is the corresponding value for strings and numbers.
 
 
 
-### 68.交换两个变量的值？
+### 68. Exchange the values ​​of two variables?
 
 ```python
 a, b = b, a
@@ -1317,66 +1043,66 @@ a, b = b, a
 
 
 
-### 69.map函数和reduce函数？
+### 69. Map function and reduce function?
 
 ```python
-map(lambda x: x * x, [1, 2, 3, 4])   # 使用 lambda
+map(lambda x: x * x, [1, 2, 3, 4]) # use lambda
 # [1, 4, 9, 16]
-reduce(lambda x, y: x * y, [1, 2, 3, 4])  # 相当于 ((1 * 2) * 3) * 4
-# 24
+reduce(lambda x, y: x * y, [1, 2, 3, 4]) # equivalent to ((1 * 2) * 3) * 4
+# twenty four
 ```
 
 
 
-### 70.回调函数，如何通信的?
+### 70. Callback function, how to communicate?
 
-回调函数是把函数的指针(地址)作为参数传递给另一个函数，将整个函数当作一个对象，赋值给调用的函数。
+The callback function is to pass the pointer (address) of the function as a parameter to another function, treat the whole function as an object, and assign the value to the called function.
 
-### 71.Python主要的内置数据类型都有哪些？ print dir( ‘a ’) 的输出？
+### 71. What are the main built-in data types of Python? The output of print dir( ‘a ’)?
 
-内建类型：布尔类型，数字，字符串，列表，元组，字典，集合
+Built-in types: Boolean types, numbers, strings, lists, tuples, dictionaries, sets
 
-输出字符串'a'的内建方法
+Built-in method to output the string'a'
 
-### 72.map(lambda x:xx，[y for y in range(3)])的输出？
+### 72.map(lambda x:xx, [y for y in range(3)]) output?
 
 ```
 [0, 1, 4]
 ```
 
-### 73.hasattr() getattr() setattr() 函数使用详解？
+### 73.hasattr() getattr() setattr() How to use the function?
 
-hasattr(object,name)函数:
+hasattr(object,name) function:
 
-判断一个对象里面是否有name属性或者name方法，返回bool值，有name属性（方法）返回True，否则返回False。
+Judge whether there is a name attribute or a name method in an object, return bool value, return True if there is a name attribute (method), otherwise return False.
 
 ```python
 class function_demo(object):
-    name = 'demo'
+    name ='demo'
     def run(self):
         return "hello function"
 functiondemo = function_demo()
-res = hasattr(functiondemo, "name") # 判断对象是否有name属性，True
-res = hasattr(functiondemo, "run") # 判断对象是否有run方法，True
-res = hasattr(functiondemo, "age") # 判断对象是否有age属性，False
+res = hasattr(functiondemo, "name") # Determine whether the object has a name attribute, True
+res = hasattr(functiondemo, "run") # Determine whether the object has a run method, True
+res = hasattr(functiondemo, "age") # Determine whether the object has age attribute, False
 print(res)
 ```
 
-getattr(object, name[,default])函数：
+getattr(object, name[,default]) function:
 
-获取对象object的属性或者方法，如果存在则打印出来，如果不存在，打印默认值，默认值可选。注意：如果返回的是对象的方法，则打印结果是：方法的内存地址，如果需要运行这个方法，可以在后面添加括号().
+Get the properties or methods of the object, if it exists, print it out, if it does not exist, print the default value, the default value is optional. Note: If the method returned is an object, the print result is: the memory address of the method. If you need to run this method, you can add parentheses ().
 
 ```python
 functiondemo = function_demo()
-getattr(functiondemo, "name")# 获取name属性，存在就打印出来 --- demo
-getattr(functiondemo, "run") # 获取run 方法，存在打印出方法的内存地址
-getattr(functiondemo, "age") # 获取不存在的属性，报错
-getattr(functiondemo, "age", 18)# 获取不存在的属性，返回一个默认值
+getattr(functiondemo, "name")# Get the name attribute, print it out if it exists --- demo
+getattr(functiondemo, "run") # Get the run method, there is the memory address of the print method
+getattr(functiondemo, "age") # Get non-existent attributes, report an error
+getattr(functiondemo, "age", 18)# Get a non-existent attribute and return a default value
 ```
 
-setattr(object, name, values)函数：
+setattr(object, name, values) function:
 
-给对象的属性赋值，若属性不存在，先创建再赋值
+Assign values ​​to the properties of the object. If the properties do not exist, create them first and then assign
 
 ```python
 class function_demo(object):
@@ -1384,13 +1110,13 @@ class function_demo(object):
     def run(self):
         return "hello function"
 functiondemo = function_demo()
-res = hasattr(functiondemo, "age") # 判断age属性是否存在，False
+res = hasattr(functiondemo, "age") # Determine whether the age attribute exists, False
 print(res)
-setattr(functiondemo, "age", 18) # 对age属性进行赋值，无返回值
-res1 = hasattr(functiondemo, "age") # 再次判断属性是否存在，True
+setattr(functiondemo, "age", 18) # Assign a value to the age attribute, no return value
+res1 = hasattr(functiondemo, "age") # Determine whether the attribute exists again, True
 ```
 
-综合使用
+Comprehensive use
 
 ```python
 class function_demo(object):
@@ -1398,57 +1124,57 @@ class function_demo(object):
     def run(self):
         return "hello function"
 functiondemo = function_demo()
-res = hasattr(functiondemo, "addr") # 先判断是否存在
+res = hasattr(functiondemo, "addr") # first judge whether it exists
 if res:
     addr = getattr(functiondemo, "addr")
     print(addr)
 else:
-    addr = getattr(functiondemo, "addr", setattr(functiondemo, "addr", "北京首都"))
+    addr = getattr(functiondemo, "addr", setattr(functiondemo, "addr", "Beijing Capital"))
     print(addr)
 ```
 
 
 
-### 74.一句话解决阶乘函数？
+### 74. Solve the factorial function in one sentence?
 
 ```
-reduce(lambda x,y : x*y,range(1,n+1))
+reduce(lambda x,y: x*y,range(1,n+1))
 ```
 
 
 
-### 75.什么是lambda函数？ 有什么好处？
+### 75. What is a lambda function? what is the benefit?
 
-lambda 函数是一个可以接收任意多个参数(包括可选参数)并且返回单个表达式值的函数
+A lambda function is a function that can receive any number of parameters (including optional parameters) and return a single expression value
 
-1.lambda函数比较轻便，即用即仍，很适合需要完成一项功能，但是此功能只在此一处使用，连名字都很随意的情况下
+1. The lambda function is relatively light, even if it is used, it is very suitable for a function that needs to be completed, but this function is only used in this place, and even the name is very random
 
-2.匿名函数，一般用来给filter，map这样的函数式编程服务
+2. Anonymous functions, generally used to provide functional programming services such as filter and map
 
-3.作为回调函数，传递给某些应用，比如消息处理
+3. As a callback function, passed to some applications, such as message processing
 
-### 76.递归函数停止的条件？
+### 76. What are the conditions for stopping the recursive function?
 
-递归的终止条件一般定义在递归函数内部，在递归调用前要做一个条件判断，根据判断的结果选择是继续调用自身，还是return，，返回终止递归。
+The termination condition of recursion is generally defined in the recursive function. Before the recursive call, a conditional judgment must be made. According to the result of the judgment, choose whether to continue to call itself or return, and return to terminate the recursion.
 
-终止的条件：判断递归的次数是否达到某一限定值
+Termination condition: determine whether the number of recursion reaches a certain limit value
 
-2.判断运算的结果是否达到某个范围等，根据设计的目的来选择
+2. Determine whether the result of the calculation reaches a certain range, etc., and choose according to the design purpose
 
-### 77.下面这段代码的输出结果将是什么？请解释。
+### 77. What will be the output of the following code? please explain.
 
 ```python
 def multipliers():
     return [lambda x: i *x for i in range(4)]
-	print([m(2) for m in multipliers()])
+print([m(2) for m in multipliers()])
 
 ```
 
-上面代码的输出结果是[6,6,6,6]，不是我们想的[0,2,4,6]
+The output of the above code is [6,6,6,6], which is not what we thought [0,2,4,6]
 
-你如何修改上面的multipliers的定义产生想要的结果？
+How do you modify the definition of multipliers above to produce the desired result?
 
-上述问题产生的原因是python闭包的延迟绑定。这意味着内部函数被调用时，参数的值在闭包内进行查找。因此，当任何由multipliers()返回的函数被调用时,i的值将在附近的范围进行查找。那时，不管返回的函数是否被调用，for循环已经完成，i被赋予了最终的值3.
+The cause of the above problem is the delayed binding of python closures. This means that when the internal function is called, the value of the parameter is looked up in the closure. Therefore, when any function returned by multipliers() is called, the value of i will be looked up in the nearby range. At that time, regardless of whether the returned function is called or not, the for loop has been completed and i is assigned the final value of 3.
 
 ```python
 def multipliers():
@@ -1466,17 +1192,17 @@ def multipliers():
 
 
 
-### 78.什么是lambda函数？它有什么好处？写一个匿名函数求两个数的和
+### 78. What is a lambda function? What are its benefits? Write an anonymous function to find the sum of two numbers
 
-lambda函数是匿名函数，使用lambda函数能创建小型匿名函数，这种函数得名于省略了用def声明函数的标准步骤
+The lambda function is an anonymous function. The lambda function can be used to create a small anonymous function. This function is named after omitting the standard step of declaring a function with def
 
 
-##  设计模式
-### 79.对设计模式的理解，简述你了解的设计模式？
-设计模式是经过总结，优化的，对我们经常会碰到的一些编程问题的可重用解决方案。一个设计模式并不像一个类或一个库那样能够直接作用于我们的代码，反之，设计模式更为高级，它是一种必须在特定情形下实现的一种方法模板。
-常见的是工厂模式和单例模式
+##  Design Patterns
+### 79. Understanding of design patterns, briefly describe the design patterns you know?
+Design patterns are summarized, optimized, and reusable solutions to some programming problems we often encounter. A design pattern is not like a class or a library that can directly affect our code. On the contrary, a design pattern is more advanced. It is a method template that must be implemented in a specific situation.
+The common ones are factory mode and singleton mode
 
-### 80.请手写一个单例
+### 80. Please write a single case by hand
 ```python
 #python2
 class A(object):
@@ -1488,16 +1214,16 @@ class A(object):
         else:
             return cls.__instance
 ```
-### 81.单例模式的应用场景有那些？
-单例模式应用的场景一般发现在以下条件下：
-资源共享的情况下，避免由于资源操作时导致的性能或损耗等，如日志文件，应用配置。
-控制资源的情况下，方便资源之间的互相通信。如线程池等，1,网站的计数器 2,应用配置 3.多线程池 4数据库配置 数据库连接池 5.应用程序的日志应用...
-### 82.用一行代码生成[1,4,9,16,25,36,49,64,81,100]
+### 81. What are the application scenarios of singleton mode?
+The application scenario of the singleton mode is generally found under the following conditions:
+In the case of resource sharing, avoid performance or loss caused by resource operation, such as log files and application configuration.
+In the case of controlling resources, it is convenient to communicate between resources. Such as thread pool, 1, website counter 2, application configuration 3. Multi-thread pool 4 database configuration database connection pool 5. application log application...
+### 82. Generate [1,4,9,16,25,36,49,64,81,100] with one line of code
 ```python
 print([x*x for x in range(1, 11)])
 ```
-### 83.对装饰器的理解，并写出一个计时器记录方法执行性能的装饰器？
-装饰器本质上是一个callable object ，它可以让其他函数在不需要做任何代码变动的前提下增加额外功能，装饰器的返回值也是一个函数对象。
+### 83. Understanding of decorators, and write a decorator that records method execution performance by timer?
+The decorator is essentially a callable object, which allows other functions to add additional functions without any code changes. The return value of the decorator is also a function object.
 
 ```python
 import time
@@ -1517,64 +1243,64 @@ def timeit(func):
 def foo():
     print('in foo()'foo())
 ```
-### 84.解释以下什么是闭包？
-在函数内部再定义一个函数，并且这个函数用到了外边函数的变量，那么将这个函数以及用到的一些变量称之为闭包。
+### 84. Explain what is a closure?
+Define a function inside the function, and this function uses the variables of the outer function, then this function and some of the variables used are called closures.
 
-### 85.函数装饰器有什么作用？
-装饰器本质上是一个callable object，它可以在让其他函数在不需要做任何代码的变动的前提下增加额外的功能。装饰器的返回值也是一个函数的对象，它经常用于有切面需求的场景。比如：插入日志，性能测试，事务处理，缓存。权限的校验等场景，有了装饰器就可以抽离出大量的与函数功能本身无关的雷同代码并发并继续使用。
-详细参考：https://manjusaka.itscoder.com/2018/02/23/something-about-decorator/
+### 85. What is the function of the function decorator?
+The decorator is essentially a callable object, which can add additional functions to other functions without any code changes. The return value of the decorator is also an object of a function, which is often used in scenarios with aspect requirements. For example: insert log, performance test, transaction processing, cache. In scenarios such as permission verification, with decorators, a large number of similar codes that have nothing to do with the function itself can be extracted concurrently and continue to be used.
+Detailed reference: https://manjusaka.itscoder.com/2018/02/23/something-about-decorator/
 
-### 86.生成器，迭代器的区别？
-迭代器是遵循迭代协议的对象。用户可以使用 iter() 以从任何序列得到迭代器（如 list, tuple, dictionary, set 等）。另一个方法则是创建一个另一种形式的迭代器 —— generator 。要获取下一个元素，则使用成员函数 next()（Python 2）或函数 next() function （Python 3） 。当没有元素时，则引发 StopIteration 此例外。若要实现自己的迭代器，则只要实现 next()（Python 2）或 `__next__`()（ Python 3）
+### 86. The difference between generator and iterator?
+Iterators are objects that follow the iteration protocol. Users can use iter() to get an iterator from any sequence (such as list, tuple, dictionary, set, etc.). Another method is to create another form of iterator-generator. To get the next element, use the member function next() (Python 2) or the function next() function (Python 3). When there are no elements, the StopIteration exception is raised. To implement your own iterator, you only need to implement next() (Python 2) or `__next__`() (Python 3)
 
-生成器（Generator），只是在需要返回数据的时候使用yield语句。每次next()被调用时，生成器会返回它脱离的位置（它记忆语句最后一次执行的位置和所有的数据值）
+Generator (Generator), just use the yield statement when you need to return data. Every time next() is called, the generator will return the position it left from (it remembers the position of the last execution of the statement and all data values)
 
 
-区别： 生成器能做到迭代器能做的所有事，而且因为自动创建iter()和next()方法，生成器显得特别简洁，而且生成器也是高效的，使用生成器表达式取代列表解析可以同时节省内存。除了创建和保存程序状态的自动方法，当发生器终结时，还会自动抛出StopIteration异常。
+Difference: The generator can do everything that an iterator can do, and because the iter() and next() methods are automatically created, the generator is particularly concise, and the generator is also efficient. You can use generator expressions instead of list comprehensions. At the same time save memory. In addition to the automatic method of creating and saving the state of the program, when the generator terminates, a StopIteration exception is automatically thrown.
 
-官方介绍：https://docs.python.org/3/tutorial/classes.html#iterators
-### 87.X是什么类型?
-    X= (i for i in range(10))
-    X是 generator类型
-### 88.请用一行代码 实现将1-N 的整数列表以3为单位分组
+Official introduction: https://docs.python.org/3/tutorial/classes.html#iterators
+### 87. What type of X?
+    X = (i for i in range(10))
+    X is generator type
+### 88. Please use a line of code to group the list of 1-N integers by 3
 ```python
-N =100
+N = 100
 print ([[x for x in range(1,100)] [i:i+3] for i in range(0,100,3)])
 ```
-### 89.Python中yield的用法?
-yield就是保存当前程序执行状态。你用for循环的时候，每次取一个元素的时候就会计算一次。用yield的函数叫generator,和iterator一样，它的好处是不用一次计算所有元素，而是用一次算一次，可以节省很多空间，generator每次计算需要上一次计算结果，所以用yield,否则一return，上次计算结果就没了
-## 面向对象
-### 90.Python中的可变对象和不可变对象？
+### 89. The usage of yield in Python?
+Yield is to save the current program execution state. When you use a for loop, it will be calculated every time an element is taken. The function that uses yield is called generator. Like iterator, it has the advantage of not calculating all elements at once, but calculating once, which can save a lot of space. Each calculation of generator requires the previous calculation result, so use yield, otherwise a return , The last calculation result is gone
+## Object Oriented
+### 90. Mutable and immutable objects in Python?
 
-不可变对象，该对象所指向的内存中的值不能被改变。当改变某个变量时候，由于其所指的值不能被改变，相当于把原来的值复制一份后再改变，这会开辟一个新的地址，变量再指向这个新的地址。
+Immutable object, the value in the memory pointed to by the object cannot be changed. When a variable is changed, since the value it refers to cannot be changed, it is equivalent to copying the original value and then changing it. This will open up a new address, and the variable will point to this new address.
 
-可变对象，该对象所指向的内存中的值可以被改变。变量（准确的说是引用）改变后，实际上其所指的值直接发生改变，并没有发生复制行为，也没有开辟出新的地址，通俗点说就是原地改变。
+Mutable object, the value in the memory pointed to by the object can be changed. After the variable (referred to as a reference to be precise) is changed, in fact the value it refers to directly changes, no copying occurs, and no new address is opened up. In layman's terms, it is changed in situ.
 
-Pyhton中，数值类型(int 和float)，字符串str、元祖tuple都是不可变类型。而列表list、字典dict、集合set是可变类型
+In Pyhton, numeric types (int and float), string str, and tuple are all immutable types. And the list list, dictionary dict, set set are variable types
 
-### 91.Python的魔法方法
+### 91. The magic method of Python
 
-魔法方法就是可以给你的类增加魔力的特殊方法，如果你的对象实现（重载）了这些方法中的某一个，那么这个方法就会在特殊的情况下被Python所调用，你可以定义自己想要的行为，而这一切都是自动发生的，它们经常是两个下划线包围来命名的（比如`__init___`,`__len__`),Python的魔法方法是非常强大的所以了解其使用方法也变得尤为重要!
+Magic methods are special methods that can add magic to your class. If your object implements (overloads) one of these methods, then this method will be called by Python under special circumstances. You can define yourself The desired behavior, and all of this happens automatically. They are often named after two underscores (such as `__init___`,`__len__`). Python's magic method is very powerful, so understanding its usage also changes Particularly important!
 
-`__init__`构造器，当一个实例被创建的时候初始化的方法，但是它并不是实例化调用的第一个方法。
+The `__init__` constructor is a method that is initialized when an instance is created, but it is not the first method called by instantiation.
 
-`__new__`才是实例化对象调用的第一个方法，它只取下cls参数，并把其他参数传给`__init___`.
+`__new__` is the first method called by the instantiated object. It only takes the cls parameters and passes other parameters to `__init___`.
 
-`___new__`很少使用，但是也有它适合的场景，尤其是当类继承自一个像元祖或者字符串这样不经常改变的类型的时候。
+`___new__` is rarely used, but there are scenarios where it is suitable, especially when the class inherits from a type that does not change frequently, such as a primitive ancestor or a string.
 
-`__call__`让一个类的实例像函数一样被调用
+`__call__` makes an instance of a class be called like a function
 
-`__getitem__`定义获取容器中指定元素的行为，相当于self[key]
+`__getitem__` defines the behavior of obtaining the specified element in the container, which is equivalent to self[key]
 
-`__getattr__`定义当用户试图访问一个不存在属性的时候的行为。
+`__getattr__` defines the behavior when the user tries to access a non-existent attribute.
 
-`__setattr__`定义当一个属性被设置的时候的行为
+`__setattr__` defines the behavior when an attribute is set
 
-`__getattribute___`定义当一个属性被访问的时候的行为
+`__getattribute___` defines the behavior when an attribute is accessed
 
-### 92.面向对象中怎么实现只读属性?
+### 92. How to implement read-only properties in object-oriented?
 
-将对象私有化，通过共有方法提供一个读取数据的接口
+Privatize the object and provide an interface for reading data through a shared method
 
 ```python
 class person:
@@ -1587,7 +1313,7 @@ t = person(22)
 print(t.age())
 ```
 
-最好的方法
+The best way
 
 ```python
 class MyCls(object):
@@ -1599,154 +1325,154 @@ class MyCls(object):
    
 ```
 
-### 93.谈谈你对面向对象的理解？
+### 93. Talk about your understanding of object-oriented?
 
-面向对象是相当于面向过程而言的，面向过程语言是一种基于功能分析的，以算法为中心的程序设计方法，而面向对象是一种基于结构分析的，以数据为中心的程序设计思想。在面向对象语言中有一个很重要的东西，叫做类。面向对象有三大特性：封装、继承、多态。
+Object-oriented is equivalent to process-oriented. Process-oriented language is a programming method based on functional analysis and algorithm-centric, while object-oriented is a programming idea based on structural analysis and data-centric. . There is a very important thing in object-oriented languages, called classes. Object-oriented has three characteristics: encapsulation, inheritance, and polymorphism.
 
-## 正则表达式
-### 94.请写出一段代码用正则匹配出ip？
+## Regular expression
+### 94. Please write a piece of code to match the ip with a regular pattern?
 
-### 95.a = “abbbccc”，用正则匹配为abccc,不管有多少b，就出现一次？
-    思路：不管有多少个b替换成一个
+### 95.a = "abbbccc", use regular matching as abccc, no matter how many b, it will appear once?
+    Idea: No matter how many b is replaced with one
 
-    re.sub(r'b+', 'b', a)
-### 96.Python字符串查找和替换？
-    a、str.find()：正序字符串查找函数
-    函数原型：
-    str.find(substr [,pos_start [,pos_end ] ] )
-    返回str中第一次出现的substr的第一个字母的标号，如果str中没有substr则返回-1，也就是说从左边算起的第一次出现的substr的首字母标号。
+    re.sub(r'b+','b', a)
+### 96. Python string search and replacement?
+    a, str.find(): Positive sequence string search function
+    Function prototype:
+    str.find(substr [,pos_start [,pos_end]])
+    Returns the label of the first letter of the first occurrence of substr in str, or -1 if there is no substr in str, that is, the label of the first letter of the first occurrence of substr from the left.
 
-    参数说明：
-    str：代表原字符串
-    substr：代表要查找的字符串
-    pos_start：代表查找的开始位置，默认是从下标0开始查找
-    pos_end：代表查找的结束位置
+    Parameter Description:
+    str: represents the original string
+    substr: represents the string to be searched
+    pos_start: represents the starting position of the search, the default is to start the search from the subscript 0
+    pos_end: represents the end position of the search
 
-    例子：
+    example:
     'aabbcc.find('bb')' # 2
 
-    b、str.index()：正序字符串查找函数
-    index()函数类似于find()函数，在Python中也是在字符串中查找子串第一次出现的位置，跟find()不同的是，未找到则抛出异常。
+    b, str.index(): Positive sequence string search function
+    The index() function is similar to the find() function. In Python, the position of the first occurrence of the substring is also found in the string. Unlike find(), an exception is thrown if it is not found.
 
-    函数原型：
-    str.index(substr [, pos_start, [ pos_end ] ] )
+    Function prototype:
+    str.index(substr [, pos_start, [pos_end]])
 
-    参数说明：
-    str：代表原字符串
-    substr：代表要查找的字符串
-    pos_start：代表查找的开始位置，默认是从下标0开始查找
-    pos_end：代表查找的结束位置
+    Parameter Description:
+    str: represents the original string
+    substr: represents the string to be searched
+    pos_start: represents the starting position of the search, the default is to start the search from the subscript 0
+    pos_end: represents the end position of the search
 
-    例子：
-    'acdd l1 23'.index(' ') # 4
+    example:
+    'acdd l1 23'.index('') # 4
 
-    c、str.rfind()：倒序字符串查找函数
+    c, str.rfind(): reverse string search function
 
-    函数原型：
-    str.rfind( substr [, pos_start [,pos_ end ] ])
-    返回str中最后出现的substr的第一个字母的标号，如果str中没有substr则返回-1，也就是说从右边算起的第一次出现的substr的首字母标号。
+    Function prototype:
+    str.rfind( substr [, pos_start [,pos_ end] ])
+    Returns the label of the first letter of the last occurrence of substr in str, or -1 if there is no substr in str, that is, the label of the first letter of the first occurrence of substr from the right.
 
-    参数说明：
-    str：代表原字符串
-    substr：代表要查找的字符串
-    pos_start：代表查找的开始位置，默认是从下标0开始查找
-    pos_end：代表查找的结束位置
+    Parameter Description:
+    str: represents the original string
+    substr: represents the string to be searched
+    pos_start: represents the starting position of the search, the default is to start the search from the subscript 0
+    pos_end: represents the end position of the search
 
-    例子：
+    example:
     'adsfddf'.rfind('d') # 5
 
-    d、str.rindex()：倒序字符串查找函数
-    rindex()函数类似于rfind()函数，在Python中也是在字符串中倒序查找子串最后一次出现的位置，跟rfind()不同的是，未找到则抛出异常。
+    d, str.rindex(): reverse string search function
+    The rindex() function is similar to the rfind() function. In Python, the position of the last occurrence of the substring is searched in reverse order in the string. Unlike rfind(), an exception is thrown if it is not found.
 
-    函数原型：
-    str.rindex(substr [, pos_start, [ pos_end ] ] )
+    Function prototype:
+    str.rindex(substr [, pos_start, [pos_end]])
 
-    参数说明：
-    str：代表原字符串
-    substr：代表要查找的字符串
-    pos_start：代表查找的开始位置，默认是从下标0开始查找
-    pos_end：代表查找的结束位置
+    Parameter Description:
+    str: represents the original string
+    substr: represents the string to be searched
+    pos_start: represents the starting position of the search, the default is to start the search from the subscript 0
+    pos_end: represents the end position of the search
 
-    例子：
+    example:
      'adsfddf'.rindex('d') # 5
 
-    e、使用re模块进行查找和替换：
-函数 | 说明
+    e. Use the re module to find and replace:
+Function | Description
 ---|---
-re.match(pat, s) | 只从字符串s的头开始匹配，比如(‘123’, ‘12345’)匹配上了，而(‘123’,’01234’)就是没有匹配上，没有匹配上返回None，匹配上返回matchobject
-re.search(pat, s) | 从字符串s的任意位置都进行匹配，比如(‘123’,’01234’)就是匹配上了，只要s只能存在符合pat的连续字符串就算匹配上了，没有匹配上返回None，匹配上返回matchobject
-re.sub(pat,newpat,s) | re.sub(pat,newpat,s)	对字符串中s的包含的所有符合pat的连续字符串进行替换，如果newpat为str,那么就是替换为newpat,如果newpat是函数，那么就按照函数返回值替换。sub函数两个有默认值的参数分别是count表示最多只处理前几个匹配的字符串，默认为0表示全部处理；最后一个是flags，默认为0
+re.match(pat, s) | Match only from the beginning of the string s, such as ('123', '12345') matches, and ('123','01234') is no match, no match Return None on match, return matchobject on match
+re.search(pat, s) | Match from any position of the string s, such as ('123','01234') is a match, as long as s can only have a continuous string that matches pat, it will match , If there is no match, return None, if match, return matchobject
+re.sub(pat,newpat,s) | re.sub(pat,newpat,s) replaces all consecutive strings that conform to pat contained in s in the string, if newpat is str, then it is replaced with newpat, If newpat is a function, then replace it according to the return value of the function. The two parameters of the sub function with default values ​​are count, which means that only the first few matching strings will be processed at most, and the default is 0 for all processing; the last one is flags, which is 0 by default.
 
-    f、使用replace()进行替换：
-    基本用法：对象.replace(rgExp,replaceText,max)
+    f. Use replace() to replace:
+    Basic usage: object.replace(rgExp,replaceText,max)
 
-    其中，rgExp和replaceText是必须要有的，max是可选的参数，可以不加。
-    rgExp是指正则表达式模式或可用标志的正则表达式对象，也可以是 String 对象或文字；
-    replaceText是一个String 对象或字符串文字；
-    max是一个数字。
-    对于一个对象，在对象的每个rgExp都替换成replaceText，从左到右最多max次。
+    Among them, rgExp and replaceText are required, and max is an optional parameter, which can be omitted.
+    rgExp refers to a regular expression pattern or a regular expression object with available flags, and it can also be a String object or text;
+    replaceText is a String object or string text;
+    max is a number.
+    For an object, each rgExp in the object is replaced with replaceText, max times from left to right.
 
     s1='hello world'
     s1.replace('world','liming')
 
-### 97.用Python匹配HTML tag的时候，<.*> 和 <.*?> 有什么区别
-    第一个代表贪心匹配，第二个代表非贪心；
-    ?在一般正则表达式里的语法是指的"零次或一次匹配左边的字符或表达式"相当于{0,1}
-    而当?后缀于*,+,?,{n},{n,},{n,m}之后，则代表非贪心匹配模式，也就是说，尽可能少的匹配左边的字符或表达式，这里是尽可能少的匹配.(任意字符)
+### 97. When matching HTML tags with Python, what is the difference between <.*> and <.*?>
+    The first represents greedy matching, and the second represents non-greedy;
+    ? The grammar in the general regular expression means "zero or one match of the left character or expression" is equivalent to {0,1}
+    When the? Suffix is ​​after *,+,?,{n},{n,},{n,m}, it represents a non-greedy matching mode, that is to say, match the characters or expressions on the left as little as possible, Here are as few matches as possible. (any character)
 
-    所以：第一种写法是，尽可能多的匹配，就是匹配到的字符串尽量长，第二中写法是尽可能少的匹配，就是匹配到的字符串尽量短。
-    比如<tag>tag>tag>end，第一个会匹配<tag>tag>tag>,第二个会匹配<tag>。
-### 98.正则表达式贪婪与非贪婪模式的区别？
-    贪婪模式：
-    定义：正则表达式去匹配时，会尽量多的匹配符合条件的内容
-    标识符：+，?，*，{n}，{n,}，{n,m}
-    匹配时，如果遇到上述标识符，代表是贪婪匹配，会尽可能多的去匹配内容
+    So: The first way of writing is to match as much as possible, that is, the matched string is as long as possible, and the second way of writing is to match as few as possible, that is, the matched string is as short as possible.
+    For example, <tag>tag>tag>end, the first will match <tag>tag>tag>, and the second will match <tag>.
+### 98. What is the difference between regular expression greedy and non-greedy mode?
+    Greedy mode:
+    Definition: When using regular expressions to match, it will try to match as many content as possible
+    Identifier: +,?, *, {n}, {n,}, {n,m}
+    When matching, if the above identifier is encountered, it means that it is a greedy match, and it will match as much content as possible
 
-    非贪婪模式：
-    定义：正则表达式去匹配时，会尽量少的匹配符合条件的内容 也就是说，一旦发现匹配符合要求，立马就匹配成功，而不会继续匹配下去(除非有g，开启下一组匹配)
-    标识符：+?，??，*?，{n}?，{n,}?，{n,m}?
-    可以看到，非贪婪模式的标识符很有规律，就是贪婪模式的标识符后面加上一个?
+    Non-greedy mode:
+    Definition: When the regular expression is matched, it will match the content that meets the conditions as little as possible. That is, once the match is found to meet the requirements, the match will be successful immediately, and the match will not continue (unless there is g, open the next set of matching)
+    Identifier: +?,??, *?, {n}?, {n,}?, {n,m}?
+    As you can see, the identifier of non-greedy mode is very regular, that is, the identifier of greedy mode is followed by a?
 
-    参考文章：https://dailc.github.io/2017/07/06/regularExpressionGreedyAndLazy.html
+    Reference article: https://dailc.github.io/2017/07/06/regularExpressionGreedyAndLazy.html
 
-### 99.写出开头匹配字母和下划线，末尾是数字的正则表达式？
+### 99. Write a regular expression that matches letters and underscores at the beginning and numbers at the end?
     s1='_aai0efe00'
     res=re.findall('^[a-zA-Z_]?[a-zA-Z0-9_]{1,}\d$',s1)
     print(res)
 
-### 100.正则表达式操作
-### 101.请匹配出变量A 中的json字符串。
-### 102.怎么过滤评论中的表情？
-    思路：主要是匹配表情包的范围，将表情包的范围用空替换掉
+### 100. Regular expression operations
+### 101. Please match the json string in variable A.
+### 102. How to filter expressions in comments?
+    Idea: It is mainly to match the range of the emoticon package, and replace the range of the emoticon package with empty
 ```
 import re
 pattern = re.compile(u'[\uD800-\uDBFF][\uDC00-\uDFFF]')
 pattern.sub('',text)
 
 ```
-### 103.简述Python里面search和match的区别
-    match()函数只检测字符串开头位置是否匹配，匹配成功才会返回结果，否则返回None；
-    search()函数会在整个字符串内查找模式匹配,只到找到第一个匹配然后返回一个包含匹配信息的对象,该对象可以通过调用group()方法得到匹配的字符串,如果字符串没有匹配，则返回None。
+### 103. Briefly describe the difference between search and match in Python
+    The match() function only detects whether the beginning of the string matches, and returns the result if the match is successful, otherwise it returns None;
+    The search() function will search for a pattern match in the entire string, until the first match is found, and then return an object containing the matching information. The object can get the matched string by calling the group() method. If the string does not match , It returns None.
 
-### 104.请写出匹配ip的Python正则表达式
-### 105.Python里match与search的区别？
-    见103题
+### 104. Please write a Python regular expression that matches ip
+### 105. What is the difference between match and search in Python?
+    See question 103
 
-## 系统编程
-### 106.进程总结
-进程：程序运行在操作系统上的一个实例，就称之为进程。进程需要相应的系统资源：内存、时间片、pid。
-创建进程：
-首先要导入multiprocessing中的Process：
-创建一个Process对象;
-创建Process对象时，可以传递参数;
+## System Programming
+### 106. Process summary
+Process: An instance of a program running on an operating system is called a process. The process needs corresponding system resources: memory, time slice, pid.
+Create process:
+First, import the Process in multiprocessing:
+Create a Process object;
+When creating a Process object, you can pass parameters;
 ```python
 p = Process(target=XXX,args=(tuple,),kwargs={key:value})
-target = XXX 指定的任务函数，不用加(),
-args=(tuple,)kwargs={key:value}给任务函数传递的参数
+target = the task function specified by XXX, no need to add (),
+args=(tuple,)kwargs=(key:value) parameters passed to the task function
 ```
-使用start()启动进程
-结束进程
-给子进程指定函数传递参数Demo
+Use start() to start the process
+end process
+Pass parameter Demo to the specified function of the child process
 ```python
 import os
 from mulitprocessing import Process
@@ -1754,55 +1480,55 @@ import time
 
 def pro_func(name,age,**kwargs):
     for i in range(5):
-        print("子进程正在运行中，name=%s,age=%d,pid=%d"%(name,age,os.getpid()))
+        print("The child process is running, name=%s,age=%d,pid=%d"%(name,age,os.getpid()))
         print(kwargs)
         time.sleep(0.2)
-if __name__ =="__main__":
-    #创建Process对象
+if __name__ == "__main__":
+    #Create Process Object
     p = Process(target=pro_func,args=('小明',18),kwargs={'m':20})
-    #启动进程
+    #Start process
     p.start()
     time.sleep(1)
-    #1秒钟之后，立刻结束子进程
+    #1 second later, immediately end the child process
     p.terminate()
     p.join()
 ```
-注意：进程间不共享全局变量
+Note: global variables are not shared between processes
 
-进程之间的通信-Queue
+Communication between processes-Queue
 
-在初始化Queue()对象时（例如q=Queue(),若在括号中没有指定最大可接受的消息数量，获数量为负值时，那么就代表可接受的消息数量没有上限一直到内存尽头）
+When initializing the Queue() object (for example, q=Queue(), if the maximum acceptable number of messages is not specified in the parentheses, and the obtained number is negative, it means that the number of acceptable messages has no upper limit until the end of the memory)
 
-Queue.qsize():返回当前队列包含的消息数量
+Queue.qsize(): returns the number of messages contained in the current queue
 
-Queue.empty():如果队列为空，返回True，反之False
+Queue.empty(): If the queue is empty, return True, otherwise False
 
-Queue.full():如果队列满了，返回True,反之False
+Queue.full(): If the queue is full, return True, otherwise False
 
-Queue.get([block[,timeout]]):获取队列中的一条消息，然后将其从队列中移除，
+Queue.get([block[,timeout]]): Get a message in the queue, and then remove it from the queue,
 
-block默认值为True。
+The default value of block is True.
 
-如果block使用默认值，且没有设置timeout（单位秒),消息队列如果为空，此时程序将被阻塞（停在读中状态），直到消息队列读到消息为止，如果设置了timeout，则会等待timeout秒，若还没读取到任何消息，则抛出“Queue.Empty"异常：
+If the block uses the default value and no timeout (in seconds) is set, if the message queue is empty, the program will be blocked (stopped in the state of reading) until the message queue has read the message. If the timeout is set, it will wait timeout seconds, if no message has been read yet, the "Queue.Empty" exception will be thrown:
 
-Queue.get_nowait()相当于Queue.get(False)
+Queue.get_nowait() is equivalent to Queue.get(False)
 
-Queue.put(item,[block[,timeout]]):将item消息写入队列，block默认值为True;
-如果block使用默认值，且没有设置timeout（单位秒），消息队列如果已经没有空间可写入，此时程序将被阻塞（停在写入状态），直到从消息队列腾出空间为止，如果设置了timeout，则会等待timeout秒，若还没空间，则抛出”Queue.Full"异常
-如果block值为False，消息队列如果没有空间可写入，则会立刻抛出"Queue.Full"异常;
-Queue.put_nowait(item):相当Queue.put(item,False)
+Queue.put(item,[block[,timeout]]): write the item message to the queue, the default value of block is True;
+If the block uses the default value and the timeout (in seconds) is not set, if the message queue has no space to write, the program will be blocked (stopped in the writing state) until space is free from the message queue. If set If timeout is reached, it will wait for timeout seconds, if there is still no space, it will throw "Queue.Full" exception
+If the block value is False, if the message queue has no space to write, it will immediately throw a "Queue.Full" exception;
+Queue.put_nowait(item): equivalent to Queue.put(item, False)
 
-进程间通信Demo:
+Demo of inter-process communication:
 ```python
 from multiprocessing import Process.Queue
 import os,time,random
-#写数据进程执行的代码：
+#Write the code executed by the data process:
 def write(q):
     for value in ['A','B','C']:
         print("Put %s to queue...",%value)
         q.put(value)
         time.sleep(random.random())
-#读数据进程执行的代码
+#Read the code executed by the data process
 def read(q):
     while True:
         if not q.empty():
@@ -1812,22 +1538,22 @@ def read(q):
         else:
             break
 if __name__=='__main__':
-    #父进程创建Queue，并传给各个子进程
+    #The parent process creates a Queue and passes it to each child process
     q = Queue()
     pw = Process(target=write,args=(q,))
     pr = Process(target=read,args=(q,))
-    #启动子进程pw ，写入：
+    #Start the child process pw, write:
     pw.start()
-    #等待pw结束
+    #Wait for pw to end
     pw.join()
-    #启动子进程pr，读取：
+    #Start the child process pr, read:
     pr.start()
     pr.join()
-    #pr 进程里是死循环，无法等待其结束，只能强行终止:
+    #pr There is an endless loop in the process, you cannot wait for its end, you can only terminate it forcefully:
     print('')
-    print('所有数据都写入并且读完')
+    print('All data are written and read')
 ```
-    进程池Pool
+    Process Pool Pool
 ```python
 #coding:utf-8
 from multiprocessing import Pool
@@ -1835,13 +1561,13 @@ import os,time,random
 
 def worker(msg):
     t_start = time.time()
-    print("%s 开始执行，进程号为%d"%(msg,os.getpid()))
-    # random.random()随机生成0-1之间的浮点数
+    print("%s starts to execute, the process number is %d"%(msg,os.getpid()))
+    # random.random() Randomly generate floating-point numbers between 0-1
     time.sleep(random.random()*2)
     t_stop = time.time()
-    print(msg,"执行完毕，耗时%0.2f”%（t_stop-t_start))
+    print(msg,"Execution completed, time-consuming %0.2f"%(t_stop-t_start))
 
-po = Pool(3)#定义一个进程池，最大进程数3
+po = Pool(3)#Define a process pool, the maximum number of processes is 3
 for i in range(0,10):
     po.apply_async(worker,(i,))
 print("---start----")
@@ -1849,26 +1575,26 @@ po.close()
 po.join()
 print("----end----")
 ```
-进程池中使用Queue
+Use Queue in the process pool
 
-如果要使用Pool创建进程，就需要使用multiprocessing.Manager()中的Queue(),而不是multiprocessing.Queue(),否则会得到如下的错误信息：
+If you want to use Pool to create a process, you need to use Queue() in multiprocessing.Manager() instead of multiprocessing.Queue(), otherwise you will get the following error message:
 
-RuntimeError： Queue objects should only be shared between processs through inheritance
+RuntimeError: Queue objects should only be shared between processs through inheritance
 ```python
 from multiprocessing import Manager,Pool
 import os,time,random
 def reader(q):
-    print("reader 启动(%s),父进程为（%s)"%(os.getpid(),os.getpid()))
+    print("reader start (%s), parent process is (%s)"%(os.getpid(),os.getpid()))
     for i in range(q.qsize()):
-        print("reader 从Queue获取到消息:%s"%q.get(True))
+        print("reader gets the message from Queue:%s"%q.get(True))
 
 def writer(q):
-    print("writer 启动（%s),父进程为(%s)"%(os.getpid(),os.getpid()))
+    print("writer started (%s), parent process is (%s)"%(os.getpid(),os.getpid()))
     for i ini "itcast":
         q.put(i)
 if __name__ == "__main__":
     print("(%s)start"%os.getpid())
-    q = Manager().Queue()#使用Manager中的Queue
+    q = Manager().Queue()#Use Queue in Manager
     po = Pool()
     po.apply_async(wrtier,(q,))
     time.sleep(1)
@@ -1877,28 +1603,28 @@ if __name__ == "__main__":
     po.join()
     print("(%s)End"%os.getpid())
 ```
-### 107.谈谈你对多进程，多线程，以及协程的理解，项目是否用？
-这个问题被问的概念相当之大，
-进程：一个运行的程序（代码）就是一个进程，没有运行的代码叫程序，进程是系统资源分配的最小单位，进程拥有自己独立的内存空间，所有进程间数据不共享，开销大。
+### 107. Talk about your understanding of multi-processes, multi-threads, and coroutines. Does the project use it?
+The concept of this question being asked is quite big,
+Process: A running program (code) is a process, and the code that is not running is called a program. The process is the smallest unit of system resource allocation. The process has its own independent memory space. All the data is not shared between processes, and the overhead is high.
 
-线程: cpu调度执行的最小单位，也叫执行路径，不能独立存在，依赖进程存在，一个进程至少有一个线程，叫主线程，而多个线程共享内存（数据共享，共享全局变量),从而极大地提高了程序的运行效率。
+Thread: The smallest unit of CPU scheduling execution, also called execution path, cannot exist independently, depends on the existence of the process, a process has at least one thread, called the main thread, and multiple threads share memory (data sharing, shared global variables), thus extremely The operation efficiency of the program is greatly improved.
 
-协程: 是一种用户态的轻量级线程，协程的调度完全由用户控制。协程拥有自己的寄存器上下文和栈。协程调度时，将寄存器上下文和栈保存到其他地方，在切回来的时候，恢复先前保存的寄存器上下文和栈，直接操中栈则基本没有内核切换的开销，可以不加锁的访问全局变量，所以上下文的切换非常快。
+Coroutine: It is a lightweight thread in user mode, and the scheduling of the coroutine is completely controlled by the user. The coroutine has its own register context and stack. When the coroutine is scheduled, save the register context and stack to other places. When switching back, restore the previously saved register context and stack. Directly operating the stack will basically have no kernel switching overhead, and you can access global variables without locking. , So the context switching is very fast.
 
-### 108.Python异步使用场景有那些？
-异步的使用场景:
+### 108. What are the asynchronous usage scenarios of Python?
+Asynchronous usage scenarios:
 
-1、 不涉及共享资源，获对共享资源只读，即非互斥操作
+1. No shared resources are involved, and shared resources are read-only, that is, non-mutually exclusive operations
 
-2、 没有时序上的严格关系
+2. There is no strict relationship in timing
 
-3、 不需要原子操作，或可以通过其他方式控制原子性
+3. No atomic operation is required, or atomicity can be controlled by other means
 
-4、 常用于IO操作等耗时操作，因为比较影响客户体验和使用性能
+4. It is often used for time-consuming operations such as IO operations, because it affects customer experience and performance
 
-5、 不影响主线程逻辑
+5. Does not affect the logic of the main thread
 
-### 109.多线程共同操作同一个数据互斥锁同步？
+### 109. Multi-threads work together to synchronize the same data mutex?
 ```python
 import threading
 import time
@@ -1909,7 +1635,7 @@ class MyThread(threading.Thread):
     
         if mutex.acquire(1):
             num +=1
-            msg = self.name + 'set num to ' +str(num)
+            msg = self.name +'set num to '+str(num)
             print msg
             mutex.release()
 num = 0
@@ -1921,320 +1647,320 @@ def test():
 if __name__=="__main__":
     test()
 ```
-### 110.什么是多线程竞争？
-线程是非独立的，同一个进程里线程是数据共享的，当各个线程访问数据资源时会出现竞争状态即：数据几乎同步会被多个线程占用，造成数据混乱，即所谓的线程不安全
+### 110. What is multi-threaded competition?
+Threads are not independent. Threads in the same process share data. When each thread accesses data resources, there will be a state of competition, that is: data is almost synchronized and will be occupied by multiple threads, causing data confusion, which is the so-called thread insecurity.
 
-那么怎么解决多线程竞争问题？---锁
+So how to solve the multi-threaded competition problem? ---lock
 
-锁的好处： 确保了某段关键代码（共享数据资源）只能由一个线程从头到尾完整地执行能解决多线程资源竞争下的原子操作问题。
+The benefits of locks: Ensure that a certain piece of critical code (shared data resources) can only be executed completely by one thread from beginning to end, which can solve the problem of atomic operations under multi-threaded resource competition.
 
-锁的坏处： 阻止了多线程并发执行，包含锁的某段代码实际上只能以单线程模式执行，效率就大大地下降了
+Disadvantages of locks: Prevents concurrent execution of multiple threads. In fact, a certain piece of code containing locks can only be executed in single-threaded mode, and the efficiency is greatly reduced.
 
-锁的致命问题: 死锁
-### 111.请介绍一下Python的线程同步？
- 一、 setDaemon(False)
-当一个进程启动之后，会默认产生一个主线程，因为线程是程序执行的最小单位，当设置多线程时，主线程会创建多个子线程，在Python中，默认情况下就是setDaemon(False),主线程执行完自己的任务以后，就退出了，此时子线程会继续执行自己的任务，直到自己的任务结束。
+The fatal problem of locks: deadlocks
+### 111. Please tell me about thread synchronization in Python?
+ One, setDaemon(False)
+When a process is started, a main thread will be generated by default, because the thread is the smallest unit of program execution. When multi-threading is set, the main thread will create multiple child threads. In Python, the default is setDaemon(False), the main After the thread finishes its task, it exits. At this time, the child thread will continue to perform its task until the end of its task.
 
-例子
-```python
-import threading 
-import time
-
-def thread():
-    time.sleep(2)
-    print('---子线程结束---')
-
-def main():
-    t1 = threading.Thread(target=thread)
-    t1.start()
-    print('---主线程--结束')
-
-if __name__ =='__main__':
-    main()
-#执行结果
----主线程--结束
----子线程结束---
-```
-二、 setDaemon（True)
-当我们使用setDaemon(True)时，这是子线程为守护线程，主线程一旦执行结束，则全部子线程被强制终止
-
-例子
-```python
-import threading
-import time
-def thread():
-    time.sleep(2)
-    print(’---子线程结束---')
-def main():
-    t1 = threading.Thread(target=thread)
-    t1.setDaemon(True)#设置子线程守护主线程
-    t1.start()
-    print('---主线程结束---')
-
-if __name__ =='__main__':
-    main()
-#执行结果
----主线程结束--- #只有主线程结束，子线程来不及执行就被强制结束
-```
-三、 join（线程同步)
-join 所完成的工作就是线程同步，即主线程任务结束以后，进入堵塞状态，一直等待所有的子线程结束以后，主线程再终止。
-
-当设置守护线程时，含义是主线程对于子线程等待timeout的时间将会杀死该子线程，最后退出程序，所以说，如果有10个子线程，全部的等待时间就是每个timeout的累加和，简单的来说，就是给每个子线程一个timeou的时间，让他去执行，时间一到，不管任务有没有完成，直接杀死。
-
-没有设置守护线程时，主线程将会等待timeout的累加和这样的一段时间，时间一到，主线程结束，但是并没有杀死子线程，子线程依然可以继续执行，直到子线程全部结束，程序退出。
-
-例子
+example
 ```python
 import threading
 import time
 
 def thread():
     time.sleep(2)
-    print('---子线程结束---')
+    print('---End of child thread---')
+
+def main():
+    t1 = threading.Thread(target=thread)
+    t1.start()
+    print('---Main thread--End')
+
+if __name__ =='__main__':
+    main()
+#Results of the
+---Main thread--End
+---End of child thread---
+```
+Two, setDaemon (True)
+When we use setDaemon(True), this is the child thread as a daemon thread. Once the main thread is executed, all child threads are forcibly terminated
+
+example
+```python
+import threading
+import time
+def thread():
+    time.sleep(2)
+    print(’---End of child thread---')
+def main():
+    t1 = threading.Thread(target=thread)
+    t1.setDaemon(True)#Set the child thread to guard the main thread
+    t1.start()
+    print('---End of main thread---')
+
+if __name__ =='__main__':
+    main()
+#Results of the
+---The main thread ends--- #Only the main thread ends, and the child threads are forced to end before execution
+```
+Three, join (thread synchronization)
+The work done by join is thread synchronization, that is, after the task of the main thread ends, it enters a blocked state, and waits for the end of all child threads before the main thread terminates.
+
+When setting the daemon thread, the meaning is that the main thread will kill the child thread for the timeout timeout of the child thread, and finally exit the program, so if there are 10 child threads, the total waiting time is the cumulative sum of each timeout, Simply put, it is to give each child thread a timeou time and let him execute it. When the time is up, no matter whether the task is completed or not, it will be killed directly.
+
+When the daemon thread is not set, the main thread will wait for the accumulation of timeout and such a period of time. Once the time is up, the main thread ends, but the child threads are not killed, and the child threads can continue to execute until the child threads are all finished. drop out.
+
+example
+```python
+import threading
+import time
+
+def thread():
+    time.sleep(2)
+    print('---End of child thread---')
 
 def main():
     t1 = threading.Thread(target=thread)
     t1.setDaemon(True)
     t1.start()
-    t1.join(timeout=1)#1 线程同步，主线程堵塞1s 然后主线程结束，子线程继续执行
-                        #2 如果不设置timeout参数就等子线程结束主线程再结束
-                        #3 如果设置了setDaemon=True和timeout=1主线程等待1s后会强制杀死子线程，然后主线程结束
-    print('---主线程结束---')
+    t1.join(timeout=1)#1 Thread synchronization, the main thread is blocked for 1s, then the main thread ends, and the child threads continue to execute
+                        #2 If you don't set the timeout parameter, wait until the child thread ends and the main thread ends
+                        #3 If setDaemon=True and timeout=1 are set, the main thread will forcibly kill the child thread after waiting for 1s, and then the main thread ends
+    print('---End of main thread---')
 
 if __name__=='__main___':
     main()
 ```
-### 112.解释以下什么是锁，有哪几种锁？
-锁(Lock)是python提供的对线程控制的对象。有互斥锁，可重入锁，死锁。
+### 112. Explain what is a lock, and what kinds of locks are there?
+Lock (Lock) is an object for thread control provided by python. There are mutex locks, reentrant locks, and deadlocks.
 
-### 113.什么是死锁？
-若干子线程在系统资源竞争时，都在等待对方对某部分资源解除占用状态，结果是谁也不愿先解锁，互相干等着，程序无法执行下去，这就是死锁。
+### 113. What is a deadlock?
+When several sub-threads compete for system resources, they are all waiting for the other party to release some resources. As a result, no one wants to unlock first, waiting for each other, and the program cannot be executed. This is a deadlock.
 
-GIL锁 全局解释器锁
+GIL lock global interpreter lock
 
-作用： 限制多线程同时执行，保证同一时间只有一个线程执行，所以cython里的多线程其实是伪多线程！
+Function: Limit the simultaneous execution of multiple threads to ensure that only one thread executes at the same time, so multithreading in cython is actually pseudo multithreading!
 
-所以python里常常使用协程技术来代替多线程，协程是一种更轻量级的线程。
+So Python often uses coroutine technology to replace multithreading, and coroutine is a more lightweight thread.
 
-进程和线程的切换时由系统决定，而协程由我们程序员自己决定，而模块gevent下切换是遇到了耗时操作时才会切换
+The process and thread switching is determined by the system, and the coroutine is determined by our programmers, and the switch under the module gevent is switched only when it encounters a time-consuming operation.
 
-三者的关系：进程里有线程，线程里有协程。
-### 114.多线程交互访问数据，如果访问到了就不访问了？
-怎么避免重读？
+The relationship between the three: there are threads in the process, and there are coroutines in the threads.
+### 114. Multi-threaded interactive access to data, if it is accessed, it will not be accessed?
+How to avoid rereading?
 
-创建一个已访问数据列表，用于存储已经访问过的数据，并加上互斥锁，在多线程访问数据的时候先查看数据是否在已访问的列表中，若已存在就直接跳过。
+Create a visited data list to store the data that has been visited, and add a mutex lock. When multithreading accesses the data, first check whether the data is in the visited list, and skip it if it already exists.
 
-### 115.什么是线程安全，什么是互斥锁？
-每个对象都对应于一个可称为’互斥锁‘的标记，这个标记用来保证在任一时刻，只能有一个线程访问该对象。
+### 115. What is thread safety and what is a mutex?
+Each object corresponds to a tag that can be called a "mutual exclusion lock". This tag is used to ensure that at any one time, only one thread can access the object.
 
-同一进程中的多线程之间是共享系统资源的，多个线程同时对一个对象进行操作，一个线程操作尚未结束，另一线程已经对其进行操作，导致最终结果出现错误，此时需要对被操作对象添加互斥锁，保证每个线程对该对象的操作都得到正确的结果。
+System resources are shared among multiple threads in the same process. Multiple threads operate on an object at the same time. One thread has not yet finished the operation, and another thread has already operated on it, resulting in an error in the final result. The operation object adds a mutex lock to ensure that each thread's operation on the object obtains the correct result.
 
-### 116.说说下面几个概念：同步，异步，阻塞，非阻塞？
-同步： 多个任务之间有先后顺序执行，一个执行完下个才能执行。
+### 116. Tell me about the following concepts: synchronous, asynchronous, blocking, non-blocking?
+Synchronization: Multiple tasks are executed in sequence, and the next can be executed after one is executed.
 
-异步： 多个任务之间没有先后顺序，可以同时执行，有时候一个任务可能要在必要的时候获取另一个同时执行的任务的结果，这个就叫回调！
+Asynchronous: There is no sequence between multiple tasks and can be executed at the same time. Sometimes a task may need to obtain the result of another task executed at the same time when necessary. This is called a callback!
 
-阻塞： 如果卡住了调用者，调用者不能继续往下执行，就是说调用者阻塞了。
+Blocking: If the caller is stuck, the caller cannot continue to execute, that is, the caller is blocked.
 
-非阻塞： 如果不会卡住，可以继续执行，就是说非阻塞的。
+Non-blocking: If you don't get stuck, you can continue execution, that is, non-blocking.
 
-同步异步相对于多任务而言，阻塞非阻塞相对于代码执行而言。
+Synchronous and asynchronous are relative to multitasking, and blocking and non-blocking are relative to code execution.
 
-### 117.什么是僵尸进程和孤儿进程？怎么避免僵尸进程？
-孤儿进程： 父进程退出，子进程还在运行的这些子进程都是孤儿进程，孤儿进程将被init 进程（进程号为1）所收养，并由init 进程对他们完成状态收集工作。
+### 117. What are zombie processes and orphan processes? How to avoid zombie processes?
+Orphan process: The parent process exits and the child processes that are still running are all orphan processes. The orphan process will be adopted by the init process (process number 1), and the init process will complete the status collection work for them.
 
-僵尸进程： 进程使用fork 创建子进程，如果子进程退出，而父进程并没有调用wait 获waitpid 获取子进程的状态信息，那么子进程的进程描述符仍然保存在系统中的这些进程是僵尸进程。
+Zombie process: The process uses fork to create a child process. If the child process exits and the parent process does not call wait to obtain waitpid to obtain the status information of the child process, then the process descriptor of the child process is still stored in the system. These processes are zombie processes.
 
-避免僵尸进程的方法：
+Ways to avoid zombie processes:
 
-1.fork 两次用孙子进程去完成子进程的任务
+1. Fork twice use the grandchild process to complete the task of the child process
 
-2.用wait()函数使父进程阻塞
+2. Use the wait() function to block the parent process
 
-3.使用信号量，在signal handler 中调用waitpid,这样父进程不用阻塞
-###  118.python中进程与线程的使用场景？
-多进程适合在CPU密集操作（cpu操作指令比较多，如位多的的浮点运算）。
+3. Use the semaphore, call waitpid in the signal handler, so that the parent process does not need to be blocked
+### 118. What are the usage scenarios of processes and threads in python?
+Multi-process is suitable for CPU-intensive operations (cpu operation instructions are more, such as floating-point operations with more bits).
 
-多线程适合在IO密性型操作（读写数据操作比多的的，比如爬虫）
+Multithreading is suitable for IO dense operations (read and write data operations are more than that, such as crawlers)
 
-###  119.线程是并发还是并行，进程是并发还是并行？
-线程是并发，进程是并行;
+### 119. Are threads concurrent or parallel, and are processes concurrent or parallel?
+Threads are concurrent and processes are parallel;
 
-进程之间互相独立，是系统分配资源的最小单位，同一个线程中的所有线程共享资源。
+Processes are independent of each other and are the smallest unit for the system to allocate resources. All threads in the same thread share resources.
 
-### 120.并行(parallel)和并发（concurrency)?
-并行： 同一时刻多个任务同时在运行
+### 120. Parallel (parallel) and concurrency (concurrency)?
+Parallel: multiple tasks are running at the same time
 
-不会在同一时刻同时运行，存在交替执行的情况。
+Will not run at the same time at the same time, there is a case of alternate execution.
 
-实现并行的库有： multiprocessing
+The libraries that implement parallelism are: multiprocessing
 
-实现并发的库有:  threading
+Libraries that implement concurrency are: threading
 
-程序需要执行较多的读写、请求和回复任务的需要大量的IO操作，IO密集型操作使用并发更好。
+Programs that need to perform more read and write, request and reply tasks require a lot of IO operations, and IO-intensive operations use concurrency better.
 
-CPU运算量大的程序，使用并行会更好
-### 121.IO密集型和CPU密集型区别？
-IO密集型： 系统运行，大部分的状况是CPU在等 I/O（硬盘/内存）的读/写
+For programs with a large amount of CPU calculations, it is better to use parallelism
+### 121. What is the difference between IO-intensive and CPU-intensive?
+IO intensive: The system is running, most of the conditions are CPU waiting for I/O (hard disk/memory) read/write
 
-CPU密集型： 大部分时间用来做计算，逻辑判断等CPU动作的程序称之CPU密集型。
-### 122.python asyncio的原理？
-asyncio这个库就是使用python的yield这个可以打断保存当前函数的上下文的机制， 封装好了selector 摆脱掉了复杂的回调关系
+CPU-intensive: Most of the time is used to do calculations, logic judgments and other CPU actions are called CPU-intensive.
+### 122. How does python asyncio work?
+The asyncio library is to use python's yield, a mechanism that can interrupt the context of saving the current function, encapsulate the selector and get rid of the complex callback relationship
 
-## 网络编程
-### 123.怎么实现强行关闭客户端和服务器之间的连接?
-### 124.简述TCP和UDP的区别以及优缺点?
-### 125.简述浏览器通过WSGI请求动态资源的过程?
-浏览器发送的请求被Nginx监听到，Nginx根据请求的URL的PATH或者后缀把请求静态资源的分发到静态资源的目录，别的请求根据配置好的转发到相应端口。
-实现了WSGI的程序会监听某个端口，监听到Nginx转发过来的请求接收后(一般用socket的recv来接收HTTP的报文)以后把请求的报文封装成`environ`的字典对象，然后再提供一个`start_response`的方法。把这两个对象当成参数传入某个方法比如`wsgi_app(environ, start_response)`或者实现了`__call__(self, environ, start_response)`方法的某个实例。这个实例再调用`start_response`返回给实现了WSGI的中间件，再由中间件返回给Nginx。
-### 126.描述用浏览器访问www.baidu.com的过程
-### 127.Post和Get请求的区别?
-### 128.cookie 和session 的区别？
-### 129.列出你知道的HTTP协议的状态码，说出表示什么意思？
-### 130.请简单说一下三次握手和四次挥手？
-### 131.说一下什么是tcp的2MSL？
-### 132.为什么客户端在TIME-WAIT状态必须等待2MSL的时间？
-### 133.说说HTTP和HTTPS区别？
-### 134.谈一下HTTP协议以及协议头部中表示数据类型的字段？
-### 135.HTTP请求方法都有什么？
-### 136.使用Socket套接字需要传入哪些参数 ？
-### 137.HTTP常见请求头？
-### 138.七层模型？
-### 139.url的形式？
+## network programming
+### 123. How to forcibly close the connection between the client and the server?
+### 124. Briefly describe the difference, advantages and disadvantages of TCP and UDP?
+### 125. Briefly describe the process of the browser requesting dynamic resources through WSGI?
+The request sent by the browser is monitored by Nginx. Nginx distributes the requested static resource to the static resource directory according to the PATH or suffix of the requested URL, and other requests are forwarded to the corresponding port according to the configured.
+A program that implements WSGI will listen to a certain port. After receiving the request forwarded by Nginx (usually use socket recv to receive HTTP messages), the requested message will be encapsulated into a dictionary object of `environ`, and then Provide a `start_response` method. Pass these two objects as parameters to a method such as `wsgi_app(environ, start_response)` or implement an instance of the `__call__(self, environ, start_response)` method. This instance calls `start_response` to return to the middleware that implements WSGI, and then the middleware returns to Nginx.
+### 126. Describe the process of visiting www.baidu.com with a browser
+### 127. The difference between Post and Get requests?
+### 128. The difference between cookie and session?
+### 129. List the status codes of the HTTP protocol you know, and what do they mean?
+### 130. Please briefly talk about the three handshake and the four wave of hands?
+### 131. Tell me what is 2MSL of tcp?
+### 132. Why must the client wait for 2MSL in the TIME-WAIT state?
+### 133. Tell me about the difference between HTTP and HTTPS?
+### 134. Talk about the HTTP protocol and the fields that indicate the data type in the protocol header?
+### 135. What are the HTTP request methods?
+### 136. What parameters need to be passed in to use Socket?
+### 137. Common HTTP request headers?
+### 138. Seven-layer model?
+### 139. The form of the url?
 
 # Web
 ## Flask
-### 140.对Flask蓝图(Blueprint)的理解？
-蓝图的定义
+### 140. Understanding of Flask Blueprint?
+Definition of blueprint
 
-蓝图 /Blueprint 是Flask应用程序组件化的方法，可以在一个应用内或跨越多个项目共用蓝图。使用蓝图可以极大简化大型应用的开发难度，也为Flask扩展提供了一种在应用中注册服务的集中式机制。
+Blueprint/Blueprint is a method of componentization of Flask applications. Blueprints can be shared within an application or across multiple projects. Using blueprints can greatly simplify the development of large-scale applications, and also provides a centralized mechanism for Flask extensions to register services in applications.
 
-蓝图的应用场景：
+Application scenarios of the blueprint:
 
-把一个应用分解为一个蓝图的集合。这对大型应用是理想的。一个项目可以实例化一个应用对象，初始化几个扩展，并注册一集合的蓝图。
+Decompose an application into a collection of blueprints. This is ideal for large applications. A project can instantiate an application object, initialize several extensions, and register a collection of blueprints.
 
-以URL前缀和/或子域名，在应用上注册一个蓝图。URL前缀/子域名中的参数即成为这个蓝图下的所有视图函数的共同的视图参数（默认情况下）
-在一个应用中用不同的URL规则多次注册一个蓝图。
+Register a blueprint on the app with URL prefix and/or subdomain. The parameters in the URL prefix/subdomain name become the common view parameters of all view functions under this blueprint (by default)
+Register a blueprint multiple times with different URL rules in an application.
 
-通过蓝图提供模板过滤器、静态文件、模板和其他功能。一个蓝图不一定要实现应用或视图函数。
+Provide template filters, static files, templates, and other functions through blueprints. A blueprint does not have to implement application or view functions.
 
-初始化一个Flask扩展时，在这些情况中注册一个蓝图。
+When initializing a Flask extension, register a blueprint in these situations.
 
-蓝图的缺点：
+Disadvantages of blueprints:
 
-不能在应用创建后撤销注册一个蓝图而不销毁整个应用对象。
+You cannot deregister a blueprint after the application is created without destroying the entire application object.
 
-使用蓝图的三个步骤
+Three steps to use blueprints
 
-1.创建一个蓝图对象
+1. Create a blueprint object
 ```python
 blue = Blueprint("blue",__name__)
 ```
-2.在这个蓝图对象上进行操作，例如注册路由、指定静态文件夹、注册模板过滤器...
+2. Perform operations on this blueprint object, such as registering routes, specifying static folders, registering template filters...
 ```python
 @blue.route('/')
 def blue_index():
     return "Welcome to my blueprint"
 ```
-3.在应用对象上注册这个蓝图对象
+3. Register the blueprint object on the application object
 ```python
 app.register_blueprint(blue,url_prefix="/blue")
 ```
 
-### 141.Flask 和 Django 路由映射的区别？
-  在django中，路由是浏览器访问服务器时，先访问的项目中的url，再由项目中的url找到应用中url，这些url是放在一个列表里，遵从从前往后匹配的规则。在flask中，路由是通过装饰器给每个视图函数提供的，而且根据请求方式的不同可以一个url用于不同的作用。
+### 141. The difference between Flask and Django routing mapping?
+  In django, routing is the url in the project that the browser visits first when the browser accesses the server, and then the url in the project is used to find the url in the application. These urls are placed in a list and follow the rule of matching from front to back. In flask, routing is provided to each view function through a decorator, and a URL can be used for different functions depending on the request method.
 
 ## Django
-### 142.什么是wsgi,uwsgi,uWSGI?
+### 142. What is wsgi, uwsgi, uWSGI?
 WSGI:
 
-web服务器网关接口，是一套协议。用于接收用户请求并将请求进行初次封装，然后将请求交给web框架。
+The web server gateway interface is a set of protocols. Used to receive user requests and encapsulate the request for the first time, and then hand the request to the web framework.
 
-实现wsgi协议的模块：wsgiref,本质上就是编写一socket服务端，用于接收用户请求（django)
+The module that implements the wsgi protocol: wsgiref, essentially writing a socket server to receive user requests (django)
 
-werkzeug,本质上就是编写一个socket服务端，用于接收用户请求(flask)
+werkzeug, essentially writing a socket server to receive user requests (flask)
 
 uwsgi:
 
-与WSGI一样是一种通信协议，它是uWSGI服务器的独占协议，用于定义传输信息的类型。
+It is a communication protocol like WSGI. It is an exclusive protocol of the uWSGI server and is used to define the type of transmission information.
 uWSGI:
 
-是一个web服务器，实现了WSGI的协议，uWSGI协议，http协议
+It is a web server that implements the WSGI protocol, uWSGI protocol, and http protocol
 
-### 143.Django、Flask、Tornado的对比？
-1、 Django走的大而全的方向，开发效率高。它的MTV框架，自带的ORM,admin后台管理,自带的sqlite数据库和开发测试用的服务器，给开发者提高了超高的开发效率。
-重量级web框架，功能齐全，提供一站式解决的思路，能让开发者不用在选择上花费大量时间。
+### 143. Comparison of Django, Flask, Tornado?
+1. Django takes a broad and comprehensive direction and has high development efficiency. Its MTV framework, built-in ORM, admin background management, built-in sqlite database and server for development and testing, have improved the developer's ultra-high development efficiency.
+A heavyweight web framework with complete functions and a one-stop solution, so that developers do not need to spend a lot of time on selection.
 
-自带ORM和模板引擎，支持jinja等非官方模板引擎。
+Comes with ORM and template engine, supports unofficial template engines such as jinja.
 
-自带ORM使Django和关系型数据库耦合度高，如果要使用非关系型数据库，需要使用第三方库
+The built-in ORM makes Django and the relational database highly coupled. If you want to use a non-relational database, you need to use a third-party library
 
-自带数据库管理app
+Built-in database management app
 
-成熟，稳定，开发效率高，相对于Flask，Django的整体封闭性比较好，适合做企业级网站的开发。python web框架的先驱，第三方库丰富
+Mature, stable, and highly efficient in development. Compared with Flask, Django has better overall closedness and is suitable for enterprise-level website development. Pioneer of python web framework, rich third-party libraries
 
-2、 Flask 是轻量级的框架，自由，灵活，可扩展性强，核心基于Werkzeug WSGI工具 和jinja2 模板引擎
+2. Flask is a lightweight framework, free, flexible, and extensible. The core is based on Werkzeug WSGI tool and jinja2 template engine
 
-适用于做小网站以及web服务的API,开发大型网站无压力，但架构需要自己设计
+It is suitable for small websites and web service APIs, there is no pressure to develop large websites, but the architecture needs to be designed by yourself
 
-与关系型数据库的结合不弱于Django，而与非关系型数据库的结合远远优于Django
+The combination with relational databases is not weaker than Django, and the combination with non-relational databases is far superior to Django
 
-3、 Tornado走的是少而精的方向，性能优越，它最出名的异步非阻塞的设计方式
+3. Tornado is taking a small but precise direction, with superior performance, its most famous asynchronous non-blocking design method
 
-Tornado的两大核心模块：
+Two core modules of Tornado:
 
-iostraem:对非阻塞的socket进行简单的封装
+iostraem: Simple encapsulation of non-blocking sockets
 
-ioloop: 对I/O 多路复用的封装,它实现一个单例
+ioloop: A encapsulation of I/O multiplexing, which implements a singleton
 
-### 144.CORS 和 CSRF的区别？
-什么是CORS？
+### 144. The difference between CORS and CSRF?
+What is CORS?
 
-CORS是一个W3C标准,全称是“跨域资源共享"(Cross-origin resoure sharing).
-它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而客服了AJAX只能同源使用的限制。
+CORS is a W3C standard, the full name is "Cross-origin resoure sharing" (Cross-origin resoure sharing).
+It allows browsers to send XMLHttpRequest requests to cross-origin servers, thereby overcoming the restriction that AJAX can only be used from the same source.
 
-什么是CSRF？
+What is CSRF?
 
-CSRF主流防御方式是在后端生成表单的时候生成一串随机token,内置到表单里成为一个字段，同时，将此串token置入session中。每次表单提交到后端时都会检查这两个值是否一致，以此来判断此次表单提交是否是可信的，提交过一次之后，如果这个页面没有生成CSRF token,那么token将会被清空,如果有新的需求，那么token会被更新。
-攻击者可以伪造POST表单提交，但是他没有后端生成的内置于表单的token，session中没有token都无济于事。
+The mainstream CSRF defense method is to generate a string of random tokens when the form is generated on the backend, which is built into the form as a field, and at the same time, this string of tokens is placed in the session. Each time the form is submitted to the backend, it will check whether these two values ​​are the same to determine whether the form submission is credible. After one submission, if the page does not generate a CSRF token, the token will be cleared. , If there is a new demand, then the token will be updated.
+An attacker can fake a POST form submission, but he does not have a token built into the form generated by the backend, and no token in the session will not help.
 
-### 145.Session,Cookie,JWT的理解
-为什么要使用会话管理
+### 145.Session, Cookie, JWT Understanding
+Why use session management
 
-众所周知，HTTP协议是一个无状态的协议，也就是说每个请求都是一个独立的请求，请求与请求之间并无关系。但在实际的应用场景，这种方式并不能满足我们的需求。举个大家都喜欢用的例子，把商品加入购物车，单独考虑这个请求，服务端并不知道这个商品是谁的，应该加入谁的购物车？因此这个请求的上下文环境实际上应该包含用户的相关信息，在每次用户发出请求时把这一小部分额外信息，也做为请求的一部分，这样服务端就可以根据上下文中的信息，针对具体的用户进行操作。所以这几种技术的出现都是对HTTP协议的一个补充，使得我们可以用HTTP协议+状态管理构建一个的面向用户的WEB应用。
+As we all know, the HTTP protocol is a stateless protocol, which means that each request is an independent request, and there is no relationship between the request and the request. But in actual application scenarios, this approach does not meet our needs. For an example that everyone likes to use, add a product to the shopping cart, and consider this request separately. The server does not know who owns the product, and whose shopping cart should be added? Therefore, the context of this request should actually contain user-related information. Each time the user makes a request, this small amount of additional information is also included as part of the request, so that the server can target specific information based on the information in the context. Of users to operate. Therefore, the emergence of these several technologies is a supplement to the HTTP protocol, so that we can use HTTP protocol + state management to build a user-oriented WEB application.
 
-Session 和Cookie的区别
+The difference between Session and Cookie
 
-  这里我想先谈谈session与cookies,因为这两个技术是做为开发最为常见的。那么session与cookies的区别是什么？个人认为session与cookies最核心区别在于额外信息由谁来维护。利用cookies来实现会话管理时，用户的相关信息或者其他我们想要保持在每个请求中的信息，都是放在cookies中,而cookies是由客户端来保存，每当客户端发出新请求时，就会稍带上cookies,服务端会根据其中的信息进行操作。
-  当利用session来进行会话管理时，客户端实际上只存了一个由服务端发送的session_id,而由这个session_id,可以在服务端还原出所需要的所有状态信息，从这里可以看出这部分信息是由服务端来维护的。
+  Here I want to talk about session and cookies first, because these two technologies are the most common for development. So what is the difference between session and cookies? I personally think that the core difference between session and cookies is who maintains the additional information. When cookies are used to implement session management, user-related information or other information we want to keep in each request is placed in cookies, and cookies are saved by the client, whenever the client sends a new request , It will bring cookies a little, and the server will operate according to the information in them.
+  When using session for session management, the client actually only saves a session_id sent by the server, and from this session_id, all the state information needed can be restored on the server. From here, it can be seen that this part of the information is Maintained by the server.
 
-除此以外，session与cookies都有一些自己的缺点：
+In addition, sessions and cookies have some disadvantages of their own:
     
-cookies的安全性不好，攻击者可以通过获取本地cookies进行欺骗或者利用cookies进行CSRF攻击。使用cookies时,在多个域名下，会存在跨域问题。
-session 在一定的时间里，需要存放在服务端，因此当拥有大量用户时，也会大幅度降低服务端的性能，当有多台机器时，如何共享session也会是一个问题.(redis集群)也就是说，用户第一个访问的时候是服务器A，而第二个请求被转发给了服务器B，那服务器B如何得知其状态。实际上，session与cookies是有联系的，比如我们可以把session_id存放在cookies中的。
+The security of cookies is not good. Attackers can deceive by obtaining local cookies or use cookies to conduct CSRF attacks. When cookies are used, there will be cross-domain issues under multiple domain names.
+The session needs to be stored on the server for a certain period of time. Therefore, when there are a large number of users, the performance of the server will be greatly reduced. When there are multiple machines, how to share the session will also be a problem. (redis cluster) also That is to say, the first time the user visits is server A, and the second request is forwarded to server B, how does server B know its status? In fact, session and cookies are related, for example, we can store session_id in cookies.
 
-JWT是如何工作的
+How does JWT work
 
-首先用户发出登录请求，服务端根据用户的登录请求进行匹配，如果匹配成功，将相关的信息放入payload中，利用算法，加上服务端的密钥生成token，这里需要注意的是secret_key很重要，如果这个泄露的话，客户端就可以随机篡改发送的额外信息，它是信息完整性的保证。生成token后服务端将其返回给客户端，客户端可以在下次请求时，将token一起交给服务端，一般是说我们可以将其放在Authorization首部中，这样也就可以避免跨域问题。
+First, the user sends a login request, and the server performs matching according to the user's login request. If the matching is successful, put the relevant information into the payload, use the algorithm, plus the server's key to generate the token. It is important to note here that the secret_key is very important. If this is leaked, the client can randomly tamper with the additional information sent, which is a guarantee of the integrity of the information. After the token is generated, the server returns it to the client, and the client can pass the token to the server in the next request. Generally speaking, we can put it in the Authorization header, so that cross-domain problems can be avoided.
 
-### 146.简述Django请求生命周期
-一般是用户通过浏览器向我们的服务器发起一个请求(request),这个请求会去访问视图函数，如果不涉及到数据调用，那么这个时候视图函数返回一个模板也就是一个网页给用户）
-视图函数调用模型毛模型去数据库查找数据，然后逐级返回，视图函数把返回的数据填充到模板中空格中，最后返回网页给用户。
+### 146. Briefly describe the Django request life cycle
+Generally, the user initiates a request to our server through the browser. This request will access the view function. If there is no data call involved, then the view function returns a template that is a web page to the user at this time)
+The view function calls the model hair model to find the data in the database, and then returns step by step. The view function fills the returned data into the blanks in the template, and finally returns the web page to the user.
 
-1.wsgi ,请求封装后交给web框架（Flask，Django)
+1.wsgi, the request is encapsulated and handed over to the web framework (Flask, Django)
 
-2.中间件，对请求进行校验或在请求对象中添加其他相关数据，例如：csrf,request.session
+2. Middleware, to verify the request or add other relevant data to the request object, for example: csrf, request.session
 
-3.路由匹配 根据浏览器发送的不同url去匹配不同的视图函数
+3. Route matching according to the different URL sent by the browser to match different view functions
 
-4.视图函数，在视图函数中进行业务逻辑的处理，可能涉及到：orm，templates 
+4. View function, the processing of business logic in the view function, may involve: orm, templates
 
-5.中间件，对响应的数据进行处理
+5. Middleware to process the response data
 
-6.wsgi，将响应的内容发送给浏览器
+6.wsgi, send the content of the response to the browser
 
-### 147.用的restframework完成api发送时间时区
-当前的问题是用django的rest framework模块做一个get请求的发送时间以及时区信息的api
+### 147. Use restframework to complete the api sending time and time zone
+The current problem is to use django's rest framework module to make a get request sending time and time zone information api
 ```python
 class getCurrenttime(APIView):
     def get(self,request):
@@ -2243,374 +1969,373 @@ class getCurrenttime(APIView):
         temp = {'localtime':local_time,'timezone':time_zone}
         return Response(temp)
 ```
-### 148.nginx,tomcat,apach到都是什么？
-Nginx（engine x)是一个高性能的HTTP和反向代理服务器，也是 一个IMAP/POP3/SMTP服务器，工作在OSI七层，负载的实现方式：轮询，IP_HASH,fair,session_sticky.
-Apache HTTP Server是一个模块化的服务器，源于NCSAhttpd服务器
-Tomcat 服务器是一个免费的开放源代码的Web应用服务器，属于轻量级应用服务器，是开发和调试JSP程序的首选。
+### 148. What are nginx, tomcat and apach?
+Nginx (engine x) is a high-performance HTTP and reverse proxy server. It is also an IMAP/POP3/SMTP server. It works at OSI seven layers. The load implementation method: polling, IP_HASH, fair, session_sticky.
+Apache HTTP Server is a modular server, derived from the NCSAhttpd server
+Tomcat server is a free and open source web application server, which is a lightweight application server and is the first choice for developing and debugging JSP programs.
 
-### 149.请给出你熟悉关系数据库范式有哪些，有什么作用？
-在进行数据库的设计时，所遵循的一些规范，只要按照设计规范进行设计，就能设计出没有数据冗余和数据维护异常的数据库结构。
+### 149. What are the paradigms of relational database you are familiar with, and what are their functions?
+When designing a database, you can design a database structure without data redundancy and abnormal data maintenance as long as you design in accordance with the design specifications.
 
-数据库的设计的规范有很多，通常来说我们在设是数据库时只要达到其中一些规范就可以了，这些规范又称之为数据库的三范式，一共有三条，也存在着其他范式，我们只要做到满足前三个范式的要求，就能设陈出符合我们的数据库了，我们也不能全部来按照范式的要求来做，还要考虑实际的业务使用情况，所以有时候也需要做一些违反范式的要求。
-1.数据库设计的第一范式(最基本)，基本上所有数据库的范式都是符合第一范式的，符合第一范式的表具有以下几个特点：
+There are many specifications for database design. Generally speaking, when we set up a database, we only need to meet some of these specifications. These specifications are also called the three paradigms of databases. There are three in total, and there are other paradigms. We just need to do To meet the requirements of the first three paradigms, we can set up a database that conforms to ours. We can't all follow the requirements of the paradigm, but also consider the actual business usage, so sometimes we need to do something that violates the paradigm. Requirements.
+1. The first paradigm of database design (the most basic). Basically all database paradigms conform to the first paradigm. The tables that conform to the first paradigm have the following characteristics:
 
-数据库表中的所有字段都只具有单一属性，单一属性的列是由基本的数据类型（整型，浮点型，字符型等）所构成的设计出来的表都是简单的二比表
+All fields in the database table have only a single attribute. The columns of a single attribute are composed of basic data types (integer, floating point, character, etc.). The designed tables are simple two-comparison tables
 
-2.数据库设计的第二范式(是在第一范式的基础上设计的)，要求一个表中只具有一个业务主键，也就是说符合第二范式的表中不能存在非主键列对只对部分主键的依赖关系
+2. The second paradigm of database design (designed on the basis of the first paradigm) requires only one business primary key in a table, which means that there can be no non-primary key column pairs in the second paradigm. Dependency of the primary key
 
-3.数据库设计的第三范式，指每一个非主属性既不部分依赖与也不传递依赖于业务主键，也就是第二范式的基础上消除了非主属性对主键的传递依赖
+3. The third paradigm of database design means that every non-primary attribute is neither partially dependent nor transitively dependent on the business primary key, which is based on the second paradigm, eliminating the transitive dependence of non-primary attributes on the primary key
 
-### 150.简述QQ登陆过程
-qq登录，在我们的项目中分为了三个接口，
+### 150. Briefly describe the QQ login process
+QQ login is divided into three interfaces in our project,
 
-第一个接口是请求qq服务器返回一个qq登录的界面;
+The first interface is to request the QQ server to return a QQ login interface;
 
-第二个接口是通过扫码或账号登陆进行验证，qq服务器返回给浏览器一个code和state,利用这个code通过本地服务器去向qq服务器获取access_token覆返回给本地服务器，凭借access_token再向qq服务器获取用户的openid(openid用户的唯一标识)
+The second interface is to verify by scanning code or account login. The QQ server returns a code and state to the browser. Use this code to get the access_token from the QQ server through the local server, and then return it to the local server, and then get the user from the QQ server with the access_token. Openid (unique identifier of openid user)
 
-第三个接口是判断用户是否是第一次qq登录，如果不是的话直接登录返回的jwt-token给用户，对没有绑定过本网站的用户，对openid进行加密生成token进行绑定
+The third interface is to determine whether the user is logging in to QQ for the first time, if not, log in the returned jwt-token directly to the user, and for users who have not been bound to this website, encrypt the openid to generate the token for binding
 
-### 151.post 和 get的区别?
-1.GET是从服务器上获取数据，POST是向服务器传送数据
+### 151. What is the difference between post and get?
+1. GET is to get data from the server, POST is to send data to the server
 
-2.在客户端，GET方式在通过URL提交数据，数据在URL中可以看到，POST方式，数据放置在HTML——HEADER内提交
+2. On the client side, the GET method is to submit the data through the URL, the data can be seen in the URL, and the POST method, the data is placed in HTML-HEADER to submit
 
-3.对于GET方式，服务器端用Request.QueryString获取变量的值，对于POST方式，服务器端用Request.Form获取提交的数据
+3. For the GET method, the server side uses Request.QueryString to obtain the value of the variable. For the POST method, the server side uses Request.Form to obtain the submitted data.
 
 
-### 152.项目中日志的作用
-一、日志相关概念
+### 152. The role of the log in the project
+1. Log related concepts
 
-1.日志是一种可以追踪某些软件运行时所发生事件的方法
+1. Logs are a way to track events that occur when certain software is running
 
-2.软件开发人员可以向他们的代码中调用日志记录相关的方法来表明发生了某些事情
+2. Software developers can call logging-related methods into their code to indicate that something has happened
 
-3.一个事件可以用一个包含可选变量数据的消息来描述
+3. An event can be described by a message containing optional variable data
 
-4.此外，事件也有重要性的概念，这个重要性也可以被成为严重性级别(level)
+4. In addition, events also have the concept of importance, which can also be called severity level (level)
 
-二、日志的作用
+Second, the role of the log
 
-1.通过log的分析，可以方便用户了解系统或软件、应用的运行情况;
+1. Through log analysis, it is convenient for users to understand the operation of the system, software, and application;
 
-2.如果你的应用log足够丰富，可以分析以往用户的操作行为、类型喜好，地域分布或其他更多信息;
+2. If your application log is rich enough, you can analyze past user behavior, type preferences, geographic distribution or more information;
 
-3.如果一个应用的log同时也分了多个级别，那么可以很轻易地分析得到该应用的健康状况，及时发现问题并快速定位、解决问题，补救损失。
+3. If the log of an application is divided into multiple levels at the same time, the health status of the application can be easily analyzed, problems can be discovered in time, and problems can be quickly located, solved, and remedied.
 
-4.简单来讲就是我们通过记录和分析日志可以了解一个系统或软件程序运行情况是否正常，也可以在应用程序出现故障时快速定位问题。不仅在开发中，在运维中日志也很重要，日志的作用也可以简单。总结为以下几点：
+4. Simply speaking, we can understand whether a system or software program is operating normally by recording and analyzing logs, and can also quickly locate problems when an application fails. Logs are also very important not only in development, but also in operation and maintenance, and the role of logs can also be simple. Summarized as the following points:
 
-1.程序调试
+1. Program debugging
 
-2.了解软件程序运行情况，是否正常
+2. Understand the operation of the software program, whether it is normal
 
-3,软件程序运行故障分析与问题定位
+3. Software program operation failure analysis and problem location
 
-4,如果应用的日志信息足够详细和丰富，还可以用来做用户行为分析
+4. If the log information of the application is sufficiently detailed and rich, it can also be used for user behavior analysis
 
-### 153.django中间件的使用？
-Django在中间件中预置了六个方法，这六个方法的区别在于不同的阶段执行，对输入或输出进行干预，方法如下：
+### 153. How to use django middleware?
+Django presets six methods in the middleware. The difference between these six methods is that they are executed in different stages and intervene in input or output. The methods are as follows:
 
-1.初始化：无需任何参数，服务器响应第一个请求的时候调用一次，用于确定是否启用当前中间件
+1. Initialization: without any parameters, it is called once when the server responds to the first request to determine whether to enable the current middleware
 ```python
 def __init__():
     pass
 ```
-2.处理请求前：在每个请求上调用，返回None或HttpResponse对象。
+2. Before processing the request: call on each request and return None or HttpResponse object.
 ```python
 def process_request(request):
     pass
 ```
-3.处理视图前:在每个请求上调用，返回None或HttpResponse对象。
+3. Before processing the view: call on each request, return None or HttpResponse object.
 ```python
 def process_view(request,view_func,view_args,view_kwargs):
     pass
 ```
-4.处理模板响应前：在每个请求上调用，返回实现了render方法的响应对象。
+4. Before processing the template response: call on each request, and return the response object that implements the render method.
 ```python
 def process_template_response(request,response):
     pass
 ```
-5.处理响应后：所有响应返回浏览器之前被调用，在每个请求上调用，返回HttpResponse对象。
+5. After processing the response: All responses are called before returning to the browser, called on each request, and the HttpResponse object is returned.
 ```python
 def process_response(request,response):
     pass
 ```
-6.异常处理：当视图抛出异常时调用，在每个请求上调用，返回一个HttpResponse对象。
+6. Exception handling: called when the view throws an exception, called on each request, and returns an HttpResponse object.
 ```python
 def process_exception(request,exception):
     pass
 ```
-### 154.谈一下你对uWSGI和nginx的理解？
-1.uWSGI是一个Web服务器，它实现了WSGI协议、uwsgi、http等协议。Nginx中HttpUwsgiModule的作用是与uWSGI服务器进行交换。WSGI是一种Web服务器网关接口。它是一个Web服务器（如nginx，uWSGI等服务器）与web应用（如用Flask框架写的程序）通信的一种规范。
+### 154. Tell me about your understanding of uWSGI and nginx?
+1. uWSGI is a web server, which implements the WSGI protocol, uwsgi, http and other protocols. The role of HttpUwsgiModule in Nginx is to exchange with uWSGI server. WSGI is a web server gateway interface. It is a specification for communication between a web server (such as nginx, uWSGI, etc.) and web applications (such as programs written in the Flask framework).
 
-要注意WSGI/uwsgi/uWSGI这三个概念的区分。
+Pay attention to the distinction between the three concepts of WSGI/uwsgi/uWSGI.
 
-WSGI是一种通信协议。
+WSGI is a communication protocol.
 
-uwsgi是一种线路协议而不是通信协议，在此常用于在uWSGI服务器与其他网络服务器的数据通信。
+uwsgi is a wire protocol rather than a communication protocol. It is often used here for data communication between the uWSGI server and other network servers.
 
-uWSGI是实现了uwsgi和WSGI两种协议的Web服务器。
+uWSGI is a web server that implements both uwsgi and WSGI protocols.
 
-nginx 是一个开源的高性能的HTTP服务器和反向代理：
+nginx is an open source high-performance HTTP server and reverse proxy:
 
-1.作为web服务器，它处理静态文件和索引文件效果非常高
+1. As a web server, it handles static files and index files very efficiently
 
-2.它的设计非常注重效率，最大支持5万个并发连接，但只占用很少的内存空间
+2. Its design pays great attention to efficiency, supports up to 50,000 concurrent connections, but only takes up very little memory space
 
-3.稳定性高，配置简洁。
+3. High stability and simple configuration.
 
-4.强大的反向代理和负载均衡功能，平衡集群中各个服务器的负载压力应用
+4. Powerful reverse proxy and load balancing function, balance the load pressure application of each server in the cluster
 
-### 155.Python中三大框架各自的应用场景？
-django:主要是用来搞快速开发的，他的亮点就是快速开发，节约成本，,如果要实现高并发的话，就要对django进行二次开发，比如把整个笨重的框架给拆掉自己写socket实现http的通信,底层用纯c,c++写提升效率，ORM框架给干掉，自己编写封装与数据库交互的框架,ORM虽然面向对象来操作数据库，但是它的效率很低，使用外键来联系表与表之间的查询;
-flask: 轻量级，主要是用来写接口的一个框架，实现前后端分离，提考开发效率，Flask本身相当于一个内核，其他几乎所有的功能都要用到扩展(邮件扩展Flask-Mail，用户认证Flask-Login),都需要用第三方的扩展来实现。比如可以用Flask-extension加入ORM、文件上传、身份验证等。Flask没有默认使用的数据库，你可以选择MySQL，也可以用NoSQL。
+### 155. What are the application scenarios of the three major frameworks in Python?
+Django: It is mainly used for rapid development. Its highlight is rapid development and cost saving. If high concurrency is to be achieved, Django must be developed twice, such as removing the entire bulky framework and writing sockets by yourself. To achieve http communication, the bottom layer is written in pure c, c++ to improve efficiency, the ORM framework is killed, and the framework that encapsulates the interaction with the database is written by yourself. Although the ORM is object-oriented to operate the database, its efficiency is very low, and the foreign key is used to contact the table. Query with the table;
+Flask: Lightweight, it is mainly used to write a framework for the interface, to achieve the separation of front and back ends, and to test the development efficiency. Flask itself is equivalent to a core, and almost all other functions need to be extended (mail extension Flask-Mail, User authentication (Flask-Login), all need to be implemented with third-party extensions. For example, you can use Flask-extension to join ORM, file upload, identity verification, etc. Flask does not have a default database. You can choose MySQL or NoSQL.
 
-其WSGI工具箱用Werkzeug(路由模块)，模板引擎则使用Jinja2,这两个也是Flask框架的核心。
+Its WSGI toolbox uses Werkzeug (routing module), and its template engine uses Jinja2. These two are also the core of the Flask framework.
 
-Tornado： Tornado是一种Web服务器软件的开源版本。Tornado和现在的主流Web服务器框架（包括大多数Python的框架）有着明显的区别：它是非阻塞式服务器，而且速度相当快。得利于其非阻塞的方式和对epoll的运用，Tornado每秒可以处理数以千计的连接因此Tornado是实时Web服务的一个理想框架
-### 156.Django中哪里用到了线程？哪里用到了协程？哪里用到了进程？
-1.Django中耗时的任务用一个进程或者线程来执行，比如发邮件，使用celery.
+Tornado: Tornado is an open source version of web server software. Tornado is obviously different from current mainstream web server frameworks (including most Python frameworks): it is a non-blocking server, and it is quite fast. Thanks to its non-blocking method and the use of epoll, Tornado can handle thousands of connections per second, so Tornado is an ideal framework for real-time web services
+### 156. Where are threads used in Django? Where is the coroutine used? Where is the process used?
+1. Time-consuming tasks in Django are executed by a process or thread, such as sending emails, using celery.
 
-2.部署django项目是时候，配置文件中设置了进程和协程的相关配置。
+2. It is time to deploy the django project, and the relevant configuration of the process and the coroutine is set in the configuration file.
 
-### 157.有用过Django REST framework吗？
-Django REST framework是一个强大而灵活的Web API工具。使用RESTframework的理由有：
+### 157. Have you ever used Django REST framework?
+Django REST framework is a powerful and flexible Web API tool. The reasons for using RESTframework are:
 
-Web browsable API对开发者有极大的好处
+Web browsable API has great benefits for developers
 
-包括OAuth1a和OAuth2的认证策略
+Including OAuth1a and OAuth2 authentication strategies
 
-支持ORM和非ORM数据资源的序列化
+Support serialization of ORM and non-ORM data resources
 
-全程自定义开发--如果不想使用更加强大的功能，可仅仅使用常规的function-based views额外的文档和强大的社区支持
-### 158.对cookies与session的了解？他们能单独用吗？
-Session采用的是在服务器端保持状态的方案，而Cookie采用的是在客户端保持状态的方案。但是禁用Cookie就不能得到Session。因为Session是用Session ID来确定当前对话所对应的服务器Session，而Session ID是通过Cookie来传递的，禁用Cookie相当于SessionID,也就得不到Session。
+Full custom development-if you don't want to use more powerful functions, you can just use regular function-based views, additional documentation and strong community support
+### 158. Know about cookies and session? Can they be used alone?
+Session adopts the scheme of keeping state on the server side, and Cookie adopts the scheme of keeping state on the client side. But if you disable cookies, you cannot get the Session. Because Session uses Session ID to determine the server Session corresponding to the current session, and Session ID is passed through Cookie, disabling Cookie is equivalent to SessionID, so Session cannot be obtained.
 
-## 爬虫
-### 159.试列出至少三种目前流行的大型数据库
-### 160.列举您使用过的Python网络爬虫所用到的网络数据包?
+## Crawler
+### 159. Try to list at least three currently popular large databases
+### 160. List the network packets used by the Python web crawler you have used?
 
 requests, urllib,urllib2, httplib2
 
-### 161.爬取数据后使用哪个数据库存储数据的，为什么？
+### 161. Which database is used to store the data after crawling the data, and why?
 
-### 162.你用过的爬虫框架或者模块有哪些？优缺点？
+### 162. What crawler frameworks or modules have you used? Pros and cons?
 
-Python自带：urllib,urllib2
+Python comes with: urllib, urllib2
 
-第三方：requests
+Third party: requests
 
-框架： Scrapy
+Framework: Scrapy
 
-urllib 和urllib2模块都做与请求URL相关的操作，但他们提供不同的功能。
+Both the urllib and urllib2 modules do operations related to requesting URLs, but they provide different functions.
 
-urllib2: urllib2.urlopen可以接受一个Request对象或者url,(在接受Request对象时，并以此可以来设置一个URL的headers),urllib.urlopen只接收一个url。
+urllib2: urllib2.urlopen can accept a Request object or url, (when receiving a Request object, and use this to set a URL header), urllib.urlopen only accepts a url.
 
-urllib 有urlencode,urllib2没有，因此总是urllib, urllib2常会一起使用的原因
+urllib has urlencode, urllib2 does not, so it is always the reason why urllib and urllib2 are often used together
 
-scrapy是封装起来的框架，他包含了下载器，解析器，日志及异常处理，基于多线程，twisted的方式处理，对于固定单个网站的爬取开发，有优势，但是对于多网站爬取100个网站，并发及分布式处理不够灵活，不便调整与扩展
+Scrapy is a packaged framework. It includes downloader, parser, log and exception handling. It is based on multi-threaded and twisted processing. It has advantages for crawling development of a fixed single website, but it can crawl 100 for multiple websites. The website, concurrent and distributed processing is not flexible enough, and it is inconvenient to adjust and expand
 
-requests是一个HTTP库，它只是用来请求，它是一个强大的库，下载，解析全部自己处理，灵活性高
+requests is an HTTP library, it is only used for requests, it is a powerful library, downloading and parsing are all handled by themselves, with high flexibility
 
-Scrapy优点：异步，xpath，强大的统计和log系统，支持不同url。shell方便独立调试。写middleware方便过滤。通过管道存入数据库
+Scrapy advantages: asynchronous, xpath, powerful statistics and log system, support for different URLs. The shell is convenient for independent debugging. Write middleware to facilitate filtering. Stored in the database through the pipeline
 
-### 163.写爬虫是用多进程好？还是多线程好？
-### 164.常见的反爬虫和应对方法？
-### 165.解析网页的解析器使用最多的是哪几个?
-### 166.需要登录的网页，如何解决同时限制ip，cookie,session
-### 167.验证码的解决?
-### 168.使用最多的数据库，对他们的理解？
-### 169.编写过哪些爬虫中间件？
-### 170.“极验”滑动验证码如何破解？
-### 171.爬虫多久爬一次，爬下来的数据是怎么存储？
-### 172.cookie过期的处理问题？
-### 173.动态加载又对及时性要求很高怎么处理？
-### 174.HTTPS有什么优点和缺点？
-### 175.HTTPS是如何实现安全传输数据的？
-### 176.TTL，MSL，RTT各是什么？
-### 177.谈一谈你对Selenium和PhantomJS了解
-### 178.平常怎么使用代理的 ？
-### 179.存放在数据库(redis、mysql等)。
-### 180.怎么监控爬虫的状态?
-### 181.描述下scrapy框架运行的机制？
-### 182.谈谈你对Scrapy的理解？
-### 183.怎么样让 scrapy 框架发送一个 post 请求（具体写出来）
-### 184.怎么监控爬虫的状态 ？
-### 185.怎么判断网站是否更新？
-### 186.图片、视频爬取怎么绕过防盗连接
-### 187.你爬出来的数据量大概有多大？大概多长时间爬一次？
-### 188.用什么数据库存爬下来的数据？部署是你做的吗？怎么部署？
-### 189.增量爬取
-### 190.爬取下来的数据如何去重，说一下scrapy的具体的算法依据。
-### 191.Scrapy的优缺点?
-### 192.怎么设置爬取深度？
-### 193.scrapy和scrapy-redis有什么区别？为什么选择redis数据库？
-### 194.分布式爬虫主要解决什么问题？
-### 195.什么是分布式存储？
-### 196.你所知道的分布式爬虫方案有哪些？
-### 197.scrapy-redis，有做过其他的分布式爬虫吗？
+### 163. Is it better to use multiple processes to write crawlers? Is multithreading better?
+### 164. Common anti-reptiles and countermeasures?
+### 165. Which are the most used parsers for parsing web pages?
+### 166. How to solve the problem of restricting ip, cookie, session at the same time for web pages that need to log in
+### 167. How to solve the verification code?
+### 168. What do you understand about the most used databases?
+### 169. Which crawler middleware have you written?
+### 170. How to crack the "JiYi" sliding verification code?
+### 171. How often does the crawler crawl, and how is the data stored?
+### 172. How to deal with cookie expiration?
+### 173. How to deal with dynamic loading and high requirements for timeliness?
+### 174. What are the advantages and disadvantages of HTTPS?
+### 175. How does HTTPS realize secure data transmission?
+### 176. What are TTL, MSL and RTT?
+### 177. Talk about your understanding of Selenium and PhantomJS
+### 178. How do you usually use a proxy?
+### 179. Stored in the database (redis, mysql, etc.).
+### 180. How to monitor the status of crawlers?
+### 181. Describe the mechanism of scrapy framework operation?
+### 182. Talk about your understanding of Scrapy?
+### 183. How to make the scrapy framework send a post request (write it out)
+### 184. How to monitor the status of crawlers?
+### 185. How to judge whether the website is updated?
+### 186. How to bypass the anti-theft connection when crawling pictures and videos
+### 187. How large is the amount of data you crawled out of? How often does it take to climb?
+### 188. What data inventory is used to climb down the data? Did you do the deployment? How to deploy?
+### 189. Incremental crawling
+### 190. How to de-duplicate the crawled data, and talk about the specific algorithm basis of scrapy.
+### 191. What are the advantages and disadvantages of Scrapy?
+### 192. How to set the crawl depth?
+### 193. What is the difference between scrapy and scrapy-redis? Why choose redis database?
+### 194. What problem does distributed crawler mainly solve?
+### 195. What is distributed storage?
+### 196. What distributed crawler solutions do you know?
+### 197.scrapy-redis, have you done other distributed crawlers?
 
-# 数据库
+# Database
 ## MySQL
-### 198.主键 超键 候选键 外键
+### 198. Primary key Super key Candidate key Foreign key
 
-主键：数据库表中对存储数据对象予以唯一和完整标识的数据列或属性的组合。一个数据列只能有一个主键，且主键的取值不能缺失，即不能为空值(Null).
+Primary key: A combination of data columns or attributes in a database table that uniquely and completely identify the stored data object. A data column can only have one primary key, and the value of the primary key cannot be missing, that is, it cannot be a null value (Null).
 
-超键：在关系中能唯一标识元组的属性集称为关系模式的超键。一个属性可以作为一个超键，多个属性组合在一起也可以作为一个超键。超键包含候选键和主键。
+Super key: The set of attributes that can uniquely identify the tuple in the relationship is called the super key of the relationship mode. An attribute can be used as a super key, and multiple attributes can also be used as a super key. Super keys include candidate keys and primary keys.
 
-候选键：是最小超键，即没有冗余元素的超键。
+Candidate key: It is the smallest super key, that is, the super key without redundant elements.
 
-外键：在一个表中存在的另一个表的主键称此表的外键。
+Foreign key: The primary key of another table that exists in one table is called the foreign key of this table.
 
-### 199.视图的作用，视图可以更改么？
+### 199. The role of the view, can the view be changed?
 
-视图是虚拟的表，与包含数据的表不一样，视图只包含使用时动态检索数据的查询;不包含任何列或数据。使用视图可以简化复杂的sql操作，隐藏具体的细节，保护数据;视图创建后，可以使用与表相同的方式利用它们。
+Views are virtual tables, which are not the same as tables that contain data. Views only contain queries that dynamically retrieve data when used; they do not contain any columns or data. Using views can simplify complex SQL operations, hide specific details, and protect data; after views are created, they can be used in the same way as tables.
 
-视图不能被索引，也不能有关联的触发器或默认值，如果视图本身内有order by则对视图再次order by将被覆盖。
+The view cannot be indexed, nor can it have associated triggers or default values. If there is an order by in the view itself, the order by of the view will be overwritten again.
 
-创建视图： create view xxx as xxxxxx
+Create a view: create view xxx as xxxxxx
 
-对于某些视图比如未使用联结子查询分组聚集函数Distinct Union等，是可以对其更新的，对视图的更新将对基表进行更新;但是视图主要用于简化检索，保护数据，并不用于更新，而且大部分视图都不可以更新。
+For some views, such as the grouping aggregate function Distinct Union that does not use join subqueries, it can be updated. The update of the view will update the base table; but the view is mainly used to simplify retrieval and protect data, and is not used for updating , And most views cannot be updated.
 
-### 200.drop,delete与truncate的区别
+### 200. The difference between drop, delete and truncate
 
-drop直接删掉表，truncate删除表中数据，再插入时自增长id又从1开始，delete删除表中数据，可以加where字句。
+Drop directly deletes the table, truncate deletes the data in the table, and then inserts the auto-increment id from 1 again, delete deletes the data in the table, you can add the word where.
 
-1.delete 语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在日志中保存以便进行回滚操作。truncate table则一次性地从表中删除所有的数据并不把单独的删除操作记录记入日志保存，删除行是不能恢复的。并且在删除的过程中不会激活与表有关的删除触发器，执行速度快。
+1. The delete statement executes the delete process to delete a row from the table each time, and at the same time the delete operation of the row is recorded as a transaction and saved in the log for rollback operation. Truncate table deletes all data from the table at one time and does not record a separate delete operation record into the log for storage. Deleted rows cannot be recovered. And the delete trigger related to the table will not be activated during the delete process, and the execution speed is fast.
 
-2.表和索引所占空间。当表被truncate后，这个表和索引所占用的空间会恢复到初始大小，而delete操作不会减少表或索引所占用的空间。drop语句将表所占用的空间全释放掉。
+2. The space occupied by tables and indexes. When the table is truncate, the space occupied by the table and index will be restored to the initial size, and the delete operation will not reduce the space occupied by the table or index. The drop statement releases all the space occupied by the table.
 
-3.一般而言，drop>truncate>delete
+3. Generally speaking, drop>truncate>delete
 
-4.应用范围。truncate只能对table，delete可以是table和view
+4. The scope of application. Truncate can only be table, delete can be table and view
 
-5.truncate和delete只删除数据，而drop则删除整个表（结构和数据)
+5.truncate and delete only delete data, while drop deletes the entire table (structure and data)
 
-6.truncate与不带where的delete:只删除数据，而不删除表的结构（定义）drop语句将删除表的结构被依赖的约束(constrain),触发器（trigger)索引(index);依赖于该表的存储过程/函数将被保留，但其状态会变为:invalid.
+6.truncate and delete without where: only delete data, without deleting the structure (definition) of the table. The drop statement will delete the constraint (constrain), trigger (trigger) index (index) on which the structure of the table is dependent; depends on The stored procedure/function of the table will be retained, but its status will become: invalid.
 
-### 201.索引的工作原理及其种类
+### 201. The working principle and types of indexes
 
-数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询，更新数据库表中数据。索引的实现通常使用B树以其变种B+树。
+The database index is a sorted data structure in the database management system to assist in quick query and update the data in the database table. The realization of the index usually uses the B tree and its variant B+ tree.
 
-在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。
+In addition to data, the database system also maintains data structures that meet specific search algorithms. These data structures reference (point to) data in a certain way, so that advanced search algorithms can be implemented on these data structures. This data structure is the index.
 
-为表设置索引要付出代价的：一是增加了数据库的存储空间，二是在插入和修改数据时要花费较多的时间（因为索引也要随之变动）
-
-### 202.连接的种类
-### 203.数据库优化的思路
-### 204.存储过程与触发器的区别
-### 205.悲观锁和乐观锁是什么？
-### 206.你常用的mysql引擎有哪些?各引擎间有什么区别?
+There is a price to pay for setting up an index for the table: one is to increase the storage space of the database, and the other is to spend more time when inserting and modifying data (because the index will also change accordingly)
+### 202. Connection type
+### 203. Thoughts on Database Optimization
+### 204. The difference between stored procedures and triggers
+### 205. What are pessimistic locks and optimistic locks?
+### 206. What are your commonly used mysql engines? What are the differences between the engines?
 
 ## Redis
-### 207.Redis宕机怎么解决?
+### 207. How to solve Redis downtime?
 
-宕机:服务器停止服务‘
+Downtime: The server is out of service'
 
-如果只有一台redis，肯定 会造成数据丢失，无法挽救
+If there is only one redis, it will definitely cause data loss and cannot be saved
 
-多台redis或者是redis集群，宕机则需要分为在主从模式下区分来看：
+For multiple redis or redis clusters, downtime needs to be divided into master-slave mode:
 
-slave从redis宕机，配置主从复制的时候才配置从的redis，从的会从主的redis中读取主的redis的操作日志1，在redis中从库重新启动后会自动加入到主从架构中，自动完成同步数据;
+The slave is down from redis, and the slave redis is configured when the master-slave replication is configured. The slave will read the master redis operation log 1 from the master redis. After the slave library restarts in the redis, it will automatically be added to the master-slave In the architecture, the synchronization of data is automatically completed;
 
-2, 如果从数据库实现了持久化，此时千万不要立马重启服务，否则可能会造成数据丢失，正确的操作如下：在slave数据上执行SLAVEOF ON ONE,来断开主从关系并把slave升级为主库，此时重新启动主数据库，执行SLAVEOF，把它设置为从库，连接到主的redis上面做主从复制，自动备份数据。
+2, If the slave database is persisted, do not restart the service immediately at this time, otherwise it may cause data loss. The correct operation is as follows: execute SLAVEOF ON ONE on the slave data to disconnect the master-slave relationship and upgrade the slave As the master database, restart the master database at this time, execute SLAVEOF, set it as a slave database, connect to the master redis for master-slave replication, and automatically back up data.
 
-以上过程很容易配置错误，可以使用redis提供的哨兵机制来简化上面的操作。简单的方法:redis的哨兵(sentinel)的功能
+The above process is easy to configure errors, you can use the sentinel mechanism provided by redis to simplify the above operations. The simple way: the function of the sentinel of redis
 
-### 208.redis和mecached的区别，以及使用场景
+### 208. The difference between redis and mecached, and usage scenarios
 
-区别
+the difference
 
-1、redis和Memcache都是将数据存放在内存中，都是内存数据库。不过memcache还可以用于缓存其他东西，例如图片，视频等等
+1. Both redis and Memcache store data in memory, and both are memory databases. But memcache can also be used to cache other things, such as pictures, videos, etc.
 
-2、Redis不仅仅支持简单的k/v类型的数据，同时还提供list,set,hash等数据结构的存储
+2. Redis not only supports simple k/v type data, but also provides storage for list, set, hash and other data structures
 
-3、虚拟内存-redis当物流内存用完时，可以将一些很久没用的value交换到磁盘
+3. Virtual memory-redis When the logistics memory is used up, some values ​​that have not been used for a long time can be exchanged to disk
 
-4、过期策略-memcache在set时就指定，例如set key1 0 0 8，即永不过期。Redis可以通过例如expire设定，例如expire name 10
+4. Expiration policy-memcache is specified when set, such as set key1 0 0 8, which means it will never expire. Redis can be set by, for example, expire, such as expire name 10
 
-5、分布式-设定memcache集群，利用magent做一主多从，redis可以做一主多从。都可以一主一丛
+5. Distributed-set up a memcache cluster, use magent to do one master and multiple slaves, redis can do one master and multiple slaves. Can be one master and one cluster
 
-6、存储数据安全-memcache挂掉后，数据没了，redis可以定期保存到磁盘(持久化)
+6. Store data security-After memcache hangs, the data is gone, redis can be saved to disk regularly (persistence)
 
-7、灾难恢复-memcache挂掉后，数据不可恢复，redis数据丢失后可以通过aof恢复
+7. Disaster recovery-data cannot be recovered after memcache is down, redis data can be recovered by aof after data loss
 
-8、Redis支持数据的备份，即master-slave模式的数据备份
+8. Redis supports data backup, that is, data backup in master-slave mode
 
-9、应用场景不一样，redis除了作为NoSQL数据库使用外，还能用做消息队列，数据堆栈和数据缓存等;Memcache适合于缓存SQL语句，数据集，用户临时性数据，延迟查询数据和session等
+9. The application scenarios are different. In addition to being used as a NoSQL database, redis can also be used as a message queue, data stack, and data cache; Memcache is suitable for caching SQL statements, data sets, temporary user data, delayed query data and session, etc.
 
-使用场景
+scenes to be used
 
-1,如果有持久方面的需求或对数据类型和处理有要求的应该选择redis
+1. If you have long-lasting requirements or have requirements for data types and processing, you should choose redis
 
-2,如果简单的key/value存储应该选择memcached.
+2. If simple key/value storage, you should choose memcached.
 
-### 209.Redis集群方案该怎么做?都有哪些方案?
+### 209. How to do the Redis cluster solution? What are the solutions?
 
-1,codis
+1, codis
 
-目前用的最多的集群方案，基本和twemproxy一致的效果，但它支持在节点数量改变情况下，旧节点数据客恢复到新hash节点
+The most commonly used cluster solution at present has basically the same effect as twemproxy, but it supports the restoration of data from the old node to the new hash node when the number of nodes changes.
 
-2redis cluster3.0自带的集群，特点在于他的分布式算法不是一致性hash，而是hash槽的概念，以及自身支持节点设置从节点。具体看官方介绍
+2 The cluster that comes with redis cluster3.0 is characterized in that its distributed algorithm is not a consistent hash, but the concept of a hash slot, and its own support for node setting slave nodes. See the official introduction for details
 
-3.在业务代码层实现，起几个毫无关联的redis实例，在代码层，对key进行hash计算，然后去对应的redis实例操作数据。这种方式对hash层代码要求比较高，考虑部分包括，节点失效后的替代算法方案，数据震荡后的字典脚本恢复，实例的监控，等等
+3. Realize in the business code layer, set up several unrelated redis instances, in the code layer, perform hash calculation on the key, and then go to the corresponding redis instance to manipulate the data. This method has relatively high requirements for the hash layer code. Some considerations include alternative algorithm schemes after node failure, dictionary script recovery after data shock, instance monitoring, etc.
 
-### 210.Redis回收进程是如何工作的
+### 210. How does the Redis recycling process work?
 
-一个客户端运行了新的命令，添加了新的数据。
+A client ran a new command and added new data.
 
-redis检查内存使用情况，如果大于maxmemory的限制，则根据设定好的策略进行回收。
+Redis checks the memory usage, and if it is greater than the maxmemory limit, it will be recycled according to the set strategy.
 
-一个新的命令被执行等等，所以我们不断地穿越内存限制的边界，通过不断达到边界然后不断回收回到边界以下。
+A new command is executed and so on, so we are constantly crossing the boundary of the memory limit, by continuously reaching the boundary and then continuously reclaiming back below the boundary.
 
-如果一个命令的结果导致大量内存被使用(例如很大的集合的交集保存到一个新的键)，不用多久内存限制就会被这个内存使用量超越。
+If the result of a command causes a large amount of memory to be used (for example, the intersection of a large set is saved to a new key), it will not take long for the memory limit to be exceeded by this memory usage.
 
 ## MongoDB
-### 211.MongoDB中对多条记录做更新操作命令是什么？
-### 212.MongoDB如何才会拓展到多个shard里？
+### 211. What is the command to update multiple records in MongoDB?
+### 212. How does MongoDB expand to multiple shards?
 
-## 测试
-### 213.编写测试计划的目的是
-### 214.对关键词触发模块进行测试
-### 215.其他常用笔试题目网址汇总
-### 216.测试人员在软件开发过程中的任务是什么
-### 217.一条软件Bug记录都包含了哪些内容？
-### 218.简述黑盒测试和白盒测试的优缺点
-### 219.请列出你所知道的软件测试种类，至少5项
-### 220.Alpha测试与Beta测试的区别是什么？
-### 221.举例说明什么是Bug？一个bug report应包含什么关键字？
+## Test
+### 213. The purpose of writing a test plan is
+### 214. Test the keyword trigger module
+### 215. Summary of other commonly used written exam URLs
+### 216. What are the tasks of testers in the software development process
+### 217. What is included in a software bug record?
+### 218. Briefly describe the advantages and disadvantages of black box testing and white box testing
+### 219. Please list the types of software testing you know, at least 5 items
+### 220. What is the difference between Alpha test and Beta test?
+### 221. Give examples to illustrate what is a bug? What keywords should a bug report contain?
 
-## 数据结构
-### 222.数组中出现次数超过一半的数字-Python版
-### 223.求100以内的质数
-### 224.无重复字符的最长子串-Python实现
-### 225.通过2个5/6升得水壶从池塘得到3升水
-### 226.什么是MD5加密，有什么特点？
-### 227.什么是对称加密和非对称加密
-### 228.冒泡排序的思想？
-### 229.快速排序的思想？
-### 230.如何判断单向链表中是否有环？
-### 231.你知道哪些排序算法（一般是通过问题考算法）
-### 232.斐波那契数列
+## data structure
+### 222. Numbers that appear more than half the number of times in the array-Python version
+### 223. Find prime numbers within 100
+### 224. The longest substring without repeated characters-Python implementation
+### 225. Get 3 liters of water from the pond through 2 5/6 liter kettles
+### 226. What is MD5 encryption and what are its characteristics?
+### 227. What is symmetric encryption and asymmetric encryption
+### 228. The idea of ​​bubble sorting?
+### 229. The idea of ​​quick sort?
+### 230. How to judge whether there is a ring in a singly linked list?
+### 231. Which sorting algorithm do you know (usually through the question test algorithm)
+### 232. Fibonacci Sequence
 
-**数列定义: **
+**Sequence definition: **
 
 f 0 = f 1 = 1
 f n = f (n-1) + f (n-2)
 
-#### 根据定义
+#### By definition
 
-速度很慢，另外(暴栈注意！⚠️️） `O(fibonacci n)`
+The speed is very slow, in addition (Attention to the violent stack! ⚠️️) `O(fibonacci n)`
 
 ```python
 def fibonacci(n):
     if n == 0 or n == 1:
         return 1
-    return fibonacci(n - 1) + fibonacci(n - 2)
+    return fibonacci(n-1) + fibonacci(n-2)
 ```
 
-#### 线性时间的
+#### Linear time
 
-**状态/循环**
+**Status/Circulation**
 
 ```python
 def fibonacci(n):
@@ -2620,7 +2345,7 @@ def fibonacci(n):
    return a
 ```
 
-**递归**
+**Recursion**
 
 ```python
 def fibonacci(n):
@@ -2628,7 +2353,7 @@ def fibonacci(n):
         if n_ == 0:
             return s[0]
         a, b = s
-        return fib(n_ - 1, (b, a + b))
+        return fib(n_-1, (b, a + b))
     return fib(n, (1, 1))
 ```
 
@@ -2651,7 +2376,7 @@ def fibonacci(n):
     return next(fibs)
 ```
 
-**做缓存**
+**Do caching**
 
 ```python
 def cache(fn):
@@ -2665,26 +2390,26 @@ def cache(fn):
 
 @cache
 def fib(n):
-    if n < 2:
+    if n <2:
         return 1
     return fib(n-1) + fib(n-2)
 ```
 
-**利用 funtools.lru_cache 做缓存**
+**Use funtools.lru_cache for caching**
 
 ```python
 from functools import lru_cache
 
 @lru_cache(maxsize=32)
 def fib(n):
-    if n < 2:
+    if n <2:
         return 1
     return fib(n-1) + fib(n-2)
 ```
 
 #### Logarithmic
 
-**矩阵**
+**matrix**
 
 ```python
 import numpy as np
@@ -2692,7 +2417,7 @@ def fibonacci(n):
     return (np.matrix([[0, 1], [1, 1]]) ** n)[1, 1]
 ```
 
-**不是矩阵**
+**Not a matrix**
 
 ```python
 def fibonacci(n):
@@ -2701,15 +2426,15 @@ def fibonacci(n):
             return (1, 1)
         elif n == 1:
             return (1, 2)
-        a, b = fib(n // 2 - 1)
+        a, b = fib(n // 2-1)
         c = a + b
-        if n % 2 == 0:
-            return (a * a + b * b, c * c - a * a)
-        return (c * c - a * a, b * b + c * c)
+        if n% 2 == 0:
+            return (a * a + b * b, c * c-a * a)
+        return (c * c-a * a, b * b + c * c)
     return fib(n)[0]
 ```
 
-### 233.如何翻转一个单链表？
+### 233. How to flip a singly linked list?
 
 ```python
 class Node:
@@ -2722,13 +2447,13 @@ def rev(link):
     cur = link.next
     pre.next = None
     while cur:
-        temp  = cur.next
+        temp = cur.next
         cur.next = pre
         pre = cur
         cur = tmp
     return pre
 
-if __name__ == '__main__':
+if __name__ =='__main__':
     link = Node(1,Node(2,Node(3,Node(4,Node(5,Node(6,Node7,Node(8.Node(9))))))))
     root = rev(link)
     while root:
@@ -2738,18 +2463,18 @@ if __name__ == '__main__':
 
 
 
-### 234.青蛙跳台阶问题
+### 234. The problem of frog jumping
 
-一只青蛙要跳上n层高的台阶，一次能跳一级，也可以跳两级，请问这只青蛙有多少种跳上这个n层台阶的方法？
+A frog wants to jump up n-level steps. It can jump one level or two at a time. How many ways does this frog have to jump up this n-level step?
 
-方法1：递归
+Method 1: Recursion
 
-设青蛙跳上n级台阶有f(n)种方法，把这n种方法分为两大类，第一种最后一次跳了一级台阶，这类共有f(n-1)种，第二种最后一次跳了两级台阶，这种方法共有f(n-2)种，则得出递推公式f(n)=f(n-1) + f(n-2),显然f(1)=1,f(2)=2，这种方法虽然代码简单，但效率低，会超出时间上限
+Suppose there are f(n) ways for a frog to jump on n steps. These n methods are divided into two categories. The first one jumps one step last time. There are f(n-1) kinds of this kind, and the second This method jumped two steps at the last time. There are f(n-2) kinds of this method, and the recursive formula f(n)=f(n-1) + f(n-2) is obtained. Obviously f(1 )=1, f(2)=2. Although this method is simple in code, it is inefficient and will exceed the time limit
 
 ```python
 class Solution:
     def climbStairs(self,n):
-        if n ==1:
+        if n == 1:
             return 1
         elif n==2:
             return 2
@@ -2757,7 +2482,7 @@ class Solution:
             return self.climbStairs(n-1) + self.climbStairs(n-2)
 ```
 
-方法2：用循环来代替递归
+Method 2: Use loops instead of recursion
 
 ```python
 class Solution:
@@ -2772,24 +2497,32 @@ class Solution:
         return c
 ```
 
-### 235.两数之和 Two Sum
+### 235. Two Sum Two Sum
 
 
 
-### 236.搜索旋转排序数组 Search in Rotated Sorted Array
-### 237.Python实现一个Stack的数据结构
-### 238.写一个二分查找
-### 239.set 用 in 时间复杂度是多少，为什么？
-### 240.列表中有n个正整数范围在[0，1000]，进行排序；
-### 241.面向对象编程中有组合和继承的方法实现新的类
-## 大数据
-### 242.找出1G的文件中高频词
-### 243.一个大约有一万行的文本文件统计高频词
-### 244.怎么在海量数据中找出重复次数最多的一个？
-### 245.判断数据是否在大量数据中
+### 236. Search in Rotated Sorted Array Search in Rotated Sorted Array
+### 237. Python implements a Stack data structure
+### 238. Write a binary search
+### 239. What is the time complexity of using in for set and why?
+### 240. There are n positive integers in the range of [0, 1000] in the list, sorted;
+### 241. There are methods of composition and inheritance in object-oriented programming to implement new classes
+## Big Data
+### 242. Find out high-frequency words in 1G files
+### 243. Count high-frequency words in a text file of about ten thousand lines
+### 244. How to find the most repeated one among the massive data?
+### 245. Determine whether the data is in a large amount of data
 
-## 架构
+## Architecture
 
-### [Python后端架构演进](<https://zhu327.github.io/2018/07/19/python%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/>)
+### [Python back-end architecture evolution](<https://zhu327.github.io/2018/07/19/python%E5%90%8E%E7%AB%AF%E6%9E%B6%E6% 9E%84%E6%BC%94%E8%BF%9B/>)
 
-这篇文章几乎涵盖了python会用的架构，在面试可以手画架构图，根据自己的项目谈下技术选型和优劣，遇到的坑等。绝对加分
+This article almost covers the architecture that python will use. In the interview, you can draw the architecture diagram by hand, and talk about the technical selection and pros and cons according to your own project, and the pits you encounter. Absolute bonus.
+
+## CREDITS
+
+Original Credits: [kenwoodjw](https://github.com/kenwoodjw)
+
+English Credits: [jishanshaikh4](https://github.com/jishanshaikh4)
+
+
