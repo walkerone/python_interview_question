@@ -1338,7 +1338,7 @@ reduce(lambda x, y: x * y, [1, 2, 3, 4])  # 相当于 ((1 * 2) * 3) * 4
 
 输出字符串'a'的内建方法
 
-### 72.map(lambda x:xx，[y for y in range(3)])的输出？
+### 72.map(lambda x:x*x，[y for y in range(3)])的输出？
 
 ```
 [0, 1, 4]
@@ -1864,7 +1864,7 @@ def reader(q):
 
 def writer(q):
     print("writer 启动（%s),父进程为(%s)"%(os.getpid(),os.getpid()))
-    for i ini "itcast":
+    for i in "itcast":
         q.put(i)
 if __name__ == "__main__":
     print("(%s)start"%os.getpid())
