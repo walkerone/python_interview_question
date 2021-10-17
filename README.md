@@ -295,7 +295,7 @@ def get_lines():
             yield i
 ```
 个人认为：还是设置下每次返回的行数较好，否则读取次数太多。
-```
+```python
 def get_lines():
     l = []
     with open('file.txt','rb') as f:
@@ -455,12 +455,12 @@ d. 经典类目前在Python里基本没有应用
 
 e. 保持class与type的统一对新式类的实例执行a.__class__与type(a)的结果是一致的，对于旧式类来说就不一样了。
 
-f.对于多重继承的属性搜索顺序不一样新式类是采用广度优先搜索，旧式类采用深度优先搜索。
+f. 对于多重继承的属性搜索顺序不一样新式类是采用广度优先搜索，旧式类采用深度优先搜索。
 
 ### 16.python中内置的数据结构有几种？
 a. 整型 int、 长整型 long、浮点型 float、 复数 complex
 
-b. 字符串 str、 列表 list、 元祖 tuple
+b. 字符串 str、 列表 list、 元组 tuple
 
 c. 字典 dict 、 集合 set
 
@@ -601,7 +601,7 @@ count = sum(range(0,101))
 print(count)
 ```
 ### 21.Python-遍历列表时删除元素的正确做法
-遍历在新在列表操作，删除时在原来的列表操作
+遍历在新的列表操作，删除时在原来的列表操作
 ```python
 a = [1,2,3,4,5,6,7,8]
 print(id(a))
@@ -682,7 +682,7 @@ letters = "".join(map(chr, range(ord('a'), ord('z') + 1)))
 ```
 
 ### 23.可变类型和不可变类型
-1,可变类型有list,dict.不可变类型有string，number,tuple.
+1,可变类型有list,dict.不可变类型有string,number,tuple.
 
 2,当进行修改操作时，可变类型传递的是内存中的地址，也就是说，直接修改内存中的值，并没有开辟新的内存。
 
@@ -695,7 +695,7 @@ is：比较的是两个对象的id值是否相等，也就是比较俩对象是�
 ### 25.求出列表所有奇数并构造新列表
 ```python
 a = [1,2,3,4,5,6,7,8,9,10]
-res = [ i for i in a if i%2==1]
+res = [i for i in a if i%2==1]
 print(res)
 ```
 ### 26.用一行python代码写出1+2+3+10248
@@ -713,13 +713,13 @@ print(num1)
 
 1.什么是LEGB?
 
-L： local 函数内部作用域
+L: local 函数内部作用域
 
 E: enclosing 函数内部与内嵌函数之间
 
 G: global 全局作用域
 
-B： build-in 内置作用
+B: build-in 内置作用
 
 python在函数里面的查找分为4种，称之为LEGB，也正是按照这是顺序来查找的
 ### 28.字符串 `"123"` 转换成 `123`，不使用内置api，例如 `int()`
@@ -773,9 +773,9 @@ class Solution:
             if target-nums[size] in d:
                 if d[target-nums[size]] <size:
                     return [d[target-nums[size]],size]
-                else:
-                    d[nums[size]] = size
-                size = size +1
+            else:
+                d[nums[size]] = size
+            size = size +1
 solution = Solution()
 list = [2,7,11,15]
 target = 9
@@ -783,7 +783,7 @@ nums = solution.twoSum(list,target)
 print(nums)
 ```
 
-```
+```python
 
 class Solution(object):
     def twoSum(self, nums, target):
@@ -881,7 +881,7 @@ print(result)
 该列表只包含满足以下条件的值，元素为原始列表中偶数切片
 ```python
 list_data = [1,2,5,8,10,3,18,6,20]
-res = [x for x in list_data[::2] if x %2 ==0]
+res = [x for x in list_data[::2] if x % 2 ==0]
 print(res)
 ```
 ### 34.用一行代码生成[1,4,9,16,25,36,49,64,81,100]
@@ -1550,7 +1550,7 @@ yield就是保存当前程序执行状态。你用for循环的时候，每次取
 
 可变对象，该对象所指向的内存中的值可以被改变。变量（准确的说是引用）改变后，实际上其所指的值直接发生改变，并没有发生复制行为，也没有开辟出新的地址，通俗点说就是原地改变。
 
-Pyhton中，数值类型(int 和float)，字符串str、元祖tuple都是不可变类型。而列表list、字典dict、集合set是可变类型
+Pyhton中，数值类型(int 和float)，字符串str、元组tuple都是不可变类型。而列表list、字典dict、集合set是可变类型
 
 ### 91.Python的魔法方法
 
@@ -1560,7 +1560,7 @@ Pyhton中，数值类型(int 和float)，字符串str、元祖tuple都是不可�
 
 `__new__`才是实例化对象调用的第一个方法，它只取下cls参数，并把其他参数传给`__init___`.
 
-`___new__`很少使用，但是也有它适合的场景，尤其是当类继承自一个像元祖或者字符串这样不经常改变的类型的时候。
+`___new__`很少使用，但是也有它适合的场景，尤其是当类继承自一个像元组或者字符串这样不经常改变的类型的时候。
 
 `__call__`让一个类的实例像函数一样被调用
 
