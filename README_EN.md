@@ -22,11 +22,10 @@ def get_lines():
 Personally think: It is better to set the number of rows returned each time, otherwise there are too many reads.
 ```
 def get_lines():
-    l = []
     with open('file.txt','rb') as f:
       data = f.readlines(60000)
-    l.append(data)
-    yield l
+        l.append(data)
+        yield l
 ```
 Method provided by Pandaaaa906
 ```python
